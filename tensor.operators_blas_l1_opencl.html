@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Arraymancer - Module operators_blas_l1_opencl</title>
+  <title>Arraymancer - operators_blas_l1_opencl</title>
 
   <link href="docutils.css" rel="stylesheet" type="text/css"/>
   <link href="nav.css" rel="stylesheet" type="text/css"/>
@@ -150,14 +150,14 @@
 </header>
 <article id="documentId">
   <div class="container">
-    <h1 class="title">Module operators_blas_l1_opencl</h1>
+    <h1 class="title">operators_blas_l1_opencl</h1>
     <div class="row">
   <div class="three columns">
   <div id="global-links">
     <ul class="simple">
     </ul>
   </div>
-  <div id="searchInput">
+  <div id="searchInputDiv">
     Search: <input type="text" id="searchInput"
       onkeyup="search()" />
   </div>
@@ -170,6 +170,12 @@
   </div>
   <ul class="simple simple-toc" id="toc-list">
 <li>
+  <a class="reference reference-toplevel" href="#5" id="55">Exports</a>
+  <ul class="simple simple-toc-section">
+    
+  </ul>
+</li>
+<li>
   <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
   <ul class="simple simple-toc-section">
     
@@ -178,10 +184,10 @@
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#dot,,"
-    title="dot(a144030, b144032: ClTensor[float32]): float32"><wbr />dot<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#dot,,_2"
-    title="dot(a146607, b146609: ClTensor[float64]): float64"><wbr />dot<span class="attachedType" style="visibility:hidden"></span></a></li>
+      <li><a class="reference" href="#dot%2C%2C"
+    title="dot(a157042, b157044: ClTensor[float32]): float32"><wbr />dot<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#dot%2C%2C_2"
+    title="dot(a159536, b159538: ClTensor[float64]): float64"><wbr />dot<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
@@ -192,32 +198,39 @@
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
   <p class="module-desc"></p>
-  <div class="section" id="6">
+  <div class="section" id="5">
+<h1><a class="toc-backref" href="#5">Exports</a></h1>
+<dl class="item">
+<a href="operators_blas_l1_opencl.html#+"><span class="Identifier">+</span></a>, <a href="operators_blas_l1_opencl.html#+"><span class="Identifier">+</span></a>, <a href="operators_blas_l1_opencl.html#+"><span class="Identifier">+</span></a>, <a href="operators_blas_l1_opencl.html#-"><span class="Identifier">-</span></a>, <a href="operators_blas_l1_opencl.html#-"><span class="Identifier">-</span></a>, <a href="operators_blas_l1_opencl.html#-"><span class="Identifier">-</span></a>, <a href="operators_blas_l1_opencl.html#+="><span class="Identifier">+=</span></a>, <a href="operators_blas_l1_opencl.html#+="><span class="Identifier">+=</span></a>, <a href="operators_blas_l1_opencl.html#+="><span class="Identifier">+=</span></a>, <a href="operators_blas_l1_opencl.html#-="><span class="Identifier">-=</span></a>, <a href="operators_blas_l1_opencl.html#-="><span class="Identifier">-=</span></a>, <a href="operators_blas_l1_opencl.html#-="><span class="Identifier">-=</span></a>
+</dl></div>
+<div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="opencl_backend.html">opencl_backend</a>, <a class="reference external" href="clblast.html">clblast</a>, <a class="reference external" href="./backend/metadataArray.html">./backend/metadataArray</a>, <a class="reference external" href="./private/p_kernels_interface_opencl.html">./private/p_kernels_interface_opencl</a>, <a class="reference external" href="./private/p_init_opencl.html">./private/p_init_opencl</a>, <a class="reference external" href="./private/p_checks.html">./private/p_checks</a>, <a class="reference external" href="./data_structure.html">./data_structure</a>
+<a class="reference external" href="opencl_backend.html">opencl_backend</a>, <a class="reference external" href="metadataArray.html">metadataArray</a>, <a class="reference external" href="p_kernels_interface_opencl.html">p_kernels_interface_opencl</a>, <a class="reference external" href="p_init_opencl.html">p_init_opencl</a>, <a class="reference external" href="p_checks.html">p_checks</a>, <a class="reference external" href="data_structure.html">data_structure</a>
 </dl></div>
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="dot"><a name="dot,,"></a><pre><span class="Keyword">proc</span> <span class="Identifier">dot</span><span class="Other">(</span><span class="Identifier">a</span><span class="DecNumber">144030</span><span class="Other">,</span> <span class="Identifier">b</span><span class="DecNumber">144032</span><span class="Other">:</span> <span class="Identifier">ClTensor</span><span class="Other">[</span><span class="Identifier">float32</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float32</span> <span class="Other pragmabegin">{.</span><div class="pragma">
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">EOpenCL</span><span class="Other">,</span> <span class="Identifier">CLBlastError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<a id="dot,,"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">dot</span><span class="Other">(</span><span class="Identifier">a</span><span class="DecNumber">157042</span><span class="Other">,</span> <span class="Identifier">b</span><span class="DecNumber">157044</span><span class="Other">:</span> <a href="data_structure.html#ClTensor"><span class="Identifier">ClTensor</span></a><span class="Other">[</span><span class="Identifier">float32</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float32</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">EOpenCL</span><span class="Other">,</span> <span class="Identifier">CLBlastError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Vector to Vector dot (scalar) product
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/operators_blas_l1_opencl.nim#L57"
+href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/operators_blas_l1_opencl.nim#L55"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/operators_blas_l1_opencl.nim#L57" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/operators_blas_l1_opencl.nim#L55" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="dot"><a name="dot,,_2"></a><pre><span class="Keyword">proc</span> <span class="Identifier">dot</span><span class="Other">(</span><span class="Identifier">a</span><span class="DecNumber">146607</span><span class="Other">,</span> <span class="Identifier">b</span><span class="DecNumber">146609</span><span class="Other">:</span> <span class="Identifier">ClTensor</span><span class="Other">[</span><span class="Identifier">float64</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float64</span> <span class="Other pragmabegin">{.</span><div class="pragma">
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">EOpenCL</span><span class="Other">,</span> <span class="Identifier">CLBlastError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<a id="dot,,_2"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">dot</span><span class="Other">(</span><span class="Identifier">a</span><span class="DecNumber">159536</span><span class="Other">,</span> <span class="Identifier">b</span><span class="DecNumber">159538</span><span class="Other">:</span> <a href="data_structure.html#ClTensor"><span class="Identifier">ClTensor</span></a><span class="Other">[</span><span class="Identifier">float64</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float64</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">EOpenCL</span><span class="Other">,</span> <span class="Identifier">CLBlastError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Vector to Vector dot (scalar) product
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/operators_blas_l1_opencl.nim#L58"
+href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/operators_blas_l1_opencl.nim#L56"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/operators_blas_l1_opencl.nim#L58" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/operators_blas_l1_opencl.nim#L56" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -230,7 +243,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-05-06 13:03:03 UTC</small>
+        <small>Made with Nim. Generated: 2018-12-22 18:51:57 UTC</small>
       </div>
     </div>
   </div>

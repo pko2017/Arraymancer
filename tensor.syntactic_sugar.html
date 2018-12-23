@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Arraymancer - Module syntactic_sugar</title>
+  <title>Arraymancer - syntactic_sugar</title>
 
   <link href="docutils.css" rel="stylesheet" type="text/css"/>
   <link href="nav.css" rel="stylesheet" type="text/css"/>
@@ -150,14 +150,14 @@
 </header>
 <article id="documentId">
   <div class="container">
-    <h1 class="title">Module syntactic_sugar</h1>
+    <h1 class="title">syntactic_sugar</h1>
     <div class="row">
   <div class="three columns">
   <div id="global-links">
     <ul class="simple">
     </ul>
   </div>
-  <div id="searchInput">
+  <div id="searchInputDiv">
     Search: <input type="text" id="searchInput"
       onkeyup="search()" />
   </div>
@@ -178,7 +178,7 @@
 <li>
   <a class="reference reference-toplevel" href="#18" id="68">Templates</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#at.t,Tensor[T],varargs[untyped]"
+      <li><a class="reference" href="#at.t%2CTensor%5BT%5D%2Cvarargs%5Buntyped%5D"
     title="at[T](t: Tensor[T]; args: varargs[untyped]): untyped"><wbr />at<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
@@ -193,12 +193,13 @@
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="./data_structure.html">./data_structure</a>, <a class="reference external" href="./shapeshifting.html">./shapeshifting</a>
+<a class="reference external" href="data_structure.html">data_structure</a>, <a class="reference external" href="shapeshifting.html">shapeshifting</a>
 </dl></div>
 <div class="section" id="18">
 <h1><a class="toc-backref" href="#18">Templates</a></h1>
 <dl class="item">
-<dt id="at"><a name="at.t,Tensor[T],varargs[untyped]"></a><pre><span class="Keyword">template</span> <span class="Identifier">at</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">args</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">untyped</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<a id="at.t,Tensor[T],varargs[untyped]"></a>
+<dt><pre><span class="Keyword">template</span> <span class="Identifier">at</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">args</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">untyped</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 Slice a Tensor and collapse singleton dimension.<dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>a Tensor</li>
@@ -232,7 +233,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-05-06 13:02:34 UTC</small>
+        <small>Made with Nim. Generated: 2018-12-22 18:51:41 UTC</small>
       </div>
     </div>
   </div>

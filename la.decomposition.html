@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Arraymancer - Module decomposition</title>
+  <title>Arraymancer - decomposition</title>
 
   <link href="docutils.css" rel="stylesheet" type="text/css"/>
   <link href="nav.css" rel="stylesheet" type="text/css"/>
@@ -150,14 +150,14 @@
 </header>
 <article id="documentId">
   <div class="container">
-    <h1 class="title">Module decomposition</h1>
+    <h1 class="title">decomposition</h1>
     <div class="row">
   <div class="three columns">
   <div id="global-links">
     <ul class="simple">
     </ul>
   </div>
-  <div id="searchInput">
+  <div id="searchInputDiv">
     Search: <input type="text" id="searchInput"
       onkeyup="search()" />
   </div>
@@ -178,12 +178,12 @@
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#symeig,Tensor[T: SomeReal]"
-    title="symeig[T: SomeReal](a: Tensor[T]; eigenvectors = false): tuple[
+      <li><a class="reference" href="#symeig%2CTensor%5BT%3A+SomeFloat%5D"
+    title="symeig[T: SomeFloat](a: Tensor[T]; eigenvectors = false): tuple[
     eigenval, eigenvec: Tensor[T]]"><wbr />symeig<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#symeig,Tensor[T: SomeReal],HSlice[,]"
-    title="symeig[T: SomeReal](a: Tensor[T]; eigenvectors = false;
-                   slice: HSlice[[type node], [type node]]): tuple[
+  <li><a class="reference" href="#symeig%2CTensor%5BT%3A+SomeFloat%5D%2CHSlice%5B%2C%5D"
+    title="symeig[T: SomeFloat](a: Tensor[T]; eigenvectors = false;
+                    slice: HSlice[[type node], [type node]]): tuple[
     eigenval, eigenvec: Tensor[T]]"><wbr />symeig<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
@@ -198,13 +198,14 @@
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="../tensor/tensor.html">../tensor/tensor</a>, <a class="reference external" href="nimlapack.html">nimlapack</a>, <a class="reference external" href="../tensor/private/p_init_cpu.html">../tensor/private/p_init_cpu</a>
+<a class="reference external" href="sequninit.html">sequninit</a>, <a class="reference external" href="tensor.html">tensor</a>, <a class="reference external" href="p_init_cpu.html">p_init_cpu</a>
 </dl></div>
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="symeig"><a name="symeig,Tensor[T: SomeReal]"></a><pre><span class="Keyword">proc</span> <span class="Identifier">symeig</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeReal</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">eigenvectors</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span>
-    <span class="Identifier">eigenval</span><span class="Other">,</span> <span class="Identifier">eigenvec</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">inline</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<a id="symeig,Tensor[T: SomeFloat]"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">symeig</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">eigenvectors</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span>
+    <span class="Identifier">eigenval</span><span class="Other">,</span> <span class="Identifier">eigenvec</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Compute the eigenvalues and eigen vectors of a symmetric matrix<dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>A symmetric matrix of shape [n x n]</li>
@@ -222,14 +223,15 @@ Compute the eigenvalues and eigen vectors of a symmetric matrix<dl class="docuti
 <p>Implementation is done through the Multiple Relatively Robust Representations</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/linear_algebra/decomposition.nim#L126"
+href="https://github.com/mratsim/arraymancer/tree/master/src/linear_algebra/decomposition.nim#L127"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/linear_algebra/decomposition.nim#L126" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/linear_algebra/decomposition.nim#L127" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="symeig"><a name="symeig,Tensor[T: SomeReal],HSlice[,]"></a><pre><span class="Keyword">proc</span> <span class="Identifier">symeig</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeReal</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">eigenvectors</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span>
-                       <span class="Identifier">slice</span><span class="Other">:</span> <span class="Identifier">HSlice</span><span class="Other">[</span>[type node]<span class="Other">,</span> [type node]<span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span>
-    <span class="Identifier">eigenval</span><span class="Other">,</span> <span class="Identifier">eigenvec</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">inline</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<a id="symeig,Tensor[T: SomeFloat],HSlice[,]"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">symeig</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">eigenvectors</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span>
+                        <span class="Identifier">slice</span><span class="Other">:</span> <span class="Identifier">HSlice</span><span class="Other">[</span>[type node]<span class="Other">,</span> [type node]<span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span>
+    <span class="Identifier">eigenval</span><span class="Other">,</span> <span class="Identifier">eigenvec</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Compute the eigenvalues and eigen vectors of a symmetric matrix<dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>A symmetric matrix of shape [n, n]</li>
@@ -248,9 +250,9 @@ Compute the eigenvalues and eigen vectors of a symmetric matrix<dl class="docuti
 <p>Implementation is done through the Multiple Relatively Robust Representations</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/linear_algebra/decomposition.nim#L142"
+href="https://github.com/mratsim/arraymancer/tree/master/src/linear_algebra/decomposition.nim#L143"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/linear_algebra/decomposition.nim#L142" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/linear_algebra/decomposition.nim#L143" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -263,7 +265,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-05-06 13:04:23 UTC</small>
+        <small>Made with Nim. Generated: 2018-12-22 18:52:43 UTC</small>
       </div>
     </div>
   </div>

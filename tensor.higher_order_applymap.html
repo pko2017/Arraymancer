@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Arraymancer - Module higher_order_applymap</title>
+  <title>Arraymancer - higher_order_applymap</title>
 
   <link href="docutils.css" rel="stylesheet" type="text/css"/>
   <link href="nav.css" rel="stylesheet" type="text/css"/>
@@ -150,14 +150,14 @@
 </header>
 <article id="documentId">
   <div class="container">
-    <h1 class="title">Module higher_order_applymap</h1>
+    <h1 class="title">higher_order_applymap</h1>
     <div class="row">
   <div class="three columns">
   <div id="global-links">
     <ul class="simple">
     </ul>
   </div>
-  <div id="searchInput">
+  <div id="searchInputDiv">
     Search: <input type="text" id="searchInput"
       onkeyup="search()" />
   </div>
@@ -178,19 +178,19 @@
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#map,Tensor[T],"
+      <li><a class="reference" href="#map%2CTensor%5BT%5D%2C"
     title="map[T; U: not (ref | string | seq)](t: Tensor[T]; f: T -&gt; U): Tensor[U]"><wbr />map<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#map,Tensor[T],_2"
+  <li><a class="reference" href="#map%2CTensor%5BT%5D%2C_2"
     title="map[T; U: ref | string | seq](t: Tensor[T]; f: T -&gt; U): Tensor[U]"><wbr />map<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#apply,Tensor[T],"
+  <li><a class="reference" href="#apply%2CTensor%5BT%5D%2C"
     title="apply[T](t: var Tensor[T]; f: T -&gt; T)"><wbr />apply<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#apply,Tensor[T],proc(T)"
+  <li><a class="reference" href="#apply%2CTensor%5BT%5D%2Cproc%28T%29"
     title="apply[T](t: var Tensor[T]; f: proc (x: var T))"><wbr />apply<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#map2,Tensor[T],,Tensor[U]"
+  <li><a class="reference" href="#map2%2CTensor%5BT%5D%2C%2CTensor%5BU%5D"
     title="map2[T, U; V: not (ref | string | seq)](t1: Tensor[T]; f: (T, U) -&gt; V; t2: Tensor[U]): Tensor[V]"><wbr />map2<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#map2,Tensor[T],,Tensor[U]_2"
+  <li><a class="reference" href="#map2%2CTensor%5BT%5D%2C%2CTensor%5BU%5D_2"
     title="map2[T, U; V: ref | string | seq](t1: Tensor[T]; f: (T, U) -&gt; V; t2: Tensor[U]): Tensor[V]"><wbr />map2<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#apply2,Tensor[T],proc(T,T),Tensor[U]"
+  <li><a class="reference" href="#apply2%2CTensor%5BT%5D%2Cproc%28T%2CT%29%2CTensor%5BU%5D"
     title="apply2[T, U](a: var Tensor[T]; f: proc (x: var T; y: T); b: Tensor[U])"><wbr />apply2<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
@@ -198,17 +198,17 @@
 <li>
   <a class="reference reference-toplevel" href="#18" id="68">Templates</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#apply_inline.t,Tensor,untyped"
+      <li><a class="reference" href="#apply_inline.t%2CTensor%2Cuntyped"
     title="apply_inline(t: var Tensor; op: untyped): untyped"><wbr />apply_<wbr />inline<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#apply2_inline.t,Tensor[T],Tensor[U],untyped"
+  <li><a class="reference" href="#apply2_inline.t%2CTensor%5BT%5D%2CTensor%5BU%5D%2Cuntyped"
     title="apply2_inline[T; U](dest: var Tensor[T]; src: Tensor[U]; op: untyped): untyped"><wbr />apply2_<wbr />inline<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#apply3_inline.t,Tensor[T],Tensor[U],Tensor[V],untyped"
+  <li><a class="reference" href="#apply3_inline.t%2CTensor%5BT%5D%2CTensor%5BU%5D%2CTensor%5BV%5D%2Cuntyped"
     title="apply3_inline[T; U; V](dest: var Tensor[T]; src1: Tensor[U]; src2: Tensor[V]; op: untyped): untyped"><wbr />apply3_<wbr />inline<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#map_inline.t,Tensor[T],untyped"
+  <li><a class="reference" href="#map_inline.t%2CTensor%5BT%5D%2Cuntyped"
     title="map_inline[T](t: Tensor[T]; op: untyped): untyped"><wbr />map_<wbr />inline<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#map2_inline.t,Tensor[T],Tensor[U],untyped"
+  <li><a class="reference" href="#map2_inline.t%2CTensor%5BT%5D%2CTensor%5BU%5D%2Cuntyped"
     title="map2_inline[T; U](t1: Tensor[T]; t2: Tensor[U]; op: untyped): untyped"><wbr />map2_<wbr />inline<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#map3_inline.t,Tensor[T],Tensor[U],Tensor[V],untyped"
+  <li><a class="reference" href="#map3_inline.t%2CTensor%5BT%5D%2CTensor%5BU%5D%2CTensor%5BV%5D%2Cuntyped"
     title="map3_inline[T; U; V](t1: Tensor[T]; t2: Tensor[U]; t3: Tensor[V]; op: untyped): untyped"><wbr />map3_<wbr />inline<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
@@ -223,12 +223,13 @@
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="./backend/openmp.html">./backend/openmp</a>, <a class="reference external" href="./backend/memory_optimization_hints.html">./backend/memory_optimization_hints</a>, <a class="reference external" href="./private/p_checks.html">./private/p_checks</a>, <a class="reference external" href="./data_structure.html">./data_structure</a>, <a class="reference external" href="./init_cpu.html">./init_cpu</a>, <a class="reference external" href="./accessors.html">./accessors</a>, <a class="reference external" href="future.html">future</a>
+<a class="reference external" href="openmp.html">openmp</a>, <a class="reference external" href="memory_optimization_hints.html">memory_optimization_hints</a>, <a class="reference external" href="p_checks.html">p_checks</a>, <a class="reference external" href="data_structure.html">data_structure</a>, <a class="reference external" href="init_cpu.html">init_cpu</a>, <a class="reference external" href="accessors.html">accessors</a>
 </dl></div>
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="map"><a name="map,Tensor[T],"></a><pre><span class="Keyword">proc</span> <span class="Identifier">map</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">;</span> <span class="Identifier">U</span><span class="Other">:</span> <span class="Keyword">not</span> <span class="Other">(</span><span class="Keyword">ref</span> <span class="Operator">|</span> <span class="Identifier">string</span> <span class="Operator">|</span> <span class="Identifier">seq</span><span class="Other">)</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">f</span><span class="Other">:</span> <span class="Identifier">T</span> <span class="Operator">-&gt;</span> <span class="Identifier">U</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">U</span><span class="Other">]</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">noInit</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<a id="map,Tensor[T],"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">map</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">;</span> <span class="Identifier">U</span><span class="Other">:</span> <span class="Keyword">not</span> <span class="Other">(</span><span class="Keyword">ref</span> <span class="Operator">|</span> <span class="Identifier">string</span> <span class="Operator">|</span> <span class="Identifier">seq</span><span class="Other">)</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">f</span><span class="Other">:</span> <span class="Identifier">T</span> <span class="Operator">-&gt;</span> <span class="Identifier">U</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">U</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Apply a unary function in an element-wise manner on Tensor[T], returning a new Tensor.<dl class="docutils"><dt>Usage with Nim's <tt class="docutils literal"><span class="pre">future</span></tt> module:</dt>
 <dd><pre class="listing"><span class="Identifier">a</span><span class="Operator">.</span><span class="Identifier">map</span><span class="Punctuation">(</span><span class="Identifier">x</span> <span class="Operator">=&gt;</span> <span class="Identifier">x</span><span class="Operator">+</span><span class="DecNumber">1</span><span class="Punctuation">)</span> <span class="Comment"># Map the anonymous function x =&gt; x+1</span></pre></dd>
@@ -250,7 +251,8 @@ class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/higher_order_applymap.nim#L116" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="map"><a name="map,Tensor[T],_2"></a><pre><span class="Keyword">proc</span> <span class="Identifier">map</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">;</span> <span class="Identifier">U</span><span class="Other">:</span> <span class="Keyword">ref</span> <span class="Operator">|</span> <span class="Identifier">string</span> <span class="Operator">|</span> <span class="Identifier">seq</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">f</span><span class="Other">:</span> <span class="Identifier">T</span> <span class="Operator">-&gt;</span> <span class="Identifier">U</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">U</span><span class="Other">]</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">noInit</span><span class="Other">,</span> <span class="Identifier">noSideEffect</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<a id="map,Tensor[T],_2"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">map</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">;</span> <span class="Identifier">U</span><span class="Other">:</span> <span class="Keyword">ref</span> <span class="Operator">|</span> <span class="Identifier">string</span> <span class="Operator">|</span> <span class="Identifier">seq</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">f</span><span class="Other">:</span> <span class="Identifier">T</span> <span class="Operator">-&gt;</span> <span class="Identifier">U</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">U</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span><span class="Other">,</span> <span class="Identifier">noSideEffect</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Apply a unary function in an element-wise manner on Tensor[T], returning a new Tensor.</p>
 <p>This is a fallback for ref types as OpenMP will not work with if the results allocate memory managed by GC.</p>
@@ -261,7 +263,8 @@ class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/higher_order_applymap.nim#L138" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="apply"><a name="apply,Tensor[T],"></a><pre><span class="Keyword">proc</span> <span class="Identifier">apply</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">f</span><span class="Other">:</span> <span class="Identifier">T</span> <span class="Operator">-&gt;</span> <span class="Identifier">T</span><span class="Other">)</span></pre></dt>
+<a id="apply,Tensor[T],"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">apply</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">f</span><span class="Other">:</span> <span class="Identifier">T</span> <span class="Operator">-&gt;</span> <span class="Identifier">T</span><span class="Other">)</span></pre></dt>
 <dd>
 Apply a unary function in an element-wise manner on Tensor[T], in-place.<dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>a var Tensor</li>
@@ -287,7 +290,8 @@ class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/higher_order_applymap.nim#L149" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="apply"><a name="apply,Tensor[T],proc(T)"></a><pre><span class="Keyword">proc</span> <span class="Identifier">apply</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">f</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">T</span><span class="Other">)</span><span class="Other">)</span></pre></dt>
+<a id="apply,Tensor[T],proc(T)"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">apply</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">f</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">T</span><span class="Other">)</span><span class="Other">)</span></pre></dt>
 <dd>
 Apply a unary function in an element-wise manner on Tensor[T], in-place.<dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>a var Tensor</li>
@@ -315,8 +319,9 @@ class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/higher_order_applymap.nim#L170" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="map2"><a name="map2,Tensor[T],,Tensor[U]"></a><pre><span class="Keyword">proc</span> <span class="Identifier">map2</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">,</span> <span class="Identifier">U</span><span class="Other">;</span> <span class="Identifier">V</span><span class="Other">:</span> <span class="Keyword">not</span> <span class="Other">(</span><span class="Keyword">ref</span> <span class="Operator">|</span> <span class="Identifier">string</span> <span class="Operator">|</span> <span class="Identifier">seq</span><span class="Other">)</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t1</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">f</span><span class="Other">:</span> <span class="Other">(</span><span class="Identifier">T</span><span class="Other">,</span> <span class="Identifier">U</span><span class="Other">)</span> <span class="Operator">-&gt;</span> <span class="Identifier">V</span><span class="Other">;</span> <span class="Identifier">t2</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">U</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span>
-    <span class="Identifier">V</span><span class="Other">]</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">noInit</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<a id="map2,Tensor[T],,Tensor[U]"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">map2</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">,</span> <span class="Identifier">U</span><span class="Other">;</span> <span class="Identifier">V</span><span class="Other">:</span> <span class="Keyword">not</span> <span class="Other">(</span><span class="Keyword">ref</span> <span class="Operator">|</span> <span class="Identifier">string</span> <span class="Operator">|</span> <span class="Identifier">seq</span><span class="Other">)</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t1</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">f</span><span class="Other">:</span> <span class="Other">(</span><span class="Identifier">T</span><span class="Other">,</span> <span class="Identifier">U</span><span class="Other">)</span> <span class="Operator">-&gt;</span> <span class="Identifier">V</span><span class="Other">;</span> <span class="Identifier">t2</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">U</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span>
+    <span class="Identifier">V</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Apply a binary function in an element-wise manner on two Tensor[T], returning a new Tensor.</p>
 <p>The function is applied on the elements with the same coordinates.</p>
@@ -346,8 +351,9 @@ class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/higher_order_applymap.nim#L193" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="map2"><a name="map2,Tensor[T],,Tensor[U]_2"></a><pre><span class="Keyword">proc</span> <span class="Identifier">map2</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">,</span> <span class="Identifier">U</span><span class="Other">;</span> <span class="Identifier">V</span><span class="Other">:</span> <span class="Keyword">ref</span> <span class="Operator">|</span> <span class="Identifier">string</span> <span class="Operator">|</span> <span class="Identifier">seq</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t1</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">f</span><span class="Other">:</span> <span class="Other">(</span><span class="Identifier">T</span><span class="Other">,</span> <span class="Identifier">U</span><span class="Other">)</span> <span class="Operator">-&gt;</span> <span class="Identifier">V</span><span class="Other">;</span> <span class="Identifier">t2</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">U</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">V</span><span class="Other">]</span> <span class="Other pragmabegin">{.</span><div class="pragma">
-    <span class="Identifier">noInit</span><span class="Other">,</span> <span class="Identifier">noSideEffect</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<a id="map2,Tensor[T],,Tensor[U]_2"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">map2</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">,</span> <span class="Identifier">U</span><span class="Other">;</span> <span class="Identifier">V</span><span class="Other">:</span> <span class="Keyword">ref</span> <span class="Operator">|</span> <span class="Identifier">string</span> <span class="Operator">|</span> <span class="Identifier">seq</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t1</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">f</span><span class="Other">:</span> <span class="Other">(</span><span class="Identifier">T</span><span class="Other">,</span> <span class="Identifier">U</span><span class="Other">)</span> <span class="Operator">-&gt;</span> <span class="Identifier">V</span><span class="Other">;</span> <span class="Identifier">t2</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">U</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">V</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">noInit</span><span class="Other">,</span> <span class="Identifier">noSideEffect</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 <p>Apply a binary function in an element-wise manner on two Tensor[T], returning a new Tensor.</p>
 <p>This is a fallback for ref types as OpenMP will not work with if the results allocate memory managed by GC.</p>
@@ -358,7 +364,8 @@ class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/higher_order_applymap.nim#L223" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="apply2"><a name="apply2,Tensor[T],proc(T,T),Tensor[U]"></a><pre><span class="Keyword">proc</span> <span class="Identifier">apply2</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">,</span> <span class="Identifier">U</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">f</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">T</span><span class="Other">;</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">)</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">U</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
+<a id="apply2,Tensor[T],proc(T,T),Tensor[U]"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">apply2</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">,</span> <span class="Identifier">U</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">f</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">T</span><span class="Other">;</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">)</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">U</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
 <dd>
 <p>Apply a binary in-place function in an element-wise manner on two Tensor[T], returning a new Tensor.</p>
 <p>The function is applied on the elements with the same coordinates.</p>
@@ -386,7 +393,8 @@ class="link-seesrc" target="_blank">Source</a>
 <div class="section" id="18">
 <h1><a class="toc-backref" href="#18">Templates</a></h1>
 <dl class="item">
-<dt id="apply_inline"><a name="apply_inline.t,Tensor,untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">apply_inline</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Tensor</span><span class="Other">;</span> <span class="Identifier">op</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<a id="apply_inline.t,Tensor,untyped"></a>
+<dt><pre><span class="Keyword">template</span> <span class="Identifier">apply_inline</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">;</span> <span class="Identifier">op</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
 &nbsp;&nbsp;<a
@@ -395,7 +403,8 @@ class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/higher_order_applymap.nim#L24" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="apply2_inline"><a name="apply2_inline.t,Tensor[T],Tensor[U],untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">apply2_inline</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">;</span> <span class="Identifier">U</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">dest</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">U</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">op</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<a id="apply2_inline.t,Tensor[T],Tensor[U],untyped"></a>
+<dt><pre><span class="Keyword">template</span> <span class="Identifier">apply2_inline</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">;</span> <span class="Identifier">U</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">dest</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">src</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">U</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">op</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
 &nbsp;&nbsp;<a
@@ -404,7 +413,8 @@ class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/higher_order_applymap.nim#L31" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="apply3_inline"><a name="apply3_inline.t,Tensor[T],Tensor[U],Tensor[V],untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">apply3_inline</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">;</span> <span class="Identifier">U</span><span class="Other">;</span> <span class="Identifier">V</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">dest</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">src1</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">U</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">src2</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">V</span><span class="Other">]</span><span class="Other">;</span>
+<a id="apply3_inline.t,Tensor[T],Tensor[U],Tensor[V],untyped"></a>
+<dt><pre><span class="Keyword">template</span> <span class="Identifier">apply3_inline</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">;</span> <span class="Identifier">U</span><span class="Other">;</span> <span class="Identifier">V</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">dest</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">src1</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">U</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">src2</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">V</span><span class="Other">]</span><span class="Other">;</span>
                              <span class="Identifier">op</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
@@ -414,7 +424,8 @@ class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/higher_order_applymap.nim#L38" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="map_inline"><a name="map_inline.t,Tensor[T],untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">map_inline</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">op</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<a id="map_inline.t,Tensor[T],untyped"></a>
+<dt><pre><span class="Keyword">template</span> <span class="Identifier">map_inline</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">op</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
 &nbsp;&nbsp;<a
@@ -423,7 +434,8 @@ class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/higher_order_applymap.nim#L45" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="map2_inline"><a name="map2_inline.t,Tensor[T],Tensor[U],untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">map2_inline</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">;</span> <span class="Identifier">U</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t1</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">t2</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">U</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">op</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<a id="map2_inline.t,Tensor[T],Tensor[U],untyped"></a>
+<dt><pre><span class="Keyword">template</span> <span class="Identifier">map2_inline</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">;</span> <span class="Identifier">U</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t1</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">t2</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">U</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">op</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
 &nbsp;&nbsp;<a
@@ -432,7 +444,8 @@ class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/higher_order_applymap.nim#L64" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="map3_inline"><a name="map3_inline.t,Tensor[T],Tensor[U],Tensor[V],untyped"></a><pre><span class="Keyword">template</span> <span class="Identifier">map3_inline</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">;</span> <span class="Identifier">U</span><span class="Other">;</span> <span class="Identifier">V</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t1</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">t2</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">U</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">t3</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">V</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">op</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<a id="map3_inline.t,Tensor[T],Tensor[U],Tensor[V],untyped"></a>
+<dt><pre><span class="Keyword">template</span> <span class="Identifier">map3_inline</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">;</span> <span class="Identifier">U</span><span class="Other">;</span> <span class="Identifier">V</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t1</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">t2</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">U</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">t3</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">V</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">op</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
 &nbsp;&nbsp;<a
@@ -451,7 +464,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-05-06 13:03:08 UTC</small>
+        <small>Made with Nim. Generated: 2018-12-22 18:52:00 UTC</small>
       </div>
     </div>
   </div>

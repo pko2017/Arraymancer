@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Arraymancer - Module mnist</title>
+  <title>Arraymancer - mnist</title>
 
   <link href="docutils.css" rel="stylesheet" type="text/css"/>
   <link href="nav.css" rel="stylesheet" type="text/css"/>
@@ -150,14 +150,14 @@
 </header>
 <article id="documentId">
   <div class="container">
-    <h1 class="title">Module mnist</h1>
+    <h1 class="title">mnist</h1>
     <div class="row">
   <div class="three columns">
   <div id="global-links">
     <ul class="simple">
     </ul>
   </div>
-  <div id="searchInput">
+  <div id="searchInputDiv">
     Search: <input type="text" id="searchInput"
       onkeyup="search()" />
   </div>
@@ -178,10 +178,14 @@
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#read_mnist_images,string"
+      <li><a class="reference" href="#read_mnist_images%2Cstring"
     title="read_mnist_images(imgsPath: string): Tensor[uint8]"><wbr />read_<wbr />mnist_<wbr />images<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#read_mnist_labels,string"
+  <li><a class="reference" href="#read_mnist_labels%2CStream"
+    title="read_mnist_labels(stream: Stream): Tensor[uint8]"><wbr />read_<wbr />mnist_<wbr />labels<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#read_mnist_labels%2Cstring"
     title="read_mnist_labels(labelsPath: string): Tensor[uint8]"><wbr />read_<wbr />mnist_<wbr />labels<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#load_mnist%2C"
+    title="load_mnist(cache: static bool = true): Mnist"><wbr />load_<wbr />mnist<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
 </li>
@@ -195,14 +199,14 @@
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="streams.html">streams</a>, <a class="reference external" href="endians.html">endians</a>, <a class="reference external" href="os.html">os</a>, <a class="reference external" href="../tensor/tensor.html">../tensor/tensor</a>
+<a class="reference external" href="tensor.html">tensor</a>, <a class="reference external" href="io_stream_readers.html">io_stream_readers</a>, <a class="reference external" href="util.html">util</a>
 </dl></div>
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="read_mnist_images"><a name="read_mnist_images,string"></a><pre><span class="Keyword">proc</span> <span class="Identifier">read_mnist_images</span><span class="Other">(</span><span class="Identifier">imgsPath</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">noInit</span><span class="Other">,</span>
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">AssertionError</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">]</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<a id="read_mnist_images,string"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">read_mnist_images</span><span class="Other">(</span><span class="Identifier">imgsPath</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span><span class="Other">,</span>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Load MNIST images into a Tensor[uint8]<dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>A path to a MNIST images file</li>
@@ -217,37 +221,80 @@ Load MNIST images into a Tensor[uint8]<dl class="docutils"><dt>Input:</dt>
 </ul>
 </dd>
 </dl>
-<p>MNIST data can be downloaded here: <a class="reference external" href="http://yann.lecun.com/exdb/mnist">http://yann.lecun.com/exdb/mnist</a>/ It must be uncompressed before use. Download and decompression will be automated in the future.</p>
+<p>MNIST data can be downloaded here: <a class="reference external" href="http://yann.lecun.com/exdb/mnist">http://yann.lecun.com/exdb/mnist</a>/</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/datasets/mnist.nim#L59"
+href="https://github.com/mratsim/arraymancer/tree/master/src/datasets/mnist.nim#L92"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/datasets/mnist.nim#L59" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/datasets/mnist.nim#L92" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="read_mnist_labels"><a name="read_mnist_labels,string"></a><pre><span class="Keyword">proc</span> <span class="Identifier">read_mnist_labels</span><span class="Other">(</span><span class="Identifier">labelsPath</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">noInit</span><span class="Other">,</span>
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">AssertionError</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">]</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<a id="read_mnist_labels,Stream"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">read_mnist_labels</span><span class="Other">(</span><span class="Identifier">stream</span><span class="Other">:</span> <span class="Identifier">Stream</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span><span class="Other">,</span>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">IOError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
-Load MNIST labels into a Tensor[uint8]<dl class="docutils"><dt>Input:</dt>
-<dd><ul class="simple"><li>A path to a MNIST labels file</li>
+Load MNIST labels into a Tensor[uint8] from a file<dl class="docutils"><dt>Input:</dt>
+<dd><ul class="simple"><li>A stream of MNIST labels data</li>
 </ul>
 </dd>
 <dt>Returns:</dt>
-<dd><ul class="simple"><li>A tensor of images with shape (N, H, W)<ul class="simple"><li>N, number of images</li>
-<li>H, height</li>
-<li>W, width</li>
+<dd><ul class="simple"><li>A tensor of labels with shape (N)<ul class="simple"><li>N, number of images</li>
 </ul>
 </li>
 </ul>
 </dd>
 </dl>
-<p>MNIST data can be downloaded here: <a class="reference external" href="http://yann.lecun.com/exdb/mnist">http://yann.lecun.com/exdb/mnist</a>/ It must be uncompressed before use.  Download and decompression will be automated in the future.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/datasets/mnist.nim#L89"
+href="https://github.com/mratsim/arraymancer/tree/master/src/datasets/mnist.nim#L110"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/datasets/mnist.nim#L89" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/datasets/mnist.nim#L110" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+<a id="read_mnist_labels,string"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">read_mnist_labels</span><span class="Other">(</span><span class="Identifier">labelsPath</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span><span class="Other">,</span>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IOError</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">,</span> <span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+Load MNIST labels into a Tensor[uint8] from a file<dl class="docutils"><dt>Input:</dt>
+<dd><ul class="simple"><li>A path to a MNIST labels file</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="simple"><li>A tensor of labels with shape (N)<ul class="simple"><li>N, number of images</li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+<p>MNIST data can be downloaded here: <a class="reference external" href="http://yann.lecun.com/exdb/mnist">http://yann.lecun.com/exdb/mnist</a>/</p>
+
+&nbsp;&nbsp;<a
+href="https://github.com/mratsim/arraymancer/tree/master/src/datasets/mnist.nim#L129"
+class="link-seesrc" target="_blank">Source</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/datasets/mnist.nim#L129" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+<a id="load_mnist,"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">load_mnist</span><span class="Other">(</span><span class="Identifier">cache</span><span class="Other">:</span> <span class="Identifier">static</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">true</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Mnist</span></pre></dt>
+<dd>
+Loads the MNIST dataset into a tuple with fields:<ul class="simple"><li>train_images</li>
+<li>train_labels</li>
+<li>test_images</li>
+<li>test_labels</li>
+</ul>
+<p>Use the cache argument (bool) as false to cleanup the files each time.</p>
+<p>The cache by default will be in &quot;~/.cache/arraymancer&quot; on Unix and &quot;%USERNAME%/.cache/arraymancer&quot; on Windows, yhis can be changed with the XDG_CACHE_HOME environment variable.</p>
+<p>This proc will:</p>
+<ul class="simple"><li>download the files if necessary</li>
+<li>unzip them</li>
+<li>load into a tuple</li>
+<li>delete the downloaded files if cache is false</li>
+</ul>
+
+&nbsp;&nbsp;<a
+href="https://github.com/mratsim/arraymancer/tree/master/src/datasets/mnist.nim#L163"
+class="link-seesrc" target="_blank">Source</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/datasets/mnist.nim#L163" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -260,7 +307,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-05-06 13:04:38 UTC</small>
+        <small>Made with Nim. Generated: 2018-12-22 18:52:58 UTC</small>
       </div>
     </div>
   </div>

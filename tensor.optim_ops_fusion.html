@@ -157,7 +157,7 @@
     <ul class="simple">
     </ul>
   </div>
-  <div id="searchInput">
+  <div id="searchInputDiv">
     Search: <input type="text" id="searchInput"
       onkeyup="search()" />
   </div>
@@ -178,17 +178,21 @@
 <li>
   <a class="reference reference-toplevel" href="#18" id="68">Templates</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#rewriteTensor_MultiplyAdd.t,Tensor[T],Tensor[T],Tensor[T]"
-    title="rewriteTensor_MultiplyAdd{*(A, B) + C
+      <li><a class="reference" href="#rewriteTensor_MultiplyAdd.t%2CTensor%5BT%5D%2CTensor%5BT%5D%2CTensor%5BT%5D"
+    title="rewriteTensor_MultiplyAdd{
+  `*`(A, B) + C
 }[T](A, B, C: Tensor[T]): auto"><wbr />rewrite<wbr />Tensor_<wbr />Multiply<wbr />Add<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#rewriteTensor_MultiplyAdd.t,Tensor[T],Tensor[T],Tensor[T]_2"
-    title="rewriteTensor_MultiplyAdd{C + *(A, B)
+  <li><a class="reference" href="#rewriteTensor_MultiplyAdd.t%2CTensor%5BT%5D%2CTensor%5BT%5D%2CTensor%5BT%5D_2"
+    title="rewriteTensor_MultiplyAdd{
+  C + `*`(A, B)
 }[T](A, B, C: Tensor[T]): auto"><wbr />rewrite<wbr />Tensor_<wbr />Multiply<wbr />Add<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#rewriteTensor_MultiplyAdd_inplace.t,Tensor[T],Tensor[T],Tensor[T]"
-    title="rewriteTensor_MultiplyAdd_inplace{C += *(A, B)
+  <li><a class="reference" href="#rewriteTensor_MultiplyAdd_inplace.t%2CTensor%5BT%5D%2CTensor%5BT%5D%2CTensor%5BT%5D"
+    title="rewriteTensor_MultiplyAdd_inplace{
+  C += `*`(A, B)
 }[T](A, B: Tensor[T]; C: var Tensor[T])"><wbr />rewrite<wbr />Tensor_<wbr />Multiply<wbr />Add_<wbr />inplace<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#rewriteToTensorReshape.t,openArray,varargs[int],"
-    title="rewriteToTensorReshape{reshape(toTensor(oa, dummy_bugfix), shape)
+  <li><a class="reference" href="#rewriteToTensorReshape.t%2CopenArray%2Cvarargs%5Bint%5D%2Cstatic%5Bint%5D"
+    title="rewriteToTensorReshape{
+  reshape(toTensor(oa, dummy_bugfix), shape)
 }(oa: openArray; shape: varargs[int]; dummy_bugfix: static[int]): auto"><wbr />rewrite<wbr />To<wbr />Tensor<wbr />Reshape<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
@@ -203,13 +207,15 @@
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="../private/nested_containers.html">../private/nested_containers</a>, <a class="reference external" href="../private/ast_utils.html">../private/ast_utils</a>, <a class="reference external" href="./backend/metadataArray.html">./backend/metadataArray</a>, <a class="reference external" href="./private/p_checks.html">./private/p_checks</a>, <a class="reference external" href="./private/p_init_cpu.html">./private/p_init_cpu</a>, <a class="reference external" href="./data_structure.html">./data_structure</a>, <a class="reference external" href="./operators_blas_l2l3.html">./operators_blas_l2l3</a>, <a class="reference external" href="sequtils.html">sequtils</a>
+<a class="reference external" href="nested_containers.html">nested_containers</a>, <a class="reference external" href="ast_utils.html">ast_utils</a>, <a class="reference external" href="metadataArray.html">metadataArray</a>, <a class="reference external" href="p_checks.html">p_checks</a>, <a class="reference external" href="p_init_cpu.html">p_init_cpu</a>, <a class="reference external" href="data_structure.html">data_structure</a>, <a class="reference external" href="operators_blas_l2l3.html">operators_blas_l2l3</a>
 </dl></div>
 <div class="section" id="18">
 <h1><a class="toc-backref" href="#18">Templates</a></h1>
 <dl class="item">
-<dt id="rewriteTensor_MultiplyAdd"><a name="rewriteTensor_MultiplyAdd.t,Tensor[T],Tensor[T],Tensor[T]"></a><pre><span class="Keyword">template</span> <span class="Identifier">rewriteTensor_MultiplyAdd</span><span class="Other">{</span><span class="Operator">*</span><span class="Other">(</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">)</span> <span class="Operator">+</span> <span class="Identifier">C</span>
-<span class="Other">}</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">,</span> <span class="Identifier">C</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span></pre></dt>
+<a id="rewriteTensor_MultiplyAdd.t,Tensor[T],Tensor[T],Tensor[T]"></a>
+<dt><pre><span class="Keyword">template</span> <span class="Identifier">rewriteTensor_MultiplyAdd</span><span class="Other">{</span>
+  <span class="Other">`</span><span class="Operator">*</span><span class="Other">`</span><span class="Other">(</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">)</span> <span class="Operator">+</span> <span class="Identifier">C</span>
+<span class="Other">}</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">,</span> <span class="Identifier">C</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span></pre></dt>
 <dd>
 <p>Fuse <tt class="docutils literal"><span class="pre">A*B + C</span></tt> into a single operation.</p>
 <p>Operation fusion leverage the Nim compiler and should not be called explicitly.</p>
@@ -220,8 +226,10 @@ class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/optim_ops_fusion.nim#L54" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="rewriteTensor_MultiplyAdd"><a name="rewriteTensor_MultiplyAdd.t,Tensor[T],Tensor[T],Tensor[T]_2"></a><pre><span class="Keyword">template</span> <span class="Identifier">rewriteTensor_MultiplyAdd</span><span class="Other">{</span><span class="Identifier">C</span> <span class="Operator">+</span> <span class="Operator">*</span><span class="Other">(</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">)</span>
-<span class="Other">}</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">,</span> <span class="Identifier">C</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span></pre></dt>
+<a id="rewriteTensor_MultiplyAdd.t,Tensor[T],Tensor[T],Tensor[T]_2"></a>
+<dt><pre><span class="Keyword">template</span> <span class="Identifier">rewriteTensor_MultiplyAdd</span><span class="Other">{</span>
+  <span class="Identifier">C</span> <span class="Operator">+</span> <span class="Other">`</span><span class="Operator">*</span><span class="Other">`</span><span class="Other">(</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">)</span>
+<span class="Other">}</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">,</span> <span class="Identifier">C</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span></pre></dt>
 <dd>
 <p>Fuse <tt class="docutils literal"><span class="pre">C + A * B</span></tt> into a single operation.</p>
 <p>Operation fusion leverage the Nim compiler and should not be called explicitly.</p>
@@ -232,8 +240,10 @@ class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/optim_ops_fusion.nim#L61" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="rewriteTensor_MultiplyAdd_inplace"><a name="rewriteTensor_MultiplyAdd_inplace.t,Tensor[T],Tensor[T],Tensor[T]"></a><pre><span class="Keyword">template</span> <span class="Identifier">rewriteTensor_MultiplyAdd_inplace</span><span class="Other">{</span><span class="Identifier">C</span> <span class="Operator">+=</span> <span class="Operator">*</span><span class="Other">(</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">)</span>
-<span class="Other">}</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">C</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
+<a id="rewriteTensor_MultiplyAdd_inplace.t,Tensor[T],Tensor[T],Tensor[T]"></a>
+<dt><pre><span class="Keyword">template</span> <span class="Identifier">rewriteTensor_MultiplyAdd_inplace</span><span class="Other">{</span>
+  <span class="Identifier">C</span> <span class="Operator">+=</span> <span class="Other">`</span><span class="Operator">*</span><span class="Other">`</span><span class="Other">(</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">)</span>
+<span class="Other">}</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">C</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
 <dd>
 <p>Fuse <tt class="docutils literal"><span class="pre">C+=A*B</span></tt> into a single operation.</p>
 <p>Operation fusion leverage the Nim compiler and should not be called explicitly.</p>
@@ -244,8 +254,10 @@ class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/optim_ops_fusion.nim#L70" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="rewriteToTensorReshape"><a name="rewriteToTensorReshape.t,openArray,varargs[int],"></a><pre><span class="Keyword">template</span> <span class="Identifier">rewriteToTensorReshape</span><span class="Other">{</span><span class="Identifier">reshape</span><span class="Other">(</span><span class="Identifier">toTensor</span><span class="Other">(</span><span class="Identifier">oa</span><span class="Other">,</span> <span class="Identifier">dummy_bugfix</span><span class="Other">)</span><span class="Other">,</span> <span class="Identifier">shape</span><span class="Other">)</span>
-<span class="Other">}</span><span class="Other">(</span><span class="Identifier">oa</span><span class="Other">:</span> <span class="Identifier">openArray</span><span class="Other">;</span> <span class="Identifier">shape</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">dummy_bugfix</span><span class="Other">:</span> <span class="Keyword">static</span><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span></pre></dt>
+<a id="rewriteToTensorReshape.t,openArray,varargs[int],static[int]"></a>
+<dt><pre><span class="Keyword">template</span> <span class="Identifier">rewriteToTensorReshape</span><span class="Other">{</span>
+  <span class="Identifier">reshape</span><span class="Other">(</span><span class="Identifier">toTensor</span><span class="Other">(</span><span class="Identifier">oa</span><span class="Other">,</span> <span class="Identifier">dummy_bugfix</span><span class="Other">)</span><span class="Other">,</span> <span class="Identifier">shape</span><span class="Other">)</span>
+<span class="Other">}</span><span class="Other">(</span><span class="Identifier">oa</span><span class="Other">:</span> <span class="Identifier">openArray</span><span class="Other">;</span> <span class="Identifier">shape</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">dummy_bugfix</span><span class="Other">:</span> <span class="Identifier">static</span><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span></pre></dt>
 <dd>
 <p>Fuse <tt class="docutils literal"><span class="pre">sequence.toTensor.reshape(new_shape)</span></tt> into a single operation.</p>
 <p>Operation fusion leverage the Nim compiler and should not be called explicitly.</p>
@@ -266,7 +278,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-05-06 13:02:45 UTC</small>
+        <small>Made with Nim. Generated: 2018-12-22 18:51:48 UTC</small>
       </div>
     </div>
   </div>

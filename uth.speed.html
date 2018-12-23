@@ -151,10 +151,10 @@
 <article id="documentId">
   <div class="container">
     <h1 class="title">Under the hood: Speed</h1>
-
+    
 <h1 id="parallelism">Parallelism</h1><p>Most operations in Arraymancer are parallelized through OpenMP including linear algebra functions, universal functions, <tt class="docutils literal"><span class="pre">map</span></tt>, <tt class="docutils literal"><span class="pre">reduce</span></tt> and <tt class="docutils literal"><span class="pre">fold</span></tt> based operations.</p>
 
-<h1 id="parallel-loop-fusion-yolo-you-only-loop-once">Parallel loop fusion - YOLO (You Only Loop Once)</h1><p>Arraymancer provides several constructs for the YOLO™ paradigm (You Only Loop Once).</p>
+<h1 id="parallel-loop-fusion-minus-yolo-you-only-loop-once">Parallel loop fusion - YOLO (You Only Loop Once)</h1><p>Arraymancer provides several constructs for the YOLO™ paradigm (You Only Loop Once).</p>
 <p>A naïve logistic sigmoid implementation in Numpy would be:</p>
 <pre class="listing">
 import math
@@ -166,17 +166,17 @@ proc sigmoid(x):
 <p>Arraymancer can do the same using the explicit broadcast operator <tt class="docutils literal"><span class="pre">./</span></tt> and <tt class="docutils literal"><span class="pre">.+</span></tt>. (To avoid name conflict we change the logistic sigmoid name)</p>
 <pre class="listing"><span class="Keyword">import</span> <span class="Identifier">arraymancer</span>
 
-<span class="Identifier">proc</span> <span class="Identifier">customSigmoid</span><span class="Punctuation">[</span><span class="Identifier">T</span><span class="Punctuation">:</span> <span class="Identifier">SomeReal</span><span class="Punctuation">]</span><span class="Punctuation">(</span><span class="Identifier">t</span><span class="Punctuation">:</span> <span class="Identifier">Tensor</span><span class="Punctuation">[</span><span class="Identifier">T</span><span class="Punctuation">]</span><span class="Punctuation">)</span><span class="Punctuation">:</span> <span class="Identifier">Tensor</span><span class="Punctuation">[</span><span class="Identifier">T</span><span class="Punctuation">]</span> <span class="Operator">=</span>
+<span class="Keyword">proc</span> <span class="Identifier">customSigmoid</span><span class="Punctuation">[</span><span class="Identifier">T</span><span class="Punctuation">:</span> <span class="Identifier">SomeFloat</span><span class="Punctuation">]</span><span class="Punctuation">(</span><span class="Identifier">t</span><span class="Punctuation">:</span> <span class="Identifier">Tensor</span><span class="Punctuation">[</span><span class="Identifier">T</span><span class="Punctuation">]</span><span class="Punctuation">)</span><span class="Punctuation">:</span> <span class="Identifier">Tensor</span><span class="Punctuation">[</span><span class="Identifier">T</span><span class="Punctuation">]</span> <span class="Operator">=</span>
   <span class="Identifier">result</span> <span class="Operator">=</span> <span class="DecNumber">1</span> <span class="Operator">./</span> <span class="Punctuation">(</span><span class="DecNumber">1</span> <span class="Operator">.+</span> <span class="Identifier">exp</span><span class="Punctuation">(</span><span class="Operator">-</span><span class="Identifier">t</span><span class="Punctuation">)</span><span class="Punctuation">)</span></pre><p>Well, unfortunately, the only thing we gain here is parallelism but we still have 4 loops over the data implicitly. Another way would be to use the loop fusion template <tt class="docutils literal"><span class="pre">map_inline</span></tt>:</p>
 <pre class="listing"><span class="Keyword">import</span> <span class="Identifier">arraymancer</span>
 
-<span class="Identifier">proc</span> <span class="Identifier">customSigmoid2</span><span class="Punctuation">[</span><span class="Identifier">T</span><span class="Punctuation">:</span> <span class="Identifier">SomeReal</span><span class="Punctuation">]</span><span class="Punctuation">(</span><span class="Identifier">t</span><span class="Punctuation">:</span> <span class="Identifier">Tensor</span><span class="Punctuation">[</span><span class="Identifier">T</span><span class="Punctuation">]</span><span class="Punctuation">)</span><span class="Punctuation">:</span> <span class="Identifier">Tensor</span><span class="Punctuation">[</span><span class="Identifier">T</span><span class="Punctuation">]</span> <span class="Operator">=</span>
+<span class="Keyword">proc</span> <span class="Identifier">customSigmoid2</span><span class="Punctuation">[</span><span class="Identifier">T</span><span class="Punctuation">:</span> <span class="Identifier">SomeFloat</span><span class="Punctuation">]</span><span class="Punctuation">(</span><span class="Identifier">t</span><span class="Punctuation">:</span> <span class="Identifier">Tensor</span><span class="Punctuation">[</span><span class="Identifier">T</span><span class="Punctuation">]</span><span class="Punctuation">)</span><span class="Punctuation">:</span> <span class="Identifier">Tensor</span><span class="Punctuation">[</span><span class="Identifier">T</span><span class="Punctuation">]</span> <span class="Operator">=</span>
   <span class="Identifier">result</span> <span class="Operator">=</span> <span class="Identifier">map_inline</span><span class="Punctuation">(</span><span class="Identifier">t</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
     <span class="DecNumber">1</span> <span class="Operator">/</span> <span class="Punctuation">(</span><span class="DecNumber">1</span> <span class="Operator">+</span> <span class="Identifier">exp</span><span class="Punctuation">(</span><span class="Operator">-</span><span class="Identifier">x</span><span class="Punctuation">)</span><span class="Punctuation">)</span></pre><p>Now in a single loop over <tt class="docutils literal"><span class="pre">t</span></tt>, Arraymancer will do <tt class="docutils literal"><span class="pre">1 / (1 + exp(-x))</span></tt> for each x found. <tt class="docutils literal"><span class="pre">x</span></tt> is a shorthand for the elements of the first tensor argument.</p>
 <p>Here is another example with 3 tensors and element-wise fused multiply-add <tt class="docutils literal"><span class="pre">C += A .* B</span></tt>:</p>
 <pre class="listing"><span class="Keyword">import</span> <span class="Identifier">arraymancer</span>
 
-<span class="Identifier">proc</span> <span class="Identifier">fusedMultiplyAdd</span><span class="Punctuation">[</span><span class="Identifier">T</span><span class="Punctuation">:</span> <span class="Identifier">SomeNumber</span><span class="Punctuation">]</span><span class="Punctuation">(</span><span class="Identifier">c</span><span class="Punctuation">:</span> <span class="Keyword">var</span> <span class="Identifier">Tensor</span><span class="Punctuation">[</span><span class="Identifier">T</span><span class="Punctuation">]</span><span class="Punctuation">,</span> <span class="Identifier">a</span><span class="Punctuation">,</span> <span class="Identifier">b</span><span class="Punctuation">:</span> <span class="Identifier">Tensor</span><span class="Punctuation">[</span><span class="Identifier">T</span><span class="Punctuation">]</span><span class="Punctuation">)</span> <span class="Operator">=</span>
+<span class="Keyword">proc</span> <span class="Identifier">fusedMultiplyAdd</span><span class="Punctuation">[</span><span class="Identifier">T</span><span class="Punctuation">:</span> <span class="Identifier">SomeNumber</span><span class="Punctuation">]</span><span class="Punctuation">(</span><span class="Identifier">c</span><span class="Punctuation">:</span> <span class="Keyword">var</span> <span class="Identifier">Tensor</span><span class="Punctuation">[</span><span class="Identifier">T</span><span class="Punctuation">]</span><span class="Punctuation">,</span> <span class="Identifier">a</span><span class="Punctuation">,</span> <span class="Identifier">b</span><span class="Punctuation">:</span> <span class="Identifier">Tensor</span><span class="Punctuation">[</span><span class="Identifier">T</span><span class="Punctuation">]</span><span class="Punctuation">)</span> <span class="Operator">=</span>
   <span class="Comment">## Implements C += A .* B, .* is the element-wise multiply</span>
   <span class="Identifier">apply3_inline</span><span class="Punctuation">(</span><span class="Identifier">c</span><span class="Punctuation">,</span> <span class="Identifier">a</span><span class="Punctuation">,</span> <span class="Identifier">b</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
     <span class="Identifier">x</span> <span class="Operator">+=</span> <span class="Identifier">y</span> <span class="Operator">*</span> <span class="Identifier">z</span></pre><p>Since the tensor were given in order (c, a, b): - x corresponds to elements of c - y to a - z to b</p>
@@ -188,7 +188,7 @@ proc sigmoid(x):
 <p>In the log case, the processor gives a result faster than it can load data into its cache. In the matrix multiplication case, each element of a matrix can be reused several times before loading data again.</p>
 <p>Arraymancer strives hard to limit memory allocation with the <tt class="docutils literal"><span class="pre">inline</span></tt> version of <tt class="docutils literal"><span class="pre">map</span></tt>, <tt class="docutils literal"><span class="pre">apply</span></tt>, <tt class="docutils literal"><span class="pre">reduce</span></tt>, <tt class="docutils literal"><span class="pre">fold</span></tt> (<tt class="docutils literal"><span class="pre">map_inline</span></tt>, <tt class="docutils literal"><span class="pre">apply_inline</span></tt>, <tt class="docutils literal"><span class="pre">reduce_inline</span></tt>, <tt class="docutils literal"><span class="pre">fold_inline</span></tt>) mentioned above that avoids intermediate results.</p>
 
-<h1 id="micro-benchmark-int64-matrix-multiplication">Micro benchmark: Int64 matrix multiplication</h1><p>Integers seem to be the abandoned children of ndarrays and tensors libraries. Everyone is optimising the hell of floating points. Not so with Arraymancer:</p>
+<h1 id="micro-benchmarkcolon-int64-matrix-multiplication">Micro benchmark: Int64 matrix multiplication</h1><p>Integers seem to be the abandoned children of ndarrays and tensors libraries. Everyone is optimising the hell of floating points. Not so with Arraymancer:</p>
 <pre>
 Archlinux, E3-1230v5 (Skylake quad-core 3.4 GHz, turbo 3.8)
 Input 1500x1500 random large int64 matrix
@@ -222,7 +222,7 @@ with OpenMP: nim c -d:openmp --cc:gcc --gcc.exe:&quot;/usr/local/bin/gcc-6&quot;
 <tr><td>Arraymancer v0.3.0</td><td>Cuda</td><td>WIP</td></tr>
 <tr><td>Torch7</td><td>Cuda</td><td>0.286ms</td></tr>
 </table>
-<h1 id="dnn-3-hidden-layers">DNN - 3 hidden layers</h1><p>CPU</p>
+<h1 id="dnn-minus-3-hidden-layers">DNN - 3 hidden layers</h1><p>CPU</p>
 <table border="1" class="docutils"><tr><th>Framework</th><th>Backend</th><th>Forward+Backward Pass Time</th></tr>
 <tr><td>Arraymancer v0.3.0</td><td>OpenMP + MKL</td><td><strong>2.907ms</strong></td></tr>
 <tr><td>PyTorch</td><td>MKL</td><td>6.797ms</td></tr>
@@ -232,7 +232,7 @@ with OpenMP: nim c -d:openmp --cc:gcc --gcc.exe:&quot;/usr/local/bin/gcc-6&quot;
 <tr><td>PyTorch</td><td>Cuda</td><td>4.765ms</td></tr>
 </table><pre>
 Intel(R) Core(TM) i7-3770K CPU @ 3.50GHz, gcc 7.2.0, MKL 2017.17.0.4.4, OpenBLAS 0.2.20, Cuda 8.0.61, Geforce GTX 1080 Ti, Nim 0.18.0</pre>
-<p>In the future, Arraymancer will leverage Nim compiler to automatically fuse operations like <tt class="docutils literal"><span class="pre">alpha A*B + beta C</span></tt> or a combination of element-wise operations. This is already done to fuse <tt class="docutils literal"><span class="pre">toTensor</span></tt> and <tt class="docutils literal"><span class="pre">reshape</span></tt>.</p>
+<p>In the future, Arraymancer will leverage Nim compiler to automatically fuse operations like <tt class="docutils literal"><span class="pre">alpha A*B + beta C</span></tt> or a combination of element-wise operations. This is already done to fuse <tt class="docutils literal"><span class="pre">toTensor</span></tt> and <tt class="docutils literal"><span class="pre">reshape</span></tt>. </p>
 
 
 
@@ -240,7 +240,7 @@ Intel(R) Core(TM) i7-3770K CPU @ 3.50GHz, gcc 7.2.0, MKL 2017.17.0.4.4, OpenBLAS
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-05-06 13:04:38 UTC</small>
+        <small>Made with Nim. Generated: 2018-12-22 18:53:00 UTC</small>
       </div>
     </div>
   </div>

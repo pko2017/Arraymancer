@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Arraymancer - Module nnp_sigmoid_cross_entropy</title>
+  <title>Arraymancer - nnp_sigmoid_cross_entropy</title>
 
   <link href="docutils.css" rel="stylesheet" type="text/css"/>
   <link href="nav.css" rel="stylesheet" type="text/css"/>
@@ -150,14 +150,14 @@
 </header>
 <article id="documentId">
   <div class="container">
-    <h1 class="title">Module nnp_sigmoid_cross_entropy</h1>
+    <h1 class="title">nnp_sigmoid_cross_entropy</h1>
     <div class="row">
   <div class="three columns">
   <div id="global-links">
     <ul class="simple">
     </ul>
   </div>
-  <div id="searchInput">
+  <div id="searchInputDiv">
     Search: <input type="text" id="searchInput"
       onkeyup="search()" />
   </div>
@@ -178,9 +178,9 @@
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#sigmoid_cross_entropy,Tensor[T],Tensor[T]"
+      <li><a class="reference" href="#sigmoid_cross_entropy%2CTensor%5BT%5D%2CTensor%5BT%5D"
     title="sigmoid_cross_entropy[T](input, target: Tensor[T]): T"><wbr />sigmoid_<wbr />cross_<wbr />entropy<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#sigmoid_cross_entropy_backward,,Tensor[T],Tensor[T]"
+  <li><a class="reference" href="#sigmoid_cross_entropy_backward%2C%2CTensor%5BT%5D%2CTensor%5BT%5D"
     title="sigmoid_cross_entropy_backward[T](gradient: Tensor[T] or T;
                                   cached_tensor: Tensor[T]; target: Tensor[T]): Tensor[
     T]"><wbr />sigmoid_<wbr />cross_<wbr />entropy_<wbr />backward<span class="attachedType" style="visibility:hidden"></span></a></li>
@@ -197,12 +197,13 @@
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="../math_ops_fusion/math_ops_fusion.html">../math_ops_fusion/math_ops_fusion</a>, <a class="reference external" href="../tensor/tensor.html">../tensor/tensor</a>, <a class="reference external" href="./private/p_nnp_checks.html">./private/p_nnp_checks</a>, <a class="reference external" href="./private/p_activation.html">./private/p_activation</a>, <a class="reference external" href="math.html">math</a>
+<a class="reference external" href="math_ops_fusion.html">math_ops_fusion</a>, <a class="reference external" href="tensor.html">tensor</a>, <a class="reference external" href="p_nnp_checks.html">p_nnp_checks</a>, <a class="reference external" href="p_activation.html">p_activation</a>
 </dl></div>
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="sigmoid_cross_entropy"><a name="sigmoid_cross_entropy,Tensor[T],Tensor[T]"></a><pre><span class="Keyword">proc</span> <span class="Identifier">sigmoid_cross_entropy</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">input</span><span class="Other">,</span> <span class="Identifier">target</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
+<a id="sigmoid_cross_entropy,Tensor[T],Tensor[T]"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">sigmoid_cross_entropy</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">input</span><span class="Other">,</span> <span class="Identifier">target</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
 <dd>
 Sigmoid function + Cross-Entropy loss fused in one layer.<dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>A Tensor</li>
@@ -225,9 +226,10 @@ class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_primitives/nnp_sigmoid_cross_entropy.nim#L23" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="sigmoid_cross_entropy_backward"><a name="sigmoid_cross_entropy_backward,,Tensor[T],Tensor[T]"></a><pre><span class="Keyword">proc</span> <span class="Identifier">sigmoid_cross_entropy_backward</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">gradient</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span class="Keyword">or</span> <span class="Identifier">T</span><span class="Other">;</span>
-                                      <span class="Identifier">cached_tensor</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">target</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span>
-    <span class="Identifier">T</span><span class="Other">]</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">noInit</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<a id="sigmoid_cross_entropy_backward,,Tensor[T],Tensor[T]"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">sigmoid_cross_entropy_backward</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">gradient</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span class="Keyword">or</span> <span class="Identifier">T</span><span class="Other">;</span>
+                                      <span class="Identifier">cached_tensor</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">target</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span>
+    <span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Derivatives of sigmoid_cross_entropy<dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>The input gradient as a scalar or a Tensor</li>
@@ -257,7 +259,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-05-06 13:03:26 UTC</small>
+        <small>Made with Nim. Generated: 2018-12-22 18:52:10 UTC</small>
       </div>
     </div>
   </div>

@@ -152,12 +152,12 @@
   <div class="container">
     <h1 class="title">Arraymancer</h1>
     
-<h1 id="arraymancer-a-n-dimensional-tensor-ndarray-library">Arraymancer - A n-dimensional tensor (ndarray) library.</h1><p>Arraymancer is a tensor (N-dimensional array) project in Nim. The main focus is providing a fast and ergonomic CPU and GPU ndarray library on which to build a scientific computing and in particular a deep learning ecosystem.</p>
+<h1 id="arraymancer-minus-a-nminusdimensional-tensor-ndarray-librarydot">Arraymancer - A n-dimensional tensor (ndarray) library.</h1><p>Arraymancer is a tensor (N-dimensional array) project in Nim. The main focus is providing a fast and ergonomic CPU and GPU ndarray library on which to build a scientific computing and in particular a deep learning ecosystem.</p>
 <p>The library is inspired by Numpy and PyTorch. The library provides ergonomics very similar to Numpy, Julia and Matlab but is fully parallel and significantly faster than those libraries. It is also faster than C-based Torch.</p>
 <p>Note: While Nim is compiled and does not offer an interactive REPL yet (like Jupyter), it allows much faster prototyping than C++ due to extremely fast compilation times. Arraymancer compiles in about 5 seconds on my dual-core MacBook.</p>
 
 <h2 id="why-arraymancer">Why Arraymancer</h2>
-<h3 id="the-python-community-is-struggling-to-bring-numpy-up-to-speed">The Python community is struggling to bring Numpy up-to-speed</h3><ul class="simple"><li>Numba JIT compiler</li>
+<h3 id="the-python-community-is-struggling-to-bring-numpy-upminustominusspeed">The Python community is struggling to bring Numpy up-to-speed</h3><ul class="simple"><li>Numba JIT compiler</li>
 <li>Dask delayed parallel computation graph</li>
 <li>Cython to ease numerical computations in Python</li>
 <li>Due to the GIL shared-memory parallelism (OpenMP) is not possible in pure Python</li>
@@ -169,7 +169,7 @@
 <h3 id="a-researcher-workflow-is-a-fight-against-inefficiencies">A researcher workflow is a fight against inefficiencies</h3><p>Researchers in a heavy scientific computing domain often have the following workflow: Mathematica/Matlab/Python/R (prototyping) -&gt; C/C++/Fortran (speed, memory)</p>
 <p>Why not use in a language as productive as Python and as fast as C? Code once, and don’t spend months redoing the same thing at a lower level.</p>
 
-<h3 id="tools-available-in-labs-are-not-available-in-production">Tools available in labs are not available in production:</h3><ul class="simple"><li>Managing and deploying Python (2.7, 3.5, 3.6) and packages version in a robust manner requires devops-fu (virtualenv, Docker, …)</li>
+<h3 id="tools-available-in-labs-are-not-available-in-productioncolon">Tools available in labs are not available in production:</h3><ul class="simple"><li>Managing and deploying Python (2.7, 3.5, 3.6) and packages version in a robust manner requires devops-fu (virtualenv, Docker, …)</li>
 <li>Python data science ecosystem does not run on embedded devices (Nvidia Tegra/drones) or mobile phones, especially preprocessing dependencies.</li>
 </ul>
 <p>Nim is compiled, no need to worry about version conflicts and the whole toolchain being in need of fixing due to Python version updates. Furthermore, as long as your platform supports C, Arraymancer will run on it from Raspberry Pi to mobile phones and drones.</p>
@@ -181,7 +181,7 @@
 <li>Deployed models are static, there is no interface to add a new observation/training sample to any framework, the end goal being to use a model as a webservice.</li>
 </ul>
 
-<h3 id="so-why-arraymancer">So why Arraymancer ?</h3><p>All those pain points may seem like a huge undertaking however thanks to the Nim language, we can have Arraymancer: - Be as fast as C - Accelerated routines with Intel MKL/OpenBLAS or even NNPACK - Access to CUDA and CuDNN and generate custom CUDA kernels on the fly via metaprogramming.</p>
+<h3 id="so-why-arraymancer-qmark">So why Arraymancer ?</h3><p>All those pain points may seem like a huge undertaking however thanks to the Nim language, we can have Arraymancer: - Be as fast as C - Accelerated routines with Intel MKL/OpenBLAS or even NNPACK - Access to CUDA and CuDNN and generate custom CUDA kernels on the fly via metaprogramming.</p>
 <blockquote><p><ul class="simple"><li>A Python-like syntax with custom operators <tt class="docutils literal"><span class="pre">a * b</span></tt></li>
 </ul>
 <blockquote><p>for tensor multiplication instead of <tt class="docutils literal"><span class="pre">a.dot(b)</span></tt> (Numpy/Tensorflow) or <tt class="docutils literal"><span class="pre">a.mm(b)</span></tt> (Torch) - Numpy-like slicing ergonomics <tt class="docutils literal"><span class="pre">t[0..4, 2..10|2]</span></tt></p></blockquote>
@@ -201,11 +201,11 @@
 <p>Arraymancer run anywhere you can compile C code. Linux, MacOS are supported, Windows should work too as Appveyor (Continuous Integration for Windows) never flash red. Optionally you can compile Arraymancer with Cuda support.</p>
 <p>Note: Arraymancer Tensors and CudaTensors are tensors in the machine learning sense (multidimensional array) not in the mathematical sense (describe transformation laws)</p>
 
-<h2 id="limitations">Limitations:</h2><p>EXPERIMENTAL: Arraymancer may summon Ragnarok and cause the heat death of the Universe.</p>
+<h2 id="limitationscolon">Limitations:</h2><p>EXPERIMENTAL: Arraymancer may summon Ragnarok and cause the heat death of the Universe.</p>
 <ol class="simple"><li>Display of 5-dimensional or more tensors is not implemented. (To be honest Christopher Nolan had the same issue in Interstellar)</li>
 </ol>
 
-<h2 id="installation">Installation:</h2><p>Nim is available in some Linux repositories and on Homebrew for macOS.</p>
+<h2 id="installationcolon">Installation:</h2><p>Nim is available in some Linux repositories and on Homebrew for macOS.</p>
 <p>I however recommend installing Nim in your user profile via ```choosenim`` &lt;<a class="reference external" href="https://github.com/dom96/choosenim&gt;`__">https://github.com/dom96/choosenim&gt;`__</a>. Once choosenim installed Nim, you can <tt class="docutils literal"><span class="pre">nimble install arraymancer</span></tt> which will pull arraymancer and all its dependencies.</p>
 
 <h3 id="tensors-on-cpu-and-on-cuda">Tensors on CPU and on Cuda</h3><p>Tensors and CudaTensors do not have the same features implemented yet. Also Cuda Tensors can only be float32 or float64 while Cpu Tensor can be integers, string, boolean or any custom object.</p>
@@ -239,7 +239,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-05-06 13:04:38 UTC</small>
+        <small>Made with Nim. Generated: 2018-12-22 18:53:00 UTC</small>
       </div>
     </div>
   </div>

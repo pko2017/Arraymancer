@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Arraymancer - Module nnp_activation</title>
+  <title>Arraymancer - nnp_activation</title>
 
   <link href="docutils.css" rel="stylesheet" type="text/css"/>
   <link href="nav.css" rel="stylesheet" type="text/css"/>
@@ -150,14 +150,14 @@
 </header>
 <article id="documentId">
   <div class="container">
-    <h1 class="title">Module nnp_activation</h1>
+    <h1 class="title">nnp_activation</h1>
     <div class="row">
   <div class="three columns">
   <div id="global-links">
     <ul class="simple">
     </ul>
   </div>
-  <div id="searchInput">
+  <div id="searchInputDiv">
     Search: <input type="text" id="searchInput"
       onkeyup="search()" />
   </div>
@@ -178,23 +178,23 @@
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#sigmoid,Tensor[T: SomeReal]"
-    title="sigmoid[T: SomeReal](t: Tensor[T]): Tensor[T]"><wbr />sigmoid<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#relu,Tensor[T]"
+      <li><a class="reference" href="#sigmoid%2CTensor%5BT%3A+SomeFloat%5D"
+    title="sigmoid[T: SomeFloat](t: Tensor[T]): Tensor[T]"><wbr />sigmoid<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#relu%2CTensor%5BT%5D"
     title="relu[T](t: Tensor[T]): Tensor[T]"><wbr />relu<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#tanh,Tensor[T: SomeReal]"
-    title="tanh[T: SomeReal](t: Tensor[T]): Tensor[T]"><wbr />tanh<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#msigmoid,Tensor[T: SomeReal]"
-    title="msigmoid[T: SomeReal](t: var Tensor[T])"><wbr />msigmoid<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#mrelu,Tensor[T]"
+  <li><a class="reference" href="#tanh%2CTensor%5BT%3A+SomeFloat%5D"
+    title="tanh[T: SomeFloat](t: Tensor[T]): Tensor[T]"><wbr />tanh<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#msigmoid%2CTensor%5BT%3A+SomeFloat%5D"
+    title="msigmoid[T: SomeFloat](t: var Tensor[T])"><wbr />msigmoid<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#mrelu%2CTensor%5BT%5D"
     title="mrelu[T](t: var Tensor[T])"><wbr />mrelu<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#mtanh,Tensor[T: SomeReal]"
-    title="mtanh[T: SomeReal](t: var Tensor[T])"><wbr />mtanh<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#sigmoid_backward,Tensor[T],Tensor[T]"
+  <li><a class="reference" href="#mtanh%2CTensor%5BT%3A+SomeFloat%5D"
+    title="mtanh[T: SomeFloat](t: var Tensor[T])"><wbr />mtanh<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#sigmoid_backward%2CTensor%5BT%5D%2CTensor%5BT%5D"
     title="sigmoid_backward[T](gradient: Tensor[T]; cached_tensor: Tensor[T]): Tensor[T]"><wbr />sigmoid_<wbr />backward<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#relu_backward,Tensor[T],Tensor[T]"
+  <li><a class="reference" href="#relu_backward%2CTensor%5BT%5D%2CTensor%5BT%5D"
     title="relu_backward[T](gradient: Tensor[T]; cached_tensor: Tensor[T]): Tensor[T]"><wbr />relu_<wbr />backward<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#tanh_backward,Tensor[T],Tensor[T]"
+  <li><a class="reference" href="#tanh_backward%2CTensor%5BT%5D%2CTensor%5BT%5D"
     title="tanh_backward[T](gradient: Tensor[T]; cached_tensor: Tensor[T]): Tensor[T]"><wbr />tanh_<wbr />backward<span class="attachedType" style="visibility:hidden"></span></a></li>
 
   </ul>
@@ -209,12 +209,13 @@
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="math.html">math</a>, <a class="reference external" href="../tensor/tensor.html">../tensor/tensor</a>, <a class="reference external" href="./private/p_activation.html">./private/p_activation</a>, <a class="reference external" href="./private/p_logsumexp.html">./private/p_logsumexp</a>
+<a class="reference external" href="tensor.html">tensor</a>, <a class="reference external" href="p_activation.html">p_activation</a>, <a class="reference external" href="p_logsumexp.html">p_logsumexp</a>
 </dl></div>
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<dt id="sigmoid"><a name="sigmoid,Tensor[T: SomeReal]"></a><pre><span class="Keyword">proc</span> <span class="Identifier">sigmoid</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeReal</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">noInit</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<a id="sigmoid,Tensor[T: SomeFloat]"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">sigmoid</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 Logistic sigmoid activation function, :math:<cite>f(x) = 1 / (1 + exp(-x))</cite> Note: Canonical sigmoid is not stable for large negative value Please use sigmoid_cross_entropy for the final layer for better stability and performance
 &nbsp;&nbsp;<a
@@ -223,7 +224,8 @@ class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_primitives/nnp_activation.nim#L26" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="relu"><a name="relu,Tensor[T]"></a><pre><span class="Keyword">proc</span> <span class="Identifier">relu</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">noInit</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<a id="relu,Tensor[T]"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">relu</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 &nbsp;&nbsp;<a
@@ -232,7 +234,8 @@ class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_primitives/nnp_activation.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="tanh"><a name="tanh,Tensor[T: SomeReal]"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tanh</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeReal</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">noInit</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<a id="tanh,Tensor[T: SomeFloat]"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">tanh</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 &nbsp;&nbsp;<a
@@ -241,7 +244,8 @@ class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_primitives/nnp_activation.nim#L39" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="msigmoid"><a name="msigmoid,Tensor[T: SomeReal]"></a><pre><span class="Keyword">proc</span> <span class="Identifier">msigmoid</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeReal</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
+<a id="msigmoid,Tensor[T: SomeFloat]"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">msigmoid</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
 <dd>
 Logistic sigmoid activation function, :math:<cite>f(x) = 1 / (1 + exp(-x))</cite> Note: Canonical sigmoid is not stable for large negative value
 &nbsp;&nbsp;<a
@@ -250,7 +254,8 @@ class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_primitives/nnp_activation.nim#L45" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="mrelu"><a name="mrelu,Tensor[T]"></a><pre><span class="Keyword">proc</span> <span class="Identifier">mrelu</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
+<a id="mrelu,Tensor[T]"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">mrelu</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
 <dd>
 
 &nbsp;&nbsp;<a
@@ -259,7 +264,8 @@ class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_primitives/nnp_activation.nim#L53" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="mtanh"><a name="mtanh,Tensor[T: SomeReal]"></a><pre><span class="Keyword">proc</span> <span class="Identifier">mtanh</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeReal</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
+<a id="mtanh,Tensor[T: SomeFloat]"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">mtanh</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
 <dd>
 
 &nbsp;&nbsp;<a
@@ -268,8 +274,9 @@ class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_primitives/nnp_activation.nim#L56" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="sigmoid_backward"><a name="sigmoid_backward,Tensor[T],Tensor[T]"></a><pre><span class="Keyword">proc</span> <span class="Identifier">sigmoid_backward</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">gradient</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">cached_tensor</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span class="Other pragmabegin">{.</span><div class="pragma">
-    <span class="Identifier">noInit</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<a id="sigmoid_backward,Tensor[T],Tensor[T]"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">sigmoid_backward</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">gradient</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">cached_tensor</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 &nbsp;&nbsp;<a
@@ -278,8 +285,9 @@ class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_primitives/nnp_activation.nim#L62" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="relu_backward"><a name="relu_backward,Tensor[T],Tensor[T]"></a><pre><span class="Keyword">proc</span> <span class="Identifier">relu_backward</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">gradient</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">cached_tensor</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span class="Other pragmabegin">{.</span><div class="pragma">
-    <span class="Identifier">noInit</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<a id="relu_backward,Tensor[T],Tensor[T]"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">relu_backward</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">gradient</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">cached_tensor</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 &nbsp;&nbsp;<a
@@ -288,8 +296,9 @@ class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_primitives/nnp_activation.nim#L66" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<dt id="tanh_backward"><a name="tanh_backward,Tensor[T],Tensor[T]"></a><pre><span class="Keyword">proc</span> <span class="Identifier">tanh_backward</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">gradient</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">cached_tensor</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span class="Other pragmabegin">{.</span><div class="pragma">
-    <span class="Identifier">noInit</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<a id="tanh_backward,Tensor[T],Tensor[T]"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">tanh_backward</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">gradient</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">cached_tensor</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 &nbsp;&nbsp;<a
@@ -308,7 +317,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-05-06 13:03:18 UTC</small>
+        <small>Made with Nim. Generated: 2018-12-22 18:52:06 UTC</small>
       </div>
     </div>
   </div>
