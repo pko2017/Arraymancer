@@ -67,6 +67,8 @@
           <li><a href="nn_activation.sigmoid.html">Activation: Sigmoid</a></li>
           <li><a href="nn_activation.tanh.html">Activation: Tanh</a></li>
           <li><a href="nn_layers.conv2D.html">Layers: Convolution 2D</a></li>
+          <li><a href="nn_layers.embedding.html">Layers: Embedding</a></li>
+          <li><a href="nn_layers.gru.html">Layers: GRU (Gated Linear Unit)</a></li>
           <li><a href="nn_layers.linear.html">Layers: Linear/Dense</a></li>
           <li><a href="nn_layers.maxpool2D.html">Layers: Maxpool 2D</a></li>
           <li><a href="nn_loss.cross_entropy_losses.html">Loss: Cross-Entropy losses</a></li>
@@ -90,7 +92,11 @@
         <a href="#">IO & Datasets</a>
         <ul class="monospace">
           <li><a href="datasets.mnist.html">MNIST</a></li>
+          <li><a href="datasets.imdb.html">IMDB</a></li>
           <li><a href="io.io_csv.html">CSV reading and writing</a></li>
+          <li><a href="io.io_hdf5.html">HDF5 files reading and writing</a></li>
+          <li><a href="io.io_image.html">Images reading and writing</a></li>
+          <li><a href="io.io_npy.html">Numpy files reading and writing</a></li>
         </ul>
       </span>
       <span>
@@ -100,7 +106,10 @@
           <li><a href="ag.ag_data_structure.html">Data structure</a></li>
           <li><a href="ag.gates_basic.html">Basic operations</a></li>
           <li><a href="ag.gates_blas.html">Linear algebra operations</a></li>
+          <li><a href="ag.gates_hadamard.html">Hadamard product (elementwise matrix multiply)</a></li>
           <li><a href="ag.gates_reduce.html">Reduction operations</a></li>
+          <li><a href="ag.gates_shapeshifting_concat_split.html">Concatenation, stacking, splitting, chunking operations</a></li>
+          <li><a href="ag.gates_shapeshifting_views.html">Linear algebra operations</a></li>
         </ul>
       </span>
       <span>
@@ -109,6 +118,8 @@
           <li><a href="nnp.nnp_activation.html">Activations</a></li>
           <li><a href="nnp.nnp_convolution.html">Convolution 2D</a></li>
           <li><a href="nnp.nnp_conv2D_cudnn.html">Convolution 2D - CuDNN</a></li>
+          <li><a href="nnp.nnp_embedding.html">Linear / Dense layer</a></li>
+          <li><a href="nnp.nnp_gru.html">Linear / Dense layer</a></li>
           <li><a href="nnp.nnp_linear.html">Linear / Dense layer</a></li>
           <li><a href="nnp.nnp_maxpooling.html">Maxpooling</a></li>
           <li><a href="nnp.nnp_numerical_gradient.html">Numerical gradient</a></li>
@@ -180,7 +191,8 @@
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#MeanGate"
     title="MeanGate {.final.}[TT] = ref object of Gate[TT]
-  cached_input_shape: MetadataArray"><wbr />Mean<wbr />Gate<span class="attachedType" style="visibility:hidden"></span></a></li>
+  cached_input_shape: MetadataArray
+  axis: int"><wbr />Mean<wbr />Gate<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#SumGate"
     title="SumGate {.final.}[TT] = ref object of Gate[TT]
   cached_input_shape: MetadataArray"><wbr />Sum<wbr />Gate<span class="attachedType" style="visibility:hidden"></span></a></li>
@@ -192,6 +204,8 @@
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#mean%2CVariable%5BTT%5D"
     title="mean[TT](a: Variable[TT]): Variable[TT]"><wbr />mean<span class="attachedType" style="visibility:hidden"></span></a></li>
+  <li><a class="reference" href="#mean%2CVariable%5BTT%5D%2CNatural"
+    title="mean[TT](a: Variable[TT]; axis: Natural): Variable[TT]"><wbr />mean<span class="attachedType" style="visibility:hidden"></span></a></li>
   <li><a class="reference" href="#sum%2CVariable%5BTT%5D"
     title="sum[TT](a: Variable[TT]): Variable[TT]"><wbr />sum<span class="attachedType" style="visibility:hidden"></span></a></li>
 
@@ -215,6 +229,7 @@
 <a id="MeanGate"></a>
 <dt><pre><a href="gates_reduce.html#MeanGate"><span class="Identifier">MeanGate</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">final</span></span><span class="Other">.}</span></span><span class="Other">[</span><span class="Identifier">TT</span><span class="Other">]</span> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="autograd_common.html#Gate"><span class="Identifier">Gate</span></a><span class="Other">[</span><span class="Identifier">TT</span><span class="Other">]</span>
   <span class="Identifier">cached_input_shape</span><span class="Other">:</span> <a href="metadataArray.html#MetadataArray"><span class="Identifier">MetadataArray</span></a>
+  <span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">int</span>
 </pre></dt>
 <dd>
 TODO: generalize to C &lt;- alpha AB + C
@@ -231,9 +246,9 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 TODO: generalize to C &lt;- alpha AB + C
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/autograd/gates_reduce.nim#L62"
+href="https://github.com/mratsim/arraymancer/tree/master/src/autograd/gates_reduce.nim#L104"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/autograd/gates_reduce.nim#L62" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/autograd/gates_reduce.nim#L104" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -246,9 +261,19 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/autograd/gates_reduce.nim#L52"
+href="https://github.com/mratsim/arraymancer/tree/master/src/autograd/gates_reduce.nim#L84"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/autograd/gates_reduce.nim#L52" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/autograd/gates_reduce.nim#L84" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+<a id="mean,Variable[TT],Natural"></a>
+<dt><pre><span class="Keyword">proc</span> <span class="Identifier">mean</span><span class="Other">[</span><span class="Identifier">TT</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="autograd_common.html#Variable"><span class="Identifier">Variable</span></a><span class="Other">[</span><span class="Identifier">TT</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">Natural</span><span class="Other">)</span><span class="Other">:</span> <a href="autograd_common.html#Variable"><span class="Identifier">Variable</span></a><span class="Other">[</span><span class="Identifier">TT</span><span class="Other">]</span></pre></dt>
+<dd>
+
+&nbsp;&nbsp;<a
+href="https://github.com/mratsim/arraymancer/tree/master/src/autograd/gates_reduce.nim#L94"
+class="link-seesrc" target="_blank">Source</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/autograd/gates_reduce.nim#L94" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="sum,Variable[TT]"></a>
@@ -256,9 +281,9 @@ class="link-seesrc" target="_blank">Source</a>
 <dd>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/autograd/gates_reduce.nim#L93"
+href="https://github.com/mratsim/arraymancer/tree/master/src/autograd/gates_reduce.nim#L135"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/autograd/gates_reduce.nim#L93" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/autograd/gates_reduce.nim#L135" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -271,7 +296,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-12-22 18:52:20 UTC</small>
+        <small>Made with Nim. Generated: 2018-12-23 21:51:15 UTC</small>
       </div>
     </div>
   </div>
