@@ -81,11 +81,15 @@
         <a href="#">Linear algebra, stats, ML</a>
         <ul class="monospace">
           <li><a href="la.decomposition.html">Eigenvalue decomposition</a></li>
-          <li><a href="la.least_squares.html">Least Squares solver</a></li>
+          <li><a href="la.decomposition_rand.html">Randomized Truncated SVD</a></li>
+          <li><a href="la.least_squares.html">Least squares solver</a></li>
+          <li><a href="la.linear_systems.html">Linear systems solver</a></li>
+          <li><a href="la.special_matrices.html">Special linear algebra matrices</a></li>
           <li><a href="stats.stats.html">Statistics</a></li>
           <li><a href="ml.pca.html">Principal Component Analysis (PCA)</a></li>
           <li><a href="ml.accuracy_score.html">Accuracy score</a></li>
           <li><a href="ml.common_error_functions.html">Common errors, MAE and MSE (L1, L2 loss)</a></li>
+          <li><a href="ml.kmeans.html">K-Means</a></li>
         </ul>
       </span>
       <span>
@@ -102,8 +106,7 @@
       <span>
         <a href="#">Autograd</a>
         <ul class="monospace">
-          <li><a href="ag.ag_accessors.html">Accessors</a></li>
-          <li><a href="ag.ag_data_structure.html">Data structure</a></li>
+          <li><a href="ag.autograd_common.html">Data structure</a></li>
           <li><a href="ag.gates_basic.html">Basic operations</a></li>
           <li><a href="ag.gates_blas.html">Linear algebra operations</a></li>
           <li><a href="ag.gates_hadamard.html">Hadamard product (elementwise matrix multiply)</a></li>
@@ -190,9 +193,9 @@
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#NetworkSections"
-    title="NetworkSections = tuple[layers, forward: NimNode]"><wbr />Network<wbr />Sections<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="NetworkSections = tuple[layers, forward: NimNode]"><wbr />Network<wbr />Sections<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#ModelField"
-    title="ModelField = tuple[field_name: NimNode, field_type: NimNode, init_call: NimNode]"><wbr />Model<wbr />Field<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="ModelField = tuple[field_name: NimNode, field_type: NimNode, init_call: NimNode]"><wbr />Model<wbr />Field<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#Neuromancer"
     title="Neuromancer = ref object
   topoTable*: TopoTable
@@ -203,10 +206,10 @@
   init_proc*: NimNode
   forward_proc*: NimNode
   forward_templates*: seq[NimNode]
-  forward_asserts*: NimNode"><wbr />Neuromancer<span class="attachedType" style="visibility:hidden"></span></a></li>
+  forward_asserts*: NimNode"><wbr />Neuromancer<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#LayerKind"
     title="LayerKind = enum
-  lkInput, lkConv2D, lkLinear, lkMaxPool2D, lkFlatten, lkGRU"><wbr />Layer<wbr />Kind<span class="attachedType" style="visibility:hidden"></span></a></li>
+  lkInput, lkConv2D, lkLinear, lkMaxPool2D, lkFlatten, lkGRU"><wbr />Layer<wbr />Kind<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#LayerTopology"
     title="LayerTopology = object
   in_shape*, out_shape*: NimNode
@@ -224,9 +227,9 @@
       gru_nb_layers*: NimNode
 
   else:
-      nil"><wbr />Layer<wbr />Topology<span class="attachedType" style="visibility:hidden"></span></a></li>
+      nil"><wbr />Layer<wbr />Topology<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#TopoTable"
-    title="TopoTable = Table[NimNode, LayerTopology]"><wbr />Topo<wbr />Table<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="TopoTable = Table[NimNode, LayerTopology]"><wbr />Topo<wbr />Table<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#TrainableLayer"
     title="TrainableLayer[TT] = concept layer
     block:
@@ -235,23 +238,23 @@
         trainable = trainable or
             (field is
             Variable[TT])
-      trainable"><wbr />Trainable<wbr />Layer<span class="attachedType" style="visibility:hidden"></span></a></li>
+      trainable"><wbr />Trainable<wbr />Layer<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#Conv2DLayer"
     title="Conv2DLayer[TT] = object
   weight*: Variable[TT]
-  bias*: Variable[TT]"><wbr />Conv2DLayer<span class="attachedType" style="visibility:hidden"></span></a></li>
+  bias*: Variable[TT]"><wbr />Conv2DLayer<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#LinearLayer"
     title="LinearLayer[TT] = object
   weight*: Variable[TT]
-  bias*: Variable[TT]"><wbr />Linear<wbr />Layer<span class="attachedType" style="visibility:hidden"></span></a></li>
+  bias*: Variable[TT]"><wbr />Linear<wbr />Layer<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#GRULayer"
     title="GRULayer[TT] = object
   W3s0*, W3sN*: Variable[TT]
   U3s*: Variable[TT]
-  bW3s*, bU3s*: Variable[TT]"><wbr />GRULayer<span class="attachedType" style="visibility:hidden"></span></a></li>
+  bW3s*, bU3s*: Variable[TT]"><wbr />GRULayer<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#EmbeddingLayer"
     title="EmbeddingLayer[TT] = object
-  weight*: Variable[TT]"><wbr />Embedding<wbr />Layer<span class="attachedType" style="visibility:hidden"></span></a></li>
+  weight*: Variable[TT]"><wbr />Embedding<wbr />Layer<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -259,7 +262,7 @@
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#hash%2CNimNode"
-    title="hash(x: NimNode): Hash"><wbr />hash<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="hash(x: NimNode): Hash"><wbr />hash<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -269,6 +272,7 @@
   </div>
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
+  
   <p class="module-desc"></p>
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
@@ -282,8 +286,9 @@
 <dt><pre><a href="dsl_types.html#NetworkSections"><span class="Identifier">NetworkSections</span></a> <span class="Other">=</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">layers</span><span class="Other">,</span> <span class="Identifier">forward</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">]</span></pre></dt>
 <dd>
 
+
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/nn_dsl/dsl_types.nim#L12"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/nn_dsl/dsl_types.nim#L12"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_dsl/dsl_types.nim#L12" class="link-seesrc" target="_blank" >Edit</a>
 
@@ -291,9 +296,10 @@ class="link-seesrc" target="_blank">Source</a>
 <a id="ModelField"></a>
 <dt><pre><a href="dsl_types.html#ModelField"><span class="Identifier">ModelField</span></a> <span class="Other">=</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">field_name</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">,</span> <span class="Identifier">field_type</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">,</span> <span class="Identifier">init_call</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">]</span></pre></dt>
 <dd>
+
 Field name, type and initialization proc
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/nn_dsl/dsl_types.nim#L14"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/nn_dsl/dsl_types.nim#L14"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_dsl/dsl_types.nim#L14" class="link-seesrc" target="_blank" >Edit</a>
 
@@ -311,9 +317,10 @@ class="link-seesrc" target="_blank">Source</a>
   <span class="Identifier">forward_asserts</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">NimNode</span>
 </pre></dt>
 <dd>
+
 Pathfinder that will go through the network topology and create the corresponding type, initialization and forward proc
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/nn_dsl/dsl_types.nim#L17"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/nn_dsl/dsl_types.nim#L17"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_dsl/dsl_types.nim#L17" class="link-seesrc" target="_blank" >Edit</a>
 
@@ -323,8 +330,9 @@ class="link-seesrc" target="_blank">Source</a>
   <span class="Identifier">lkInput</span><span class="Other">,</span> <span class="Identifier">lkConv2D</span><span class="Other">,</span> <span class="Identifier">lkLinear</span><span class="Other">,</span> <span class="Identifier">lkMaxPool2D</span><span class="Other">,</span> <span class="Identifier">lkFlatten</span><span class="Other">,</span> <span class="Identifier">lkGRU</span></pre></dt>
 <dd>
 
+
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/nn_dsl/dsl_types.nim#L39"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/nn_dsl/dsl_types.nim#L39"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_dsl/dsl_types.nim#L39" class="link-seesrc" target="_blank" >Edit</a>
 
@@ -350,9 +358,10 @@ class="link-seesrc" target="_blank">Source</a>
 
   </pre></dt>
 <dd>
+
 Describe a layer topology
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/nn_dsl/dsl_types.nim#L43"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/nn_dsl/dsl_types.nim#L43"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_dsl/dsl_types.nim#L43" class="link-seesrc" target="_blank" >Edit</a>
 
@@ -361,8 +370,9 @@ class="link-seesrc" target="_blank">Source</a>
 <dt><pre><a href="dsl_types.html#TopoTable"><span class="Identifier">TopoTable</span></a> <span class="Other">=</span> <span class="Identifier">Table</span><span class="Other">[</span><span class="Identifier">NimNode</span><span class="Other">,</span> <a href="dsl_types.html#LayerTopology"><span class="Identifier">LayerTopology</span></a><span class="Other">]</span></pre></dt>
 <dd>
 
+
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/nn_dsl/dsl_types.nim#L59"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/nn_dsl/dsl_types.nim#L59"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_dsl/dsl_types.nim#L59" class="link-seesrc" target="_blank" >Edit</a>
 
@@ -378,8 +388,9 @@ class="link-seesrc" target="_blank">Source</a>
       <span class="Identifier">trainable</span></pre></dt>
 <dd>
 
+
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/nn_dsl/dsl_types.nim#L63"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/nn_dsl/dsl_types.nim#L63"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_dsl/dsl_types.nim#L63" class="link-seesrc" target="_blank" >Edit</a>
 
@@ -391,8 +402,9 @@ class="link-seesrc" target="_blank">Source</a>
 </pre></dt>
 <dd>
 
+
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/nn_dsl/dsl_types.nim#L70"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/nn_dsl/dsl_types.nim#L70"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_dsl/dsl_types.nim#L70" class="link-seesrc" target="_blank" >Edit</a>
 
@@ -404,8 +416,9 @@ class="link-seesrc" target="_blank">Source</a>
 </pre></dt>
 <dd>
 
+
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/nn_dsl/dsl_types.nim#L73"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/nn_dsl/dsl_types.nim#L73"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_dsl/dsl_types.nim#L73" class="link-seesrc" target="_blank" >Edit</a>
 
@@ -418,8 +431,9 @@ class="link-seesrc" target="_blank">Source</a>
 </pre></dt>
 <dd>
 
+
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/nn_dsl/dsl_types.nim#L76"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/nn_dsl/dsl_types.nim#L76"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_dsl/dsl_types.nim#L76" class="link-seesrc" target="_blank" >Edit</a>
 
@@ -430,8 +444,9 @@ class="link-seesrc" target="_blank">Source</a>
 </pre></dt>
 <dd>
 
+
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/nn_dsl/dsl_types.nim#L80"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/nn_dsl/dsl_types.nim#L80"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_dsl/dsl_types.nim#L80" class="link-seesrc" target="_blank" >Edit</a>
 
@@ -442,11 +457,12 @@ class="link-seesrc" target="_blank">Source</a>
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
 <a id="hash,NimNode"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">hash</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Hash</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#hash%2CNimNode"><span class="Identifier">hash</span></a><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="Identifier">NimNode</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Hash</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/nn_dsl/dsl_types.nim#L83"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/nn_dsl/dsl_types.nim#L83"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_dsl/dsl_types.nim#L83" class="link-seesrc" target="_blank" >Edit</a>
 
@@ -461,7 +477,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-12-23 21:51:30 UTC</small>
+        <small>Made with Nim. Generated: 2020-01-08 23:22:39 UTC</small>
       </div>
     </div>
   </div>

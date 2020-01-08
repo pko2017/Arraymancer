@@ -81,11 +81,15 @@
         <a href="#">Linear algebra, stats, ML</a>
         <ul class="monospace">
           <li><a href="la.decomposition.html">Eigenvalue decomposition</a></li>
-          <li><a href="la.least_squares.html">Least Squares solver</a></li>
+          <li><a href="la.decomposition_rand.html">Randomized Truncated SVD</a></li>
+          <li><a href="la.least_squares.html">Least squares solver</a></li>
+          <li><a href="la.linear_systems.html">Linear systems solver</a></li>
+          <li><a href="la.special_matrices.html">Special linear algebra matrices</a></li>
           <li><a href="stats.stats.html">Statistics</a></li>
           <li><a href="ml.pca.html">Principal Component Analysis (PCA)</a></li>
           <li><a href="ml.accuracy_score.html">Accuracy score</a></li>
           <li><a href="ml.common_error_functions.html">Common errors, MAE and MSE (L1, L2 loss)</a></li>
+          <li><a href="ml.kmeans.html">K-Means</a></li>
         </ul>
       </span>
       <span>
@@ -102,8 +106,7 @@
       <span>
         <a href="#">Autograd</a>
         <ul class="monospace">
-          <li><a href="ag.ag_accessors.html">Accessors</a></li>
-          <li><a href="ag.ag_data_structure.html">Data structure</a></li>
+          <li><a href="ag.autograd_common.html">Data structure</a></li>
           <li><a href="ag.gates_basic.html">Basic operations</a></li>
           <li><a href="ag.gates_blas.html">Linear algebra operations</a></li>
           <li><a href="ag.gates_hadamard.html">Hadamard product (elementwise matrix multiply)</a></li>
@@ -181,12 +184,6 @@
   </div>
   <ul class="simple simple-toc" id="toc-list">
 <li>
-  <a class="reference reference-toplevel" href="#5" id="55">Exports</a>
-  <ul class="simple simple-toc-section">
-    
-  </ul>
-</li>
-<li>
   <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
   <ul class="simple simple-toc-section">
     
@@ -196,59 +193,61 @@
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#astype%2CTensor%5BT%5D%2Ctypedesc%5BU%5D"
-    title="astype[T, U](t: Tensor[T]; typ: typedesc[U]): Tensor[U]"><wbr />astype<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="astype[T; U: not Complex](t: Tensor[T]; typ: typedesc[U]): Tensor[U]"><wbr />astype<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#astype%2CTensor%5BT%3A+SomeNumber%5D%2Ctypedesc%5BU%5D"
+    title="astype[T: SomeNumber; U: Complex](t: Tensor[T]; typ: typedesc[U]): Tensor[U]"><wbr />astype<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#fac%2CTensor"
-    title="fac(t291077: Tensor): Tensor"><wbr />fac<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="fac(t`gensym348107: Tensor): Tensor"><wbr />fac<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#sqrt%2CTensor"
-    title="sqrt(t291141: Tensor): Tensor"><wbr />sqrt<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="sqrt(t`gensym348161: Tensor): Tensor"><wbr />sqrt<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#cbrt%2CTensor"
-    title="cbrt(t291205: Tensor): Tensor"><wbr />cbrt<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="cbrt(t`gensym348215: Tensor): Tensor"><wbr />cbrt<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#ln%2CTensor"
-    title="ln(t291269: Tensor): Tensor"><wbr />ln<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="ln(t`gensym348269: Tensor): Tensor"><wbr />ln<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#log10%2CTensor"
-    title="log10(t291333: Tensor): Tensor"><wbr />log10<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="log10(t`gensym348323: Tensor): Tensor"><wbr />log10<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#log2%2CTensor"
-    title="log2(t291397: Tensor): Tensor"><wbr />log2<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="log2(t`gensym348377: Tensor): Tensor"><wbr />log2<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#exp%2CTensor"
-    title="exp(t291461: Tensor): Tensor"><wbr />exp<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="exp(t`gensym348431: Tensor): Tensor"><wbr />exp<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#arccos%2CTensor"
-    title="arccos(t291525: Tensor): Tensor"><wbr />arccos<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="arccos(t`gensym348485: Tensor): Tensor"><wbr />arccos<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#arcsin%2CTensor"
-    title="arcsin(t291589: Tensor): Tensor"><wbr />arcsin<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="arcsin(t`gensym348539: Tensor): Tensor"><wbr />arcsin<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#arctan%2CTensor"
-    title="arctan(t291653: Tensor): Tensor"><wbr />arctan<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="arctan(t`gensym348593: Tensor): Tensor"><wbr />arctan<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#cos%2CTensor"
-    title="cos(t291717: Tensor): Tensor"><wbr />cos<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="cos(t`gensym348647: Tensor): Tensor"><wbr />cos<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#cosh%2CTensor"
-    title="cosh(t291781: Tensor): Tensor"><wbr />cosh<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="cosh(t`gensym348701: Tensor): Tensor"><wbr />cosh<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#sinh%2CTensor"
-    title="sinh(t291845: Tensor): Tensor"><wbr />sinh<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="sinh(t`gensym348755: Tensor): Tensor"><wbr />sinh<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#sin%2CTensor"
-    title="sin(t291909: Tensor): Tensor"><wbr />sin<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="sin(t`gensym348809: Tensor): Tensor"><wbr />sin<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#tan%2CTensor"
-    title="tan(t291973: Tensor): Tensor"><wbr />tan<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="tan(t`gensym348863: Tensor): Tensor"><wbr />tan<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#tanh%2CTensor"
-    title="tanh(t292037: Tensor): Tensor"><wbr />tanh<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="tanh(t`gensym348917: Tensor): Tensor"><wbr />tanh<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#erf%2CTensor"
-    title="erf(t292101: Tensor): Tensor"><wbr />erf<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="erf(t`gensym348971: Tensor): Tensor"><wbr />erf<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#erfc%2CTensor"
-    title="erfc(t292165: Tensor): Tensor"><wbr />erfc<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="erfc(t`gensym349025: Tensor): Tensor"><wbr />erfc<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#lgamma%2CTensor"
-    title="lgamma(t292229: Tensor): Tensor"><wbr />lgamma<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="lgamma(t`gensym349079: Tensor): Tensor"><wbr />lgamma<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#tgamma%2CTensor"
-    title="tgamma(t292293: Tensor): Tensor"><wbr />tgamma<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="tgamma(t`gensym349133: Tensor): Tensor"><wbr />tgamma<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#floor%2CTensor"
-    title="floor(t292357: Tensor): Tensor"><wbr />floor<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="floor(t`gensym349187: Tensor): Tensor"><wbr />floor<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#ceil%2CTensor"
-    title="ceil(t292421: Tensor): Tensor"><wbr />ceil<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="ceil(t`gensym349241: Tensor): Tensor"><wbr />ceil<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#trunc%2CTensor"
-    title="trunc(t292485: Tensor): Tensor"><wbr />trunc<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="trunc(t`gensym349295: Tensor): Tensor"><wbr />trunc<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#round%2CTensor"
-    title="round(t292549: Tensor): Tensor"><wbr />round<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="round(t`gensym349349: Tensor): Tensor"><wbr />round<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#degToRad%2CTensor"
-    title="degToRad(t292613: Tensor): Tensor"><wbr />deg<wbr />To<wbr />Rad<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="degToRad(t`gensym349403: Tensor): Tensor"><wbr />deg<wbr />To<wbr />Rad<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#radToDeg%2CTensor"
-    title="radToDeg(t292677: Tensor): Tensor"><wbr />rad<wbr />To<wbr />Deg<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="radToDeg(t`gensym349457: Tensor): Tensor"><wbr />rad<wbr />To<wbr />Deg<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -256,10 +255,16 @@
   <a class="reference reference-toplevel" href="#18" id="68">Templates</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#makeUniversal.t%2Cuntyped"
-    title="makeUniversal(func_name: untyped)"><wbr />make<wbr />Universal<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="makeUniversal(func_name: untyped)"><wbr />make<wbr />Universal<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#makeUniversalLocal.t%2Cuntyped"
-    title="makeUniversalLocal(func_name: untyped)"><wbr />make<wbr />Universal<wbr />Local<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="makeUniversalLocal(func_name: untyped)"><wbr />make<wbr />Universal<wbr />Local<span class="attachedType"></span></a></li>
 
+  </ul>
+</li>
+<li>
+  <a class="reference reference-toplevel" href="#19" id="69">Exports</a>
+  <ul class="simple simple-toc-section">
+    
   </ul>
 </li>
 
@@ -268,340 +273,375 @@
   </div>
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
+  
   <p class="module-desc"></p>
-  <div class="section" id="5">
-<h1><a class="toc-backref" href="#5">Exports</a></h1>
-<dl class="item">
-<a href="ufunc.html#fac"><span class="Identifier">fac</span></a>, <a href="ufunc.html#sqrt"><span class="Identifier">sqrt</span></a>, <a href="ufunc.html#cbrt"><span class="Identifier">cbrt</span></a>, <a href="ufunc.html#ln"><span class="Identifier">ln</span></a>, <a href="ufunc.html#log10"><span class="Identifier">log10</span></a>, <a href="ufunc.html#log2"><span class="Identifier">log2</span></a>, <a href="ufunc.html#exp"><span class="Identifier">exp</span></a>, <a href="ufunc.html#arccos"><span class="Identifier">arccos</span></a>, <a href="ufunc.html#arcsin"><span class="Identifier">arcsin</span></a>, <a href="ufunc.html#arctan"><span class="Identifier">arctan</span></a>, <a href="ufunc.html#cos"><span class="Identifier">cos</span></a>, <a href="ufunc.html#cosh"><span class="Identifier">cosh</span></a>, <a href="ufunc.html#sinh"><span class="Identifier">sinh</span></a>, <a href="ufunc.html#sin"><span class="Identifier">sin</span></a>, <a href="ufunc.html#tan"><span class="Identifier">tan</span></a>, <a href="ufunc.html#tanh"><span class="Identifier">tanh</span></a>, <a href="ufunc.html#erf"><span class="Identifier">erf</span></a>, <a href="ufunc.html#erfc"><span class="Identifier">erfc</span></a>, <a href="ufunc.html#lgamma"><span class="Identifier">lgamma</span></a>, <a href="ufunc.html#tgamma"><span class="Identifier">tgamma</span></a>, <a href="ufunc.html#floor"><span class="Identifier">floor</span></a>, <a href="ufunc.html#ceil"><span class="Identifier">ceil</span></a>, <a href="ufunc.html#trunc"><span class="Identifier">trunc</span></a>, <a href="ufunc.html#round"><span class="Identifier">round</span></a>, <a href="ufunc.html#degToRad"><span class="Identifier">degToRad</span></a>, <a href="ufunc.html#radToDeg"><span class="Identifier">radToDeg</span></a>
-</dl></div>
-<div class="section" id="6">
+  <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="data_structure.html">data_structure</a>, <a class="reference external" href="higher_order_applymap.html">higher_order_applymap</a>
+<a class="reference external" href="data_structure.html">data_structure</a>, <a class="reference external" href="higher_order_applymap.html">higher_order_applymap</a>, <a class="reference external" href="ast_utils.html">ast_utils</a>
 </dl></div>
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
 <a id="astype,Tensor[T],typedesc[U]"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">astype</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">,</span> <span class="Identifier">U</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">typ</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">U</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">U</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#astype%2CTensor%5BT%5D%2Ctypedesc%5BU%5D"><span class="Identifier">astype</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">;</span> <span class="Identifier">U</span><span class="Other">:</span> <span class="Keyword">not</span> <span class="Identifier">Complex</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">typ</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">U</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">U</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Apply type conversion on the whole tensor
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L19"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L20"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L19" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L20" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+<a id="astype,Tensor[T: SomeNumber],typedesc[U]"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#astype%2CTensor%5BT%3A+SomeNumber%5D%2Ctypedesc%5BU%5D"><span class="Identifier">astype</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeNumber</span><span class="Other">;</span> <span class="Identifier">U</span><span class="Other">:</span> <span class="Identifier">Complex</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">typ</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">U</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">U</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Apply type conversion on the whole tensor
+&nbsp;&nbsp;<a
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L24"
+class="link-seesrc" target="_blank">Source</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L24" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="fac,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">fac</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">291077</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#fac%2CTensor"><span class="Identifier">fac</span></a><span class="Other">(</span><span class="Identifier">t`gensym348107</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="sqrt,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">sqrt</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">291141</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#sqrt%2CTensor"><span class="Identifier">sqrt</span></a><span class="Other">(</span><span class="Identifier">t`gensym348161</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="cbrt,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">cbrt</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">291205</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#cbrt%2CTensor"><span class="Identifier">cbrt</span></a><span class="Other">(</span><span class="Identifier">t`gensym348215</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="ln,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">ln</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">291269</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#ln%2CTensor"><span class="Identifier">ln</span></a><span class="Other">(</span><span class="Identifier">t`gensym348269</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="log10,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">log10</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">291333</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#log10%2CTensor"><span class="Identifier">log10</span></a><span class="Other">(</span><span class="Identifier">t`gensym348323</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="log2,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">log2</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">291397</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#log2%2CTensor"><span class="Identifier">log2</span></a><span class="Other">(</span><span class="Identifier">t`gensym348377</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="exp,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">exp</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">291461</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#exp%2CTensor"><span class="Identifier">exp</span></a><span class="Other">(</span><span class="Identifier">t`gensym348431</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="arccos,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">arccos</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">291525</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#arccos%2CTensor"><span class="Identifier">arccos</span></a><span class="Other">(</span><span class="Identifier">t`gensym348485</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="arcsin,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">arcsin</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">291589</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#arcsin%2CTensor"><span class="Identifier">arcsin</span></a><span class="Other">(</span><span class="Identifier">t`gensym348539</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="arctan,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">arctan</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">291653</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#arctan%2CTensor"><span class="Identifier">arctan</span></a><span class="Other">(</span><span class="Identifier">t`gensym348593</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="cos,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">cos</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">291717</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#cos%2CTensor"><span class="Identifier">cos</span></a><span class="Other">(</span><span class="Identifier">t`gensym348647</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="cosh,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">cosh</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">291781</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#cosh%2CTensor"><span class="Identifier">cosh</span></a><span class="Other">(</span><span class="Identifier">t`gensym348701</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="sinh,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">sinh</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">291845</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#sinh%2CTensor"><span class="Identifier">sinh</span></a><span class="Other">(</span><span class="Identifier">t`gensym348755</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="sin,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">sin</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">291909</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#sin%2CTensor"><span class="Identifier">sin</span></a><span class="Other">(</span><span class="Identifier">t`gensym348809</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="tan,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">tan</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">291973</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#tan%2CTensor"><span class="Identifier">tan</span></a><span class="Other">(</span><span class="Identifier">t`gensym348863</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="tanh,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">tanh</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">292037</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#tanh%2CTensor"><span class="Identifier">tanh</span></a><span class="Other">(</span><span class="Identifier">t`gensym348917</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="erf,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">erf</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">292101</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#erf%2CTensor"><span class="Identifier">erf</span></a><span class="Other">(</span><span class="Identifier">t`gensym348971</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="erfc,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">erfc</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">292165</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#erfc%2CTensor"><span class="Identifier">erfc</span></a><span class="Other">(</span><span class="Identifier">t`gensym349025</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="lgamma,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">lgamma</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">292229</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#lgamma%2CTensor"><span class="Identifier">lgamma</span></a><span class="Other">(</span><span class="Identifier">t`gensym349079</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="tgamma,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">tgamma</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">292293</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#tgamma%2CTensor"><span class="Identifier">tgamma</span></a><span class="Other">(</span><span class="Identifier">t`gensym349133</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="floor,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">floor</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">292357</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#floor%2CTensor"><span class="Identifier">floor</span></a><span class="Other">(</span><span class="Identifier">t`gensym349187</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="ceil,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">ceil</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">292421</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#ceil%2CTensor"><span class="Identifier">ceil</span></a><span class="Other">(</span><span class="Identifier">t`gensym349241</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="trunc,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">trunc</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">292485</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#trunc%2CTensor"><span class="Identifier">trunc</span></a><span class="Other">(</span><span class="Identifier">t`gensym349295</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="round,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">round</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">292549</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#round%2CTensor"><span class="Identifier">round</span></a><span class="Other">(</span><span class="Identifier">t`gensym349349</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="degToRad,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">degToRad</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">292613</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#degToRad%2CTensor"><span class="Identifier">degToRad</span></a><span class="Other">(</span><span class="Identifier">t`gensym349403</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="radToDeg,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">radToDeg</span><span class="Other">(</span><span class="Identifier">t</span><span class="DecNumber">292677</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#radToDeg%2CTensor"><span class="Identifier">radToDeg</span></a><span class="Other">(</span><span class="Identifier">t`gensym349457</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Auto-generated universal version of the function.</p>
 <p>The function can be used directly on tensors and will work element-wise.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L36"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L46"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -610,26 +650,33 @@ class="link-seesrc" target="_blank">Source</a>
 <h1><a class="toc-backref" href="#18">Templates</a></h1>
 <dl class="item">
 <a id="makeUniversal.t,untyped"></a>
-<dt><pre><span class="Keyword">template</span> <span class="Identifier">makeUniversal</span><span class="Other">(</span><span class="Identifier">func_name</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span></pre></dt>
+<dt><pre><span class="Keyword">template</span> <a href="#makeUniversal.t%2Cuntyped"><span class="Identifier">makeUniversal</span></a><span class="Other">(</span><span class="Identifier">func_name</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span></pre></dt>
 <dd>
 
+
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L28"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L38"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L28" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L38" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="makeUniversalLocal.t,untyped"></a>
-<dt><pre><span class="Keyword">template</span> <span class="Identifier">makeUniversalLocal</span><span class="Other">(</span><span class="Identifier">func_name</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span></pre></dt>
+<dt><pre><span class="Keyword">template</span> <a href="#makeUniversalLocal.t%2Cuntyped"><span class="Identifier">makeUniversalLocal</span></a><span class="Other">(</span><span class="Identifier">func_name</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span></pre></dt>
 <dd>
 
+
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/ufunc.nim#L43"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/ufunc.nim#L53"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L43" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/ufunc.nim#L53" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
+</dl></div>
+<div class="section" id="19">
+<h1><a class="toc-backref" href="#19">Exports</a></h1>
+<dl class="item">
+<a href="ufunc.html#fac"><span class="Identifier">fac</span></a>, <a href="ufunc.html#sqrt"><span class="Identifier">sqrt</span></a>, <a href="ufunc.html#cbrt"><span class="Identifier">cbrt</span></a>, <a href="ufunc.html#ln"><span class="Identifier">ln</span></a>, <a href="ufunc.html#log10"><span class="Identifier">log10</span></a>, <a href="ufunc.html#log2"><span class="Identifier">log2</span></a>, <a href="ufunc.html#exp"><span class="Identifier">exp</span></a>, <a href="ufunc.html#arccos"><span class="Identifier">arccos</span></a>, <a href="ufunc.html#arcsin"><span class="Identifier">arcsin</span></a>, <a href="ufunc.html#arctan"><span class="Identifier">arctan</span></a>, <a href="ufunc.html#cos"><span class="Identifier">cos</span></a>, <a href="ufunc.html#cosh"><span class="Identifier">cosh</span></a>, <a href="ufunc.html#sinh"><span class="Identifier">sinh</span></a>, <a href="ufunc.html#sin"><span class="Identifier">sin</span></a>, <a href="ufunc.html#tan"><span class="Identifier">tan</span></a>, <a href="ufunc.html#tanh"><span class="Identifier">tanh</span></a>, <a href="ufunc.html#erf"><span class="Identifier">erf</span></a>, <a href="ufunc.html#erfc"><span class="Identifier">erfc</span></a>, <a href="ufunc.html#lgamma"><span class="Identifier">lgamma</span></a>, <a href="ufunc.html#tgamma"><span class="Identifier">tgamma</span></a>, <a href="ufunc.html#floor"><span class="Identifier">floor</span></a>, <a href="ufunc.html#ceil"><span class="Identifier">ceil</span></a>, <a href="ufunc.html#trunc"><span class="Identifier">trunc</span></a>, <a href="ufunc.html#round"><span class="Identifier">round</span></a>, <a href="ufunc.html#degToRad"><span class="Identifier">degToRad</span></a>, <a href="ufunc.html#radToDeg"><span class="Identifier">radToDeg</span></a>
 </dl></div>
 
   </div>
@@ -639,7 +686,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-12-23 21:50:33 UTC</small>
+        <small>Made with Nim. Generated: 2020-01-08 23:22:07 UTC</small>
       </div>
     </div>
   </div>

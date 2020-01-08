@@ -81,11 +81,15 @@
         <a href="#">Linear algebra, stats, ML</a>
         <ul class="monospace">
           <li><a href="la.decomposition.html">Eigenvalue decomposition</a></li>
-          <li><a href="la.least_squares.html">Least Squares solver</a></li>
+          <li><a href="la.decomposition_rand.html">Randomized Truncated SVD</a></li>
+          <li><a href="la.least_squares.html">Least squares solver</a></li>
+          <li><a href="la.linear_systems.html">Linear systems solver</a></li>
+          <li><a href="la.special_matrices.html">Special linear algebra matrices</a></li>
           <li><a href="stats.stats.html">Statistics</a></li>
           <li><a href="ml.pca.html">Principal Component Analysis (PCA)</a></li>
           <li><a href="ml.accuracy_score.html">Accuracy score</a></li>
           <li><a href="ml.common_error_functions.html">Common errors, MAE and MSE (L1, L2 loss)</a></li>
+          <li><a href="ml.kmeans.html">K-Means</a></li>
         </ul>
       </span>
       <span>
@@ -102,8 +106,7 @@
       <span>
         <a href="#">Autograd</a>
         <ul class="monospace">
-          <li><a href="ag.ag_accessors.html">Accessors</a></li>
-          <li><a href="ag.ag_data_structure.html">Data structure</a></li>
+          <li><a href="ag.autograd_common.html">Data structure</a></li>
           <li><a href="ag.gates_basic.html">Basic operations</a></li>
           <li><a href="ag.gates_blas.html">Linear algebra operations</a></li>
           <li><a href="ag.gates_hadamard.html">Hadamard product (elementwise matrix multiply)</a></li>
@@ -192,9 +195,9 @@
       <li><a class="reference" href="#kmeans%2CTensor%5BT%3A+SomeFloat%5D%2Cint%2Cfloat%2Cint%2Cint%2Cint"
     title="kmeans[T: SomeFloat](x: Tensor[T]; n_clusters = 10; tol: float = 0.0001; n_init = 10;
                     max_iters = 300; seed = 1000; random = false): tuple[
-    labels: Tensor[int], centroids: Tensor[T], inertia: T]"><wbr />kmeans<span class="attachedType" style="visibility:hidden"></span></a></li>
+    labels: Tensor[int], centroids: Tensor[T], inertia: T]"><wbr />kmeans<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#kmeans%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D"
-    title="kmeans[T: SomeFloat](x: Tensor[T]; centroids: Tensor[T]): Tensor[int]"><wbr />kmeans<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="kmeans[T: SomeFloat](x: Tensor[T]; centroids: Tensor[T]): Tensor[int]"><wbr />kmeans<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -204,6 +207,7 @@
   </div>
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
+  
   <p class="module-desc"></p>
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
@@ -214,10 +218,11 @@
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
 <a id="kmeans,Tensor[T: SomeFloat],int,float,int,int,int"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">kmeans</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">n_clusters</span> <span class="Other">=</span> <span class="DecNumber">10</span><span class="Other">;</span> <span class="Identifier">tol</span><span class="Other">:</span> <span class="Identifier">float</span> <span class="Other">=</span> <span class="FloatNumber">0.0001</span><span class="Other">;</span> <span class="Identifier">n_init</span> <span class="Other">=</span> <span class="DecNumber">10</span><span class="Other">;</span>
+<dt><pre><span class="Keyword">proc</span> <a href="#kmeans%2CTensor%5BT%3A+SomeFloat%5D%2Cint%2Cfloat%2Cint%2Cint%2Cint"><span class="Identifier">kmeans</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">n_clusters</span> <span class="Other">=</span> <span class="DecNumber">10</span><span class="Other">;</span> <span class="Identifier">tol</span><span class="Other">:</span> <span class="Identifier">float</span> <span class="Other">=</span> <span class="FloatNumber">0.0001</span><span class="Other">;</span> <span class="Identifier">n_init</span> <span class="Other">=</span> <span class="DecNumber">10</span><span class="Other">;</span>
                         <span class="Identifier">max_iters</span> <span class="Other">=</span> <span class="DecNumber">300</span><span class="Other">;</span> <span class="Identifier">seed</span> <span class="Other">=</span> <span class="DecNumber">1000</span><span class="Other">;</span> <span class="Identifier">random</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span>
     <span class="Identifier">labels</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">centroids</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">inertia</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 K-Means Clustering<dl class="docutils"><dt>Inputs:</dt>
 <dd><ul class="simple"><li>x: A matrix of shape [Nb of observations, Nb of features]</li>
 <li>n_clusters: The number of cluster centroids to compute</li>
@@ -237,14 +242,15 @@ K-Means Clustering<dl class="docutils"><dt>Inputs:</dt>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/ml/clustering/kmeans.nim#L208"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/ml/clustering/kmeans.nim#L208"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/ml/clustering/kmeans.nim#L208" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="kmeans,Tensor[T: SomeFloat],Tensor[T: SomeFloat]"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">kmeans</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">centroids</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#kmeans%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D"><span class="Identifier">kmeans</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">centroids</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 K-Means Clustering<dl class="docutils"><dt>Inputs:</dt>
 <dd><ul class="simple"><li>x: A matrix of shape [Nb of observations, Nb of features]</li>
 <li>centroids: A matrix of shape [Nb of centroids, Nb of features]</li>
@@ -257,7 +263,7 @@ K-Means Clustering<dl class="docutils"><dt>Inputs:</dt>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/ml/clustering/kmeans.nim#L242"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/ml/clustering/kmeans.nim#L242"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/ml/clustering/kmeans.nim#L242" class="link-seesrc" target="_blank" >Edit</a>
 
@@ -272,7 +278,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-12-23 21:51:40 UTC</small>
+        <small>Made with Nim. Generated: 2020-01-08 23:22:48 UTC</small>
       </div>
     </div>
   </div>

@@ -81,11 +81,15 @@
         <a href="#">Linear algebra, stats, ML</a>
         <ul class="monospace">
           <li><a href="la.decomposition.html">Eigenvalue decomposition</a></li>
-          <li><a href="la.least_squares.html">Least Squares solver</a></li>
+          <li><a href="la.decomposition_rand.html">Randomized Truncated SVD</a></li>
+          <li><a href="la.least_squares.html">Least squares solver</a></li>
+          <li><a href="la.linear_systems.html">Linear systems solver</a></li>
+          <li><a href="la.special_matrices.html">Special linear algebra matrices</a></li>
           <li><a href="stats.stats.html">Statistics</a></li>
           <li><a href="ml.pca.html">Principal Component Analysis (PCA)</a></li>
           <li><a href="ml.accuracy_score.html">Accuracy score</a></li>
           <li><a href="ml.common_error_functions.html">Common errors, MAE and MSE (L1, L2 loss)</a></li>
+          <li><a href="ml.kmeans.html">K-Means</a></li>
         </ul>
       </span>
       <span>
@@ -102,8 +106,7 @@
       <span>
         <a href="#">Autograd</a>
         <ul class="monospace">
-          <li><a href="ag.ag_accessors.html">Accessors</a></li>
-          <li><a href="ag.ag_data_structure.html">Data structure</a></li>
+          <li><a href="ag.autograd_common.html">Data structure</a></li>
           <li><a href="ag.gates_basic.html">Basic operations</a></li>
           <li><a href="ag.gates_blas.html">Linear algebra operations</a></li>
           <li><a href="ag.gates_hadamard.html">Hadamard product (elementwise matrix multiply)</a></li>
@@ -166,15 +169,15 @@
 <pre class="listing"><span class="Keyword">let</span> <span class="Identifier">j</span> <span class="Operator">=</span> <span class="Punctuation">[</span><span class="DecNumber">0</span><span class="Punctuation">,</span> <span class="DecNumber">10</span><span class="Punctuation">,</span> <span class="DecNumber">20</span><span class="Punctuation">,</span> <span class="DecNumber">30</span><span class="Punctuation">]</span><span class="Operator">.</span><span class="Identifier">toTensor</span><span class="Operator">.</span><span class="Identifier">reshape</span><span class="Punctuation">(</span><span class="DecNumber">4</span><span class="Punctuation">,</span><span class="DecNumber">1</span><span class="Punctuation">)</span>
 <span class="Keyword">let</span> <span class="Identifier">k</span> <span class="Operator">=</span> <span class="Punctuation">[</span><span class="DecNumber">0</span><span class="Punctuation">,</span> <span class="DecNumber">1</span><span class="Punctuation">,</span> <span class="DecNumber">2</span><span class="Punctuation">]</span><span class="Operator">.</span><span class="Identifier">toTensor</span><span class="Operator">.</span><span class="Identifier">reshape</span><span class="Punctuation">(</span><span class="DecNumber">1</span><span class="Punctuation">,</span><span class="DecNumber">3</span><span class="Punctuation">)</span>
 
-<span class="Identifier">echo</span> <span class="Identifier">j</span> <span class="Operator">.+</span> <span class="Identifier">k</span>
+<span class="Identifier">echo</span> <span class="Identifier">j</span> <span class="Operator">+.</span> <span class="Identifier">k</span>
 <span class="Comment"># Tensor of shape 4x3 of type &quot;int&quot; on backend &quot;Cpu&quot;</span>
 <span class="Comment"># |0      1       2|</span>
 <span class="Comment"># |10     11      12|</span>
 <span class="Comment"># |20     21      22|</span>
-<span class="Comment"># |30     31      32|</span></pre><ul class="simple"><li><tt class="docutils literal"><span class="pre">.+</span></tt>,<tt class="docutils literal"><span class="pre">.-</span></tt>,</li>
-<li><tt class="docutils literal"><span class="pre">.*</span></tt>: broadcasted element-wise matrix multiplication also called Hadamard product)</li>
+<span class="Comment"># |30     31      32|</span></pre><ul class="simple"><li><tt class="docutils literal"><span class="pre">+.</span></tt>,<tt class="docutils literal"><span class="pre">-.</span></tt>,</li>
+<li><tt class="docutils literal"><span class="pre">*.</span></tt>: broadcasted element-wise matrix multiplication also called Hadamard product)</li>
 <li><tt class="docutils literal"><span class="pre">./</span></tt>: broadcasted element-wise division or integer-division</li>
-<li><tt class="docutils literal"><span class="pre">.+=</span></tt>, <tt class="docutils literal"><span class="pre">.-=</span></tt>, <tt class="docutils literal"><span class="pre">.*=</span></tt>, <tt class="docutils literal"><span class="pre">./=</span></tt>: in-place versions. Only the right operand is broadcastable.</li>
+<li><tt class="docutils literal"><span class="pre">+.=</span></tt>, <tt class="docutils literal"><span class="pre">-.=</span></tt>, <tt class="docutils literal"><span class="pre">*.=</span></tt>, <tt class="docutils literal"><span class="pre">/.=</span></tt>: in-place versions. Only the right operand is broadcastable.</li>
 </ul>
 
 
@@ -183,7 +186,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-12-23 21:51:53 UTC</small>
+        <small>Made with Nim. Generated: 2020-01-08 23:22:56 UTC</small>
       </div>
     </div>
   </div>

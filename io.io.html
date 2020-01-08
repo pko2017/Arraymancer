@@ -81,11 +81,15 @@
         <a href="#">Linear algebra, stats, ML</a>
         <ul class="monospace">
           <li><a href="la.decomposition.html">Eigenvalue decomposition</a></li>
-          <li><a href="la.least_squares.html">Least Squares solver</a></li>
+          <li><a href="la.decomposition_rand.html">Randomized Truncated SVD</a></li>
+          <li><a href="la.least_squares.html">Least squares solver</a></li>
+          <li><a href="la.linear_systems.html">Linear systems solver</a></li>
+          <li><a href="la.special_matrices.html">Special linear algebra matrices</a></li>
           <li><a href="stats.stats.html">Statistics</a></li>
           <li><a href="ml.pca.html">Principal Component Analysis (PCA)</a></li>
           <li><a href="ml.accuracy_score.html">Accuracy score</a></li>
           <li><a href="ml.common_error_functions.html">Common errors, MAE and MSE (L1, L2 loss)</a></li>
+          <li><a href="ml.kmeans.html">K-Means</a></li>
         </ul>
       </span>
       <span>
@@ -102,8 +106,7 @@
       <span>
         <a href="#">Autograd</a>
         <ul class="monospace">
-          <li><a href="ag.ag_accessors.html">Accessors</a></li>
-          <li><a href="ag.ag_data_structure.html">Data structure</a></li>
+          <li><a href="ag.autograd_common.html">Data structure</a></li>
           <li><a href="ag.gates_basic.html">Basic operations</a></li>
           <li><a href="ag.gates_blas.html">Linear algebra operations</a></li>
           <li><a href="ag.gates_hadamard.html">Hadamard product (elementwise matrix multiply)</a></li>
@@ -181,13 +184,13 @@
   </div>
   <ul class="simple simple-toc" id="toc-list">
 <li>
-  <a class="reference reference-toplevel" href="#5" id="55">Exports</a>
+  <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
   <ul class="simple simple-toc-section">
     
   </ul>
 </li>
 <li>
-  <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
+  <a class="reference reference-toplevel" href="#19" id="69">Exports</a>
   <ul class="simple simple-toc-section">
     
   </ul>
@@ -198,16 +201,17 @@
   </div>
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
+  
   <p class="module-desc"></p>
-  <div class="section" id="5">
-<h1><a class="toc-backref" href="#5">Exports</a></h1>
-<dl class="item">
-<a href="io_csv.html#read_csv"><span class="Identifier">read_csv</span></a>, <a class="reference external" href="io_csv.html">io_csv</a>, <a href="io_csv.html#to_csv"><span class="Identifier">to_csv</span></a>, <a href="io_npy.html#write_npy"><span class="Identifier">write_npy</span></a>, <a class="reference external" href="io_npy.html">io_npy</a>, <a href="io_npy.html#read_npy"><span class="Identifier">read_npy</span></a>, <a href="io_image.html#write_png"><span class="Identifier">write_png</span></a>, <a href="io_image.html#write_jpg"><span class="Identifier">write_jpg</span></a>, <a href="io_image.html#write_bmp"><span class="Identifier">write_bmp</span></a>, <a href="io_image.html#read_image"><span class="Identifier">read_image</span></a>, <a class="reference external" href="io_image.html">io_image</a>, <a href="io_image.html#write_tga"><span class="Identifier">write_tga</span></a>, <a href="io_image.html#read_image"><span class="Identifier">read_image</span></a>, <a href="io_hdf5.html#write_hdf5"><span class="Identifier">write_hdf5</span></a>, <a href="io_hdf5.html#write_hdf5"><span class="Identifier">write_hdf5</span></a>, <a href="io_hdf5.html#read_hdf5"><span class="Identifier">read_hdf5</span></a>, <a href="io_hdf5.html#read_hdf5"><span class="Identifier">read_hdf5</span></a>, <a href="io_hdf5.html#write_hdf5"><span class="Identifier">write_hdf5</span></a>, <a href="io_hdf5.html#read_hdf5"><span class="Identifier">read_hdf5</span></a>, <a class="reference external" href="io_hdf5.html">io_hdf5</a>
-</dl></div>
-<div class="section" id="6">
+  <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
 <a class="reference external" href="io_csv.html">io_csv</a>, <a class="reference external" href="io_npy.html">io_npy</a>, <a class="reference external" href="io_image.html">io_image</a>, <a class="reference external" href="io_hdf5.html">io_hdf5</a>
+</dl></div>
+<div class="section" id="19">
+<h1><a class="toc-backref" href="#19">Exports</a></h1>
+<dl class="item">
+<a href="io_csv.html#read_csv"><span class="Identifier">read_csv</span></a>, <a class="reference external" href="io_csv.html">io_csv</a>, <a href="io_csv.html#to_csv"><span class="Identifier">to_csv</span></a>, <a href="io_npy.html#write_npy"><span class="Identifier">write_npy</span></a>, <a class="reference external" href="io_npy.html">io_npy</a>, <a href="io_npy.html#read_npy"><span class="Identifier">read_npy</span></a>, <a href="io_image.html#write_png"><span class="Identifier">write_png</span></a>, <a href="io_image.html#write_jpg"><span class="Identifier">write_jpg</span></a>, <a href="io_image.html#write_bmp"><span class="Identifier">write_bmp</span></a>, <a href="io_image.html#read_image"><span class="Identifier">read_image</span></a>, <a class="reference external" href="io_image.html">io_image</a>, <a href="io_image.html#write_tga"><span class="Identifier">write_tga</span></a>, <a href="io_image.html#read_image"><span class="Identifier">read_image</span></a>, <a href="io_hdf5.html#write_hdf5"><span class="Identifier">write_hdf5</span></a>, <a href="io_hdf5.html#write_hdf5"><span class="Identifier">write_hdf5</span></a>, <a href="io_hdf5.html#read_hdf5"><span class="Identifier">read_hdf5</span></a>, <a href="io_hdf5.html#read_hdf5"><span class="Identifier">read_hdf5</span></a>, <a href="io_hdf5.html#write_hdf5"><span class="Identifier">write_hdf5</span></a>, <a href="io_hdf5.html#read_hdf5"><span class="Identifier">read_hdf5</span></a>, <a class="reference external" href="io_hdf5.html">io_hdf5</a>
 </dl></div>
 
   </div>
@@ -217,7 +221,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-12-23 21:51:45 UTC</small>
+        <small>Made with Nim. Generated: 2020-01-08 23:22:52 UTC</small>
       </div>
     </div>
   </div>

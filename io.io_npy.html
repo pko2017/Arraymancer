@@ -81,11 +81,15 @@
         <a href="#">Linear algebra, stats, ML</a>
         <ul class="monospace">
           <li><a href="la.decomposition.html">Eigenvalue decomposition</a></li>
-          <li><a href="la.least_squares.html">Least Squares solver</a></li>
+          <li><a href="la.decomposition_rand.html">Randomized Truncated SVD</a></li>
+          <li><a href="la.least_squares.html">Least squares solver</a></li>
+          <li><a href="la.linear_systems.html">Linear systems solver</a></li>
+          <li><a href="la.special_matrices.html">Special linear algebra matrices</a></li>
           <li><a href="stats.stats.html">Statistics</a></li>
           <li><a href="ml.pca.html">Principal Component Analysis (PCA)</a></li>
           <li><a href="ml.accuracy_score.html">Accuracy score</a></li>
           <li><a href="ml.common_error_functions.html">Common errors, MAE and MSE (L1, L2 loss)</a></li>
+          <li><a href="ml.kmeans.html">K-Means</a></li>
         </ul>
       </span>
       <span>
@@ -102,8 +106,7 @@
       <span>
         <a href="#">Autograd</a>
         <ul class="monospace">
-          <li><a href="ag.ag_accessors.html">Accessors</a></li>
-          <li><a href="ag.ag_data_structure.html">Data structure</a></li>
+          <li><a href="ag.autograd_common.html">Data structure</a></li>
           <li><a href="ag.gates_basic.html">Basic operations</a></li>
           <li><a href="ag.gates_blas.html">Linear algebra operations</a></li>
           <li><a href="ag.gates_hadamard.html">Hadamard product (elementwise matrix multiply)</a></li>
@@ -190,9 +193,9 @@
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#read_npy%2Cstring"
-    title="read_npy[T: SomeNumber](npyPath: string): Tensor[T]"><wbr />read_<wbr />npy<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="read_npy[T: SomeNumber](npyPath: string): Tensor[T]"><wbr />read_<wbr />npy<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#write_npy%2CTensor%5BT%3A+SomeNumber%5D%2Cstring"
-    title="write_npy[T: SomeNumber](t: Tensor[T]; npyPath: string)"><wbr />write_<wbr />npy<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="write_npy[T: SomeNumber](t: Tensor[T]; npyPath: string)"><wbr />write_<wbr />npy<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -202,6 +205,7 @@
   </div>
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
+  
   <p class="module-desc"></p>
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
@@ -212,8 +216,9 @@
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
 <a id="read_npy,string"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">read_npy</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeNumber</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">npyPath</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#read_npy%2Cstring"><span class="Identifier">read_npy</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeNumber</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">npyPath</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Reads a .npy file and returns a Tensor of the specified type. If the ndarray is stored in a different type inside the file, it will be converted.<dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>The path to a numpy file as string</li>
 </ul>
@@ -226,14 +231,15 @@ Reads a .npy file and returns a Tensor of the specified type. If the ndarray is 
 <p>Only integer, unsigned integer and float ndarrays are supported at the moment.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/io/io_npy.nim#L66"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/io/io_npy.nim#L66"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/io/io_npy.nim#L66" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="write_npy,Tensor[T: SomeNumber],string"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">write_npy</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeNumber</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">npyPath</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#write_npy%2CTensor%5BT%3A+SomeNumber%5D%2Cstring"><span class="Identifier">write_npy</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeNumber</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">npyPath</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span></pre></dt>
 <dd>
+
 Export a Tensor to the Numpy format<dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>The tensor</li>
 <li>The path to a numpy file as string</li>
@@ -243,7 +249,7 @@ Export a Tensor to the Numpy format<dl class="docutils"><dt>Input:</dt>
 <p>Only integer, unsigned integer and float ndarrays are supported at the moment.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/io/io_npy.nim#L116"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/io/io_npy.nim#L116"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/io/io_npy.nim#L116" class="link-seesrc" target="_blank" >Edit</a>
 
@@ -258,7 +264,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-12-23 21:51:48 UTC</small>
+        <small>Made with Nim. Generated: 2020-01-08 23:22:53 UTC</small>
       </div>
     </div>
   </div>

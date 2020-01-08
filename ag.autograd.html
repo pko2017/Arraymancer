@@ -81,11 +81,15 @@
         <a href="#">Linear algebra, stats, ML</a>
         <ul class="monospace">
           <li><a href="la.decomposition.html">Eigenvalue decomposition</a></li>
-          <li><a href="la.least_squares.html">Least Squares solver</a></li>
+          <li><a href="la.decomposition_rand.html">Randomized Truncated SVD</a></li>
+          <li><a href="la.least_squares.html">Least squares solver</a></li>
+          <li><a href="la.linear_systems.html">Linear systems solver</a></li>
+          <li><a href="la.special_matrices.html">Special linear algebra matrices</a></li>
           <li><a href="stats.stats.html">Statistics</a></li>
           <li><a href="ml.pca.html">Principal Component Analysis (PCA)</a></li>
           <li><a href="ml.accuracy_score.html">Accuracy score</a></li>
           <li><a href="ml.common_error_functions.html">Common errors, MAE and MSE (L1, L2 loss)</a></li>
+          <li><a href="ml.kmeans.html">K-Means</a></li>
         </ul>
       </span>
       <span>
@@ -102,8 +106,7 @@
       <span>
         <a href="#">Autograd</a>
         <ul class="monospace">
-          <li><a href="ag.ag_accessors.html">Accessors</a></li>
-          <li><a href="ag.ag_data_structure.html">Data structure</a></li>
+          <li><a href="ag.autograd_common.html">Data structure</a></li>
           <li><a href="ag.gates_basic.html">Basic operations</a></li>
           <li><a href="ag.gates_blas.html">Linear algebra operations</a></li>
           <li><a href="ag.gates_hadamard.html">Hadamard product (elementwise matrix multiply)</a></li>
@@ -181,13 +184,13 @@
   </div>
   <ul class="simple simple-toc" id="toc-list">
 <li>
-  <a class="reference reference-toplevel" href="#5" id="55">Exports</a>
+  <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
   <ul class="simple simple-toc-section">
     
   </ul>
 </li>
 <li>
-  <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
+  <a class="reference reference-toplevel" href="#19" id="69">Exports</a>
   <ul class="simple simple-toc-section">
     
   </ul>
@@ -198,16 +201,17 @@
   </div>
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
+  
   <p class="module-desc"></p>
-  <div class="section" id="5">
-<h1><a class="toc-backref" href="#5">Exports</a></h1>
-<dl class="item">
-<a href="autograd_common.html#newDiffs"><span class="Identifier">newDiffs</span></a>, <a href="autograd_common.html#no_grad_mode"><span class="Identifier">no_grad_mode</span></a>, <a href="autograd_common.html#Gate"><span class="Identifier">Gate</span></a>, <a href="autograd_common.html#check_ctx"><span class="Identifier">check_ctx</span></a>, <a href="autograd_common.html#newParents"><span class="Identifier">newParents</span></a>, <a href="autograd_common.html#register_node"><span class="Identifier">register_node</span></a>, <a href="autograd_common.html#PayloadKind"><span class="Identifier">PayloadKind</span></a>, <a href="autograd_common.html#backprop"><span class="Identifier">backprop</span></a>, <a class="reference external" href="autograd_common.html">autograd_common</a>, <a href="autograd_common.html#is_grad_needed"><span class="Identifier">is_grad_needed</span></a>, <a href="autograd_common.html#pkSeq"><span class="Identifier">pkSeq</span></a>, <a href="autograd_common.html#pkVar"><span class="Identifier">pkVar</span></a>, <a href="autograd_common.html#Context"><span class="Identifier">Context</span></a>, <a href="autograd_common.html#newContext"><span class="Identifier">newContext</span></a>, <a href="autograd_common.html#Backward"><span class="Identifier">Backward</span></a>, <a href="autograd_common.html#Payload"><span class="Identifier">Payload</span></a>, <a href="autograd_common.html#Variable"><span class="Identifier">Variable</span></a>, <a href="autograd_common.html#SmallDiffs"><span class="Identifier">SmallDiffs</span></a>, <a href="autograd_common.html#variable"><span class="Identifier">variable</span></a>, <a href="gates_basic.html#SubGate"><span class="Identifier">SubGate</span></a>, <a href="gates_basic.html#-"><span class="Identifier">-</span></a>, <a class="reference external" href="gates_basic.html">gates_basic</a>, <a href="gates_basic.html#AddGate"><span class="Identifier">AddGate</span></a>, <a href="gates_basic.html#+"><span class="Identifier">+</span></a>, <a href="gates_blas.html#*"><span class="Identifier">*</span></a>, <a href="gates_blas.html#MatMulGate"><span class="Identifier">MatMulGate</span></a>, <a class="reference external" href="gates_blas.html">gates_blas</a>, <a href="gates_reduce.html#MeanGate"><span class="Identifier">MeanGate</span></a>, <a class="reference external" href="gates_reduce.html">gates_reduce</a>, <a href="gates_reduce.html#mean"><span class="Identifier">mean</span></a>, <a href="gates_reduce.html#SumGate"><span class="Identifier">SumGate</span></a>, <a href="gates_reduce.html#sum"><span class="Identifier">sum</span></a>, <a href="gates_reduce.html#mean"><span class="Identifier">mean</span></a>, <a href="gates_shapeshifting_views.html#squeeze"><span class="Identifier">squeeze</span></a>, <a href="gates_shapeshifting_views.html#flatten"><span class="Identifier">flatten</span></a>, <a href="gates_shapeshifting_views.html#reshape"><span class="Identifier">reshape</span></a>, <a href="gates_shapeshifting_views.html#unsqueeze"><span class="Identifier">unsqueeze</span></a>, <a href="gates_shapeshifting_views.html#reshape"><span class="Identifier">reshape</span></a>, <a href="gates_shapeshifting_views.html#ReshapeGate"><span class="Identifier">ReshapeGate</span></a>, <a class="reference external" href="gates_shapeshifting_views.html">gates_shapeshifting_views</a>, <a href="gates_shapeshifting_views.html#[]"><span class="Identifier">[]</span></a>, <a class="reference external" href="gates_shapeshifting_concat_split.html">gates_shapeshifting_concat_split</a>, <a href="gates_shapeshifting_concat_split.html#ChunkSplitGate"><span class="Identifier">ChunkSplitGate</span></a>, <a href="gates_shapeshifting_concat_split.html#stack"><span class="Identifier">stack</span></a>, <a href="gates_shapeshifting_concat_split.html#chunk"><span class="Identifier">chunk</span></a>, <a class="reference external" href="gates_hadamard.html">gates_hadamard</a>, <a href="gates_hadamard.html#.*"><span class="Identifier">.*</span></a>, <a href="gates_hadamard.html#HadamardGate"><span class="Identifier">HadamardGate</span></a>
-</dl></div>
-<div class="section" id="6">
+  <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
 <a class="reference external" href="autograd_common.html">autograd_common</a>, <a class="reference external" href="gates_basic.html">gates_basic</a>, <a class="reference external" href="gates_blas.html">gates_blas</a>, <a class="reference external" href="gates_reduce.html">gates_reduce</a>, <a class="reference external" href="gates_shapeshifting_views.html">gates_shapeshifting_views</a>, <a class="reference external" href="gates_shapeshifting_concat_split.html">gates_shapeshifting_concat_split</a>, <a class="reference external" href="gates_hadamard.html">gates_hadamard</a>
+</dl></div>
+<div class="section" id="19">
+<h1><a class="toc-backref" href="#19">Exports</a></h1>
+<dl class="item">
+<a href="autograd_common.html#newDiffs"><span class="Identifier">newDiffs</span></a>, <a href="autograd_common.html#no_grad_mode"><span class="Identifier">no_grad_mode</span></a>, <a href="autograd_common.html#Gate"><span class="Identifier">Gate</span></a>, <a href="autograd_common.html#check_ctx"><span class="Identifier">check_ctx</span></a>, <a href="autograd_common.html#newParents"><span class="Identifier">newParents</span></a>, <a href="autograd_common.html#register_node"><span class="Identifier">register_node</span></a>, <a href="autograd_common.html#PayloadKind"><span class="Identifier">PayloadKind</span></a>, <a href="autograd_common.html#backprop"><span class="Identifier">backprop</span></a>, <a class="reference external" href="autograd_common.html">autograd_common</a>, <a href="autograd_common.html#is_grad_needed"><span class="Identifier">is_grad_needed</span></a>, <a href="autograd_common.html#pkSeq"><span class="Identifier">pkSeq</span></a>, <a href="autograd_common.html#pkVar"><span class="Identifier">pkVar</span></a>, <a href="autograd_common.html#Context"><span class="Identifier">Context</span></a>, <a href="autograd_common.html#newContext"><span class="Identifier">newContext</span></a>, <a href="autograd_common.html#Backward"><span class="Identifier">Backward</span></a>, <a href="autograd_common.html#Payload"><span class="Identifier">Payload</span></a>, <a href="autograd_common.html#Variable"><span class="Identifier">Variable</span></a>, <a href="autograd_common.html#SmallDiffs"><span class="Identifier">SmallDiffs</span></a>, <a href="autograd_common.html#variable"><span class="Identifier">variable</span></a>, <a href="gates_basic.html#SubGate"><span class="Identifier">SubGate</span></a>, <a href="gates_basic.html#-"><span class="Identifier">-</span></a>, <a class="reference external" href="gates_basic.html">gates_basic</a>, <a href="gates_basic.html#AddGate"><span class="Identifier">AddGate</span></a>, <a href="gates_basic.html#+"><span class="Identifier">+</span></a>, <a href="gates_blas.html#*"><span class="Identifier">*</span></a>, <a href="gates_blas.html#MatMulGate"><span class="Identifier">MatMulGate</span></a>, <a class="reference external" href="gates_blas.html">gates_blas</a>, <a href="gates_reduce.html#MeanGate"><span class="Identifier">MeanGate</span></a>, <a class="reference external" href="gates_reduce.html">gates_reduce</a>, <a href="gates_reduce.html#mean"><span class="Identifier">mean</span></a>, <a href="gates_reduce.html#SumGate"><span class="Identifier">SumGate</span></a>, <a href="gates_reduce.html#sum"><span class="Identifier">sum</span></a>, <a href="gates_reduce.html#mean"><span class="Identifier">mean</span></a>, <a href="gates_shapeshifting_views.html#squeeze"><span class="Identifier">squeeze</span></a>, <a href="gates_shapeshifting_views.html#flatten"><span class="Identifier">flatten</span></a>, <a href="gates_shapeshifting_views.html#reshape"><span class="Identifier">reshape</span></a>, <a href="gates_shapeshifting_views.html#unsqueeze"><span class="Identifier">unsqueeze</span></a>, <a href="gates_shapeshifting_views.html#reshape"><span class="Identifier">reshape</span></a>, <a href="gates_shapeshifting_views.html#ReshapeGate"><span class="Identifier">ReshapeGate</span></a>, <a class="reference external" href="gates_shapeshifting_views.html">gates_shapeshifting_views</a>, <a href="gates_shapeshifting_views.html#[]"><span class="Identifier">[]</span></a>, <a class="reference external" href="gates_shapeshifting_concat_split.html">gates_shapeshifting_concat_split</a>, <a href="gates_shapeshifting_concat_split.html#ChunkSplitGate"><span class="Identifier">ChunkSplitGate</span></a>, <a href="gates_shapeshifting_concat_split.html#stack"><span class="Identifier">stack</span></a>, <a href="gates_shapeshifting_concat_split.html#chunk"><span class="Identifier">chunk</span></a>, <a href="gates_hadamard.html#*."><span class="Identifier">*.</span></a>, <a class="reference external" href="gates_hadamard.html">gates_hadamard</a>, <a href="gates_hadamard.html#HadamardGate"><span class="Identifier">HadamardGate</span></a>
 </dl></div>
 
   </div>
@@ -217,7 +221,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-12-23 21:51:13 UTC</small>
+        <small>Made with Nim. Generated: 2020-01-08 23:22:29 UTC</small>
       </div>
     </div>
   </div>

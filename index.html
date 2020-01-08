@@ -81,11 +81,15 @@
         <a href="#">Linear algebra, stats, ML</a>
         <ul class="monospace">
           <li><a href="la.decomposition.html">Eigenvalue decomposition</a></li>
-          <li><a href="la.least_squares.html">Least Squares solver</a></li>
+          <li><a href="la.decomposition_rand.html">Randomized Truncated SVD</a></li>
+          <li><a href="la.least_squares.html">Least squares solver</a></li>
+          <li><a href="la.linear_systems.html">Linear systems solver</a></li>
+          <li><a href="la.special_matrices.html">Special linear algebra matrices</a></li>
           <li><a href="stats.stats.html">Statistics</a></li>
           <li><a href="ml.pca.html">Principal Component Analysis (PCA)</a></li>
           <li><a href="ml.accuracy_score.html">Accuracy score</a></li>
           <li><a href="ml.common_error_functions.html">Common errors, MAE and MSE (L1, L2 loss)</a></li>
+          <li><a href="ml.kmeans.html">K-Means</a></li>
         </ul>
       </span>
       <span>
@@ -102,8 +106,7 @@
       <span>
         <a href="#">Autograd</a>
         <ul class="monospace">
-          <li><a href="ag.ag_accessors.html">Accessors</a></li>
-          <li><a href="ag.ag_data_structure.html">Data structure</a></li>
+          <li><a href="ag.autograd_common.html">Data structure</a></li>
           <li><a href="ag.gates_basic.html">Basic operations</a></li>
           <li><a href="ag.gates_blas.html">Linear algebra operations</a></li>
           <li><a href="ag.gates_hadamard.html">Hadamard product (elementwise matrix multiply)</a></li>
@@ -220,7 +223,7 @@
 <p>I however recommend installing Nim in your user profile via ```choosenim`` &lt;<a class="reference external" href="https://github.com/dom96/choosenim&gt;`__">https://github.com/dom96/choosenim&gt;`__</a>. Once choosenim installed Nim, you can <tt class="docutils literal"><span class="pre">nimble install arraymancer</span></tt> which will pull arraymancer and all its dependencies.</p>
 
 <h3 id="tensors-on-cpu-and-on-cuda">Tensors on CPU and on Cuda</h3><p>Tensors and CudaTensors do not have the same features implemented yet. Also Cuda Tensors can only be float32 or float64 while Cpu Tensor can be integers, string, boolean or any custom object.</p>
-<p>Here is a comparative table, not that this feature set is developing rapidly.</p>
+<p>Here is a comparative table.</p>
 <table border="1" class="docutils"><tr><th>Feature</th><th>Tensor</th><th>CudaTensor</th><th>ClTensor</th></tr>
 <tr><td>Accessing tensor properties</td><td>[x]</td><td>[x]</td><td>[x]</td></tr>
 <tr><td>Tensor creation</td><td>[x]</td><td>by converting a cpu Tensor</td><td>by converting a cpu Tensor</td></tr>
@@ -250,7 +253,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-12-23 21:51:53 UTC</small>
+        <small>Made with Nim. Generated: 2020-01-08 23:23:32 UTC</small>
       </div>
     </div>
   </div>

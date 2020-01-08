@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Arraymancer - dsl_core</title>
+  <title>Arraymancer - einsum</title>
 
   <link href="docutils.css" rel="stylesheet" type="text/css"/>
   <link href="nav.css" rel="stylesheet" type="text/css"/>
@@ -164,7 +164,7 @@
 </header>
 <article id="documentId">
   <div class="container">
-    <h1 class="title">dsl_core</h1>
+    <h1 class="title">einsum</h1>
     <div class="row">
   <div class="three columns">
   <div id="global-links">
@@ -192,8 +192,8 @@
 <li>
   <a class="reference reference-toplevel" href="#17" id="67">Macros</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#network.m%2CContext%2Cuntyped%2Cuntyped"
-    title="network(ctx: Context; model_name: untyped; config: untyped): untyped"><wbr />network<span class="attachedType"></span></a></li>
+      <li><a class="reference" href="#einsum.m%2Cvarargs%5Btyped%5D%2Cuntyped"
+    title="einsum(tensors: varargs[typed]; stmt: untyped): untyped"><wbr />einsum<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -208,34 +208,31 @@
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="dsl_types.html">dsl_types</a>, <a class="reference external" href="dsl_initialization.html">dsl_initialization</a>, <a class="reference external" href="dsl_utils.html">dsl_utils</a>, <a class="reference external" href="dsl_topology.html">dsl_topology</a>, <a class="reference external" href="dsl_forwardsugar.html">dsl_forwardsugar</a>, <a class="reference external" href="autograd.html">autograd</a>
+<a class="reference external" href="ast_utils.html">ast_utils</a>, <a class="reference external" href="shapeshifting.html">shapeshifting</a>, <a class="reference external" href="data_structure.html">data_structure</a>, <a class="reference external" href="init_cpu.html">init_cpu</a>, <a class="reference external" href="ufunc.html">ufunc</a>, <a class="reference external" href="metadataArray.html">metadataArray</a>, <a class="reference external" href="accessors_macros_read.html">accessors_macros_read</a>, <a class="reference external" href="accessors_macros_write.html">accessors_macros_write</a>
 </dl></div>
 <div class="section" id="17">
 <h1><a class="toc-backref" href="#17">Macros</a></h1>
 <dl class="item">
-<a id="network.m,Context,untyped,untyped"></a>
-<dt><pre><span class="Keyword">macro</span> <a href="#network.m%2CContext%2Cuntyped%2Cuntyped"><span class="Identifier">network</span></a><span class="Other">(</span><span class="Identifier">ctx</span><span class="Other">:</span> <a href="autograd_common.html#Context"><span class="Identifier">Context</span></a><span class="Other">;</span> <span class="Identifier">model_name</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">;</span> <span class="Identifier">config</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<a id="einsum.m,varargs[typed],untyped"></a>
+<dt><pre><span class="Keyword">macro</span> <a href="#einsum.m%2Cvarargs%5Btyped%5D%2Cuntyped"><span class="Identifier">einsum</span></a><span class="Other">(</span><span class="Identifier">tensors</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">typed</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">stmt</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-Declare a neural network.<dl class="docutils"><dt>Example usage:</dt>
-<dd><pre class="listing"><span class="Identifier">network</span> <span class="Identifier">ctx</span><span class="Punctuation">,</span> <span class="Identifier">DemoNet</span><span class="Punctuation">:</span>
-  <span class="Identifier">layers</span><span class="Punctuation">:</span>
-    <span class="Identifier">x</span><span class="Punctuation">:</span>          <span class="Identifier">Input</span><span class="Punctuation">(</span><span class="Punctuation">[</span><span class="DecNumber">1</span><span class="Punctuation">,</span> <span class="DecNumber">28</span><span class="Punctuation">,</span> <span class="DecNumber">28</span><span class="Punctuation">]</span><span class="Punctuation">)</span>
-    <span class="Identifier">cv1</span><span class="Punctuation">:</span>        <span class="Identifier">Conv2D</span><span class="Punctuation">(</span><span class="Identifier">x</span><span class="Operator">.</span><span class="Identifier">out_shape</span><span class="Punctuation">,</span> <span class="DecNumber">20</span><span class="Punctuation">,</span> <span class="DecNumber">5</span><span class="Punctuation">,</span> <span class="DecNumber">5</span><span class="Punctuation">)</span>
-    <span class="Identifier">mp1</span><span class="Punctuation">:</span>        <span class="Identifier">MaxPool2D</span><span class="Punctuation">(</span><span class="Identifier">cv1</span><span class="Operator">.</span><span class="Identifier">out_shape</span><span class="Punctuation">,</span> <span class="Punctuation">(</span><span class="DecNumber">2</span><span class="Punctuation">,</span><span class="DecNumber">2</span><span class="Punctuation">)</span><span class="Punctuation">,</span> <span class="Punctuation">(</span><span class="DecNumber">0</span><span class="Punctuation">,</span><span class="DecNumber">0</span><span class="Punctuation">)</span><span class="Punctuation">,</span> <span class="Punctuation">(</span><span class="DecNumber">2</span><span class="Punctuation">,</span><span class="DecNumber">2</span><span class="Punctuation">)</span><span class="Punctuation">)</span>
-    <span class="Identifier">cv2</span><span class="Punctuation">:</span>        <span class="Identifier">Conv2D</span><span class="Punctuation">(</span><span class="Identifier">mp1</span><span class="Operator">.</span><span class="Identifier">out_shape</span><span class="Punctuation">,</span> <span class="DecNumber">50</span><span class="Punctuation">,</span> <span class="DecNumber">5</span><span class="Punctuation">,</span> <span class="DecNumber">5</span><span class="Punctuation">)</span>
-    <span class="Identifier">mp2</span><span class="Punctuation">:</span>        <span class="Identifier">MaxPool2D</span><span class="Punctuation">(</span><span class="Identifier">cv2</span><span class="Operator">.</span><span class="Identifier">out_shape</span><span class="Punctuation">,</span> <span class="Punctuation">(</span><span class="DecNumber">2</span><span class="Punctuation">,</span><span class="DecNumber">2</span><span class="Punctuation">)</span><span class="Punctuation">,</span> <span class="Punctuation">(</span><span class="DecNumber">0</span><span class="Punctuation">,</span><span class="DecNumber">0</span><span class="Punctuation">)</span><span class="Punctuation">,</span> <span class="Punctuation">(</span><span class="DecNumber">2</span><span class="Punctuation">,</span><span class="DecNumber">2</span><span class="Punctuation">)</span><span class="Punctuation">)</span>
-    <span class="Identifier">fl</span><span class="Punctuation">:</span>         <span class="Identifier">Flatten</span><span class="Punctuation">(</span><span class="Identifier">mp2</span><span class="Operator">.</span><span class="Identifier">out_shape</span><span class="Punctuation">)</span>
-    <span class="Identifier">hidden</span><span class="Punctuation">:</span>     <span class="Identifier">Linear</span><span class="Punctuation">(</span><span class="Identifier">fl</span><span class="Operator">.</span><span class="Identifier">out_shape</span><span class="Punctuation">,</span> <span class="DecNumber">500</span><span class="Punctuation">)</span>
-    <span class="Identifier">classifier</span><span class="Punctuation">:</span> <span class="Identifier">Linear</span><span class="Punctuation">(</span><span class="DecNumber">500</span><span class="Punctuation">,</span> <span class="DecNumber">10</span><span class="Punctuation">)</span>
-  <span class="Identifier">forward</span> <span class="Identifier">x</span><span class="Punctuation">:</span>
-    <span class="Identifier">x</span><span class="Operator">.</span><span class="Identifier">cv1</span><span class="Operator">.</span><span class="Identifier">relu</span><span class="Operator">.</span><span class="Identifier">mp1</span><span class="Operator">.</span><span class="Identifier">cv2</span><span class="Operator">.</span><span class="Identifier">relu</span><span class="Operator">.</span><span class="Identifier">mp2</span><span class="Operator">.</span><span class="Identifier">fl</span><span class="Operator">.</span><span class="Identifier">hidden</span><span class="Operator">.</span><span class="Identifier">relu</span><span class="Operator">.</span><span class="Identifier">classifier</span></pre></dd>
+<p>Performs Einstein summation of the given <tt class="docutils literal"><span class="pre">tensors</span></tt> defined by the <tt class="docutils literal"><span class="pre">stmt</span></tt>. See the top of the module for an explanation on Einstein summation.</p>
+<p>Let <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt> some 2D tensors (matrices), then the usage to perform</p>
+<dl class="docutils"><dt>matrix multiplication of the two might look like:</dt>
+<dd><pre class="listing"><span class="Comment"># implicit Einstein summation</span>
+<span class="Keyword">let</span> <span class="Identifier">c</span> <span class="Operator">=</span> <span class="Identifier">einsum</span><span class="Punctuation">(</span><span class="Identifier">a</span><span class="Punctuation">,</span> <span class="Identifier">b</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
+  <span class="Identifier">a</span><span class="Punctuation">[</span><span class="Identifier">i</span><span class="Punctuation">,</span><span class="Identifier">j</span><span class="Punctuation">]</span> <span class="Operator">*</span> <span class="Identifier">b</span><span class="Punctuation">[</span><span class="Identifier">j</span><span class="Punctuation">,</span><span class="Identifier">k</span><span class="Punctuation">]</span>
+<span class="Comment"># explicit Einstein summation. Note that identifier `d` in statement</span>
+<span class="Comment"># is arbitrary and need not match what will be assigned to.</span>
+<span class="Keyword">let</span> <span class="Identifier">d</span> <span class="Operator">=</span> <span class="Identifier">einsum</span><span class="Punctuation">(</span><span class="Identifier">a</span><span class="Punctuation">,</span> <span class="Identifier">b</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
+  <span class="Identifier">d</span><span class="Punctuation">[</span><span class="Identifier">i</span><span class="Punctuation">,</span><span class="Identifier">k</span><span class="Punctuation">]</span> <span class="Operator">=</span> <span class="Identifier">a</span><span class="Punctuation">[</span><span class="Identifier">i</span><span class="Punctuation">,</span><span class="Identifier">j</span><span class="Punctuation">]</span> <span class="Operator">*</span> <span class="Identifier">b</span><span class="Punctuation">[</span><span class="Identifier">j</span><span class="Punctuation">,</span><span class="Identifier">k</span><span class="Punctuation">]</span> <span class="Comment"># explicit Einstein summation</span></pre></dd>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/nn_dsl/dsl_core.nim#L143"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/einsum.nim#L519"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_dsl/dsl_core.nim#L143" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/einsum.nim#L519" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -248,7 +245,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2020-01-08 23:22:40 UTC</small>
+        <small>Made with Nim. Generated: 2020-01-08 23:22:16 UTC</small>
       </div>
     </div>
   </div>

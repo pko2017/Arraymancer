@@ -81,11 +81,15 @@
         <a href="#">Linear algebra, stats, ML</a>
         <ul class="monospace">
           <li><a href="la.decomposition.html">Eigenvalue decomposition</a></li>
-          <li><a href="la.least_squares.html">Least Squares solver</a></li>
+          <li><a href="la.decomposition_rand.html">Randomized Truncated SVD</a></li>
+          <li><a href="la.least_squares.html">Least squares solver</a></li>
+          <li><a href="la.linear_systems.html">Linear systems solver</a></li>
+          <li><a href="la.special_matrices.html">Special linear algebra matrices</a></li>
           <li><a href="stats.stats.html">Statistics</a></li>
           <li><a href="ml.pca.html">Principal Component Analysis (PCA)</a></li>
           <li><a href="ml.accuracy_score.html">Accuracy score</a></li>
           <li><a href="ml.common_error_functions.html">Common errors, MAE and MSE (L1, L2 loss)</a></li>
+          <li><a href="ml.kmeans.html">K-Means</a></li>
         </ul>
       </span>
       <span>
@@ -102,8 +106,7 @@
       <span>
         <a href="#">Autograd</a>
         <ul class="monospace">
-          <li><a href="ag.ag_accessors.html">Accessors</a></li>
-          <li><a href="ag.ag_data_structure.html">Data structure</a></li>
+          <li><a href="ag.autograd_common.html">Data structure</a></li>
           <li><a href="ag.gates_basic.html">Basic operations</a></li>
           <li><a href="ag.gates_blas.html">Linear algebra operations</a></li>
           <li><a href="ag.gates_hadamard.html">Hadamard product (elementwise matrix multiply)</a></li>
@@ -190,29 +193,29 @@
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#transpose%2CTensor"
-    title="transpose(t: Tensor): Tensor"><wbr />transpose<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="transpose(t: Tensor): Tensor"><wbr />transpose<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#asContiguous%2CTensor%5BT%5D%2COrderType%2Cbool"
-    title="asContiguous[T](t: Tensor[T]; layout: OrderType = rowMajor; force: bool = false): Tensor[T]"><wbr />as<wbr />Contiguous<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="asContiguous[T](t: Tensor[T]; layout: OrderType = rowMajor; force: bool = false): Tensor[T]"><wbr />as<wbr />Contiguous<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#reshape%2CTensor%2Cvarargs%5Bint%5D"
-    title="reshape(t: Tensor; new_shape: varargs[int]): Tensor"><wbr />reshape<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="reshape(t: Tensor; new_shape: varargs[int]): Tensor"><wbr />reshape<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#reshape%2CTensor%2CMetadataArray"
-    title="reshape(t: Tensor; new_shape: MetadataArray): Tensor"><wbr />reshape<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="reshape(t: Tensor; new_shape: MetadataArray): Tensor"><wbr />reshape<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#broadcast%2CTensor%5BT%5D%2Cvarargs%5Bint%5D"
-    title="broadcast[T](t: Tensor[T]; shape: varargs[int]): Tensor[T]"><wbr />broadcast<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="broadcast[T](t: Tensor[T]; shape: varargs[int]): Tensor[T]"><wbr />broadcast<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#broadcast%2CTensor%5BT%5D%2CMetadataArray"
-    title="broadcast[T](t: Tensor[T]; shape: MetadataArray): Tensor[T]"><wbr />broadcast<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="broadcast[T](t: Tensor[T]; shape: MetadataArray): Tensor[T]"><wbr />broadcast<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#broadcast%2CT%2Cvarargs%5Bint%5D"
-    title="broadcast[T: SomeNumber](val: T; shape: varargs[int]): Tensor[T]"><wbr />broadcast<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="broadcast[T: SomeNumber](val: T; shape: varargs[int]): Tensor[T]"><wbr />broadcast<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#broadcast%2CT%2CMetadataArray"
-    title="broadcast[T: SomeNumber](val: T; shape: MetadataArray): Tensor[T]"><wbr />broadcast<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="broadcast[T: SomeNumber](val: T; shape: MetadataArray): Tensor[T]"><wbr />broadcast<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#broadcast2%2CTensor%5BT%5D%2CTensor%5BT%5D"
-    title="broadcast2[T](a, b: Tensor[T]): tuple[a, b: Tensor[T]]"><wbr />broadcast2<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="broadcast2[T](a, b: Tensor[T]): tuple[a, b: Tensor[T]]"><wbr />broadcast2<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#permute%2CTensor%2Cvarargs%5Bint%5D"
-    title="permute(t: Tensor; dims: varargs[int]): Tensor"><wbr />permute<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="permute(t: Tensor; dims: varargs[int]): Tensor"><wbr />permute<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#concat%2Cvarargs%5BTensor%5BT%5D%5D%2Cint"
-    title="concat[T](t_list: varargs[Tensor[T]]; axis: int): Tensor[T]"><wbr />concat<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="concat[T](t_list: varargs[Tensor[T]]; axis: int): Tensor[T]"><wbr />concat<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#stack%2Cvarargs%5BTensor%5BT%5D%5D%2CNatural"
-    title="stack[T](tensors: varargs[Tensor[T]]; axis: Natural = 0): Tensor[T]"><wbr />stack<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="stack[T](tensors: varargs[Tensor[T]]; axis: Natural = 0): Tensor[T]"><wbr />stack<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -220,18 +223,18 @@
   <a class="reference reference-toplevel" href="#13" id="63">Funcs</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#squeeze%2CAnyTensor"
-    title="squeeze(t: AnyTensor): AnyTensor"><wbr />squeeze<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="squeeze(t: AnyTensor): AnyTensor"><wbr />squeeze<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#squeeze%2CTensor%2CNatural"
-    title="squeeze(t: Tensor; axis: Natural): Tensor"><wbr />squeeze<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="squeeze(t: Tensor; axis: Natural): Tensor"><wbr />squeeze<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#unsqueeze%2CTensor%2CNatural"
-    title="unsqueeze(t: Tensor; axis: Natural): Tensor"><wbr />unsqueeze<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="unsqueeze(t: Tensor; axis: Natural): Tensor"><wbr />unsqueeze<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#split%2CTensor%5BT%5D%2CPositive%2CNatural"
-    title="split[T](t: Tensor[T]; chunk_size: Positive; axis: Natural): seq[Tensor[T]]"><wbr />split<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="split[T](t: Tensor[T]; chunk_size: Positive; axis: Natural): seq[Tensor[T]]"><wbr />split<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#chunk%2CTensor%5BT%5D%2CPositive%2CNatural"
-    title="chunk[T](t: Tensor[T]; nb_chunks: Positive; axis: Natural): seq[Tensor[T]]"><wbr />chunk<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="chunk[T](t: Tensor[T]; nb_chunks: Positive; axis: Natural): seq[Tensor[T]]"><wbr />chunk<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#index_select%2CTensor%5BT%5D%2Cint%2CTensor%5BIdx%3A+byte+or+char+or+int+or+int8+or+int16+or+int32+or+int64+or+uint+or+uint8+or+uint16+or+uint32+or+uint64+or+float+or+float32+or+float64%5D"
     title="index_select[T; Idx: byte or char or SomeNumber](t: Tensor[T]; axis: int;
-    indices: Tensor[Idx]): Tensor[T]"><wbr />index_<wbr />select<span class="attachedType" style="visibility:hidden"></span></a></li>
+    indices: Tensor[Idx]): Tensor[T]"><wbr />index_<wbr />select<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -239,9 +242,9 @@
   <a class="reference reference-toplevel" href="#18" id="68">Templates</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#bc.t%2C%2Cvarargs%5Bint%5D"
-    title="bc(t: (Tensor | SomeNumber); shape: varargs[int]): untyped"><wbr />bc<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="bc(t: (Tensor | SomeNumber); shape: varargs[int]): untyped"><wbr />bc<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#bc.t%2C%2CMetadataArray"
-    title="bc(t: (Tensor | SomeNumber); shape: MetadataArray): untyped"><wbr />bc<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="bc(t: (Tensor | SomeNumber); shape: MetadataArray): untyped"><wbr />bc<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -251,6 +254,7 @@
   </div>
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
+  
   <p class="module-desc"></p>
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
@@ -261,36 +265,39 @@
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
 <a id="transpose,Tensor"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">transpose</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Tensor</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span><span class="Other">,</span> <span class="Identifier">noSideEffect</span><span class="Other">,</span> <span class="Identifier">inline</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#transpose%2CTensor"><span class="Identifier">transpose</span></a><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Tensor</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span><span class="Other">,</span> <span class="Identifier">noSideEffect</span><span class="Other">,</span> <span class="Identifier">inline</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Transpose a Tensor.</p>
 <p>For N-d Tensor with shape (0, 1, 2 ... n-1) the resulting tensor will have shape (n-1, ... 2, 1, 0)</p>
 <p>Data is not copied or modified, only metadata is modified.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/shapeshifting.nim#L27"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/shapeshifting.nim#L27"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/shapeshifting.nim#L27" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="asContiguous,Tensor[T],OrderType,bool"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">asContiguous</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">layout</span><span class="Other">:</span> <span class="Identifier">OrderType</span> <span class="Other">=</span> <span class="Identifier">rowMajor</span><span class="Other">;</span> <span class="Identifier">force</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span>
+<dt><pre><span class="Keyword">proc</span> <a href="#asContiguous%2CTensor%5BT%5D%2COrderType%2Cbool"><span class="Identifier">asContiguous</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">layout</span><span class="Other">:</span> <span class="Identifier">OrderType</span> <span class="Other">=</span> <span class="Identifier">rowMajor</span><span class="Other">;</span> <span class="Identifier">force</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span>
     <span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Transform a tensor with general striding to a Tensor with contiguous layout.</p>
 <p>By default tensor will be rowMajor.</p>
 <p>The layout is kept if the tensor is already contiguous (C Major or F major) The &quot;force&quot; parameter can force re-ordering to a specific layout.</p>
 <p>Result is always a fully packed tensor even if the input is a contiguous slice.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/shapeshifting.nim#L38"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/shapeshifting.nim#L38"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/shapeshifting.nim#L38" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="reshape,Tensor,varargs[int]"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">reshape</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">;</span> <span class="Identifier">new_shape</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Tensor</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#reshape%2CTensor%2Cvarargs%5Bint%5D"><span class="Identifier">reshape</span></a><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">;</span> <span class="Identifier">new_shape</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Tensor</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Reshape a tensor. If possible no data copy is done and the returned tensor shares data with the input. If input is not contiguous, this is not possible and a copy will be made.<dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>a tensor</li>
 <li>a new shape. Number of elements must be the same</li>
@@ -303,14 +310,15 @@ Reshape a tensor. If possible no data copy is done and the returned tensor share
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/shapeshifting.nim#L59"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/shapeshifting.nim#L59"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/shapeshifting.nim#L59" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="reshape,Tensor,MetadataArray"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">reshape</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">;</span> <span class="Identifier">new_shape</span><span class="Other">:</span> <a href="metadataArray.html#MetadataArray"><span class="Identifier">MetadataArray</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Tensor</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#reshape%2CTensor%2CMetadataArray"><span class="Identifier">reshape</span></a><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">;</span> <span class="Identifier">new_shape</span><span class="Other">:</span> <a href="metadataArray.html#MetadataArray"><span class="Identifier">MetadataArray</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Tensor</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Reshape a tensor. If possible no data copy is done and the returned tensor shares data with the input. If input is not contiguous, this is not possible and a copy will be made.<dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>a tensor</li>
 <li>a new shape. Number of elements must be the same</li>
@@ -323,14 +331,15 @@ Reshape a tensor. If possible no data copy is done and the returned tensor share
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/shapeshifting.nim#L71"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/shapeshifting.nim#L71"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/shapeshifting.nim#L71" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="broadcast,Tensor[T],varargs[int]"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">broadcast</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">shape</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span><span class="Other">,</span> <span class="Identifier">noSideEffect</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#broadcast%2CTensor%5BT%5D%2Cvarargs%5Bint%5D"><span class="Identifier">broadcast</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">shape</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span><span class="Other">,</span> <span class="Identifier">noSideEffect</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Explicitly broadcast a tensor to the specified shape.</p>
 <p>Dimension(s) of size 1 can be expanded to arbitrary size by replicating values along that dimension.</p>
 <dl class="docutils"><dt>Warning ⚠:</dt>
@@ -338,14 +347,15 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/shapeshifting.nim#L83"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/shapeshifting.nim#L83"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/shapeshifting.nim#L83" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="broadcast,Tensor[T],MetadataArray"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">broadcast</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">shape</span><span class="Other">:</span> <a href="metadataArray.html#MetadataArray"><span class="Identifier">MetadataArray</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span><span class="Other">,</span> <span class="Identifier">noSideEffect</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#broadcast%2CTensor%5BT%5D%2CMetadataArray"><span class="Identifier">broadcast</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">shape</span><span class="Other">:</span> <a href="metadataArray.html#MetadataArray"><span class="Identifier">MetadataArray</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span><span class="Other">,</span> <span class="Identifier">noSideEffect</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Explicitly broadcast a tensor to the specified shape.</p>
 <p>Dimension(s) of size 1 can be expanded to arbitrary size by replicating values along that dimension.</p>
 <dl class="docutils"><dt>Warning ⚠:</dt>
@@ -353,15 +363,16 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/shapeshifting.nim#L95"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/shapeshifting.nim#L95"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/shapeshifting.nim#L95" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="broadcast,T,varargs[int]"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">broadcast</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeNumber</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">val</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">;</span> <span class="Identifier">shape</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span><span class="Other">,</span>
+<dt><pre><span class="Keyword">proc</span> <a href="#broadcast%2CT%2Cvarargs%5Bint%5D"><span class="Identifier">broadcast</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeNumber</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">val</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">;</span> <span class="Identifier">shape</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span><span class="Other">,</span>
     <span class="Identifier">noSideEffect</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Broadcast a number<dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>a number to be broadcasted</li>
 <li>a tensor shape that will be broadcasted to</li>
@@ -378,15 +389,16 @@ Broadcast a number<dl class="docutils"><dt>Input:</dt>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/shapeshifting.nim#L107"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/shapeshifting.nim#L107"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/shapeshifting.nim#L107" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="broadcast,T,MetadataArray"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">broadcast</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeNumber</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">val</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">;</span> <span class="Identifier">shape</span><span class="Other">:</span> <a href="metadataArray.html#MetadataArray"><span class="Identifier">MetadataArray</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span><span class="Other">,</span>
+<dt><pre><span class="Keyword">proc</span> <a href="#broadcast%2CT%2CMetadataArray"><span class="Identifier">broadcast</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeNumber</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">val</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">;</span> <span class="Identifier">shape</span><span class="Other">:</span> <a href="metadataArray.html#MetadataArray"><span class="Identifier">MetadataArray</span></a><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span><span class="Other">,</span>
     <span class="Identifier">noSideEffect</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Broadcast a number<dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>a number to be broadcasted</li>
 <li>a tensor shape that will be broadcasted to</li>
@@ -403,14 +415,15 @@ Broadcast a number<dl class="docutils"><dt>Input:</dt>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/shapeshifting.nim#L127"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/shapeshifting.nim#L127"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/shapeshifting.nim#L127" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="broadcast2,Tensor[T],Tensor[T]"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">broadcast2</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noSideEffect</span><span class="Other">,</span> <span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#broadcast2%2CTensor%5BT%5D%2CTensor%5BT%5D"><span class="Identifier">broadcast2</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noSideEffect</span><span class="Other">,</span> <span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Broadcast 2 tensors so they have compatible shapes for element-wise computations.</p>
 <p>Tensors in the tuple can be accessed with output.a and output.b</p>
 <p>The returned broadcasted Tensors share the underlying data with the input.</p>
@@ -420,14 +433,15 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/shapeshifting.nim#L155"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/shapeshifting.nim#L155"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/shapeshifting.nim#L155" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="permute,Tensor,varargs[int]"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">permute</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">;</span> <span class="Identifier">dims</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Tensor</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span><span class="Other">,</span> <span class="Identifier">noSideEffect</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#permute%2CTensor%2Cvarargs%5Bint%5D"><span class="Identifier">permute</span></a><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">;</span> <span class="Identifier">dims</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Tensor</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span><span class="Other">,</span> <span class="Identifier">noSideEffect</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Permute dimensions of a tensors<dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>a tensor</li>
 <li>the new dimension order</li>
@@ -442,14 +456,15 @@ Permute dimensions of a tensors<dl class="docutils"><dt>Input:</dt>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/shapeshifting.nim#L176"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/shapeshifting.nim#L176"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/shapeshifting.nim#L176" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="concat,varargs[Tensor[T]],int"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">concat</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t_list</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#concat%2Cvarargs%5BTensor%5BT%5D%5D%2Cint"><span class="Identifier">concat</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t_list</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Concatenate tensors<dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>Tensors</li>
 <li>An axis (dimension)</li>
@@ -462,14 +477,15 @@ Concatenate tensors<dl class="docutils"><dt>Input:</dt>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/shapeshifting.nim#L191"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/shapeshifting.nim#L191"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/shapeshifting.nim#L191" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="stack,varargs[Tensor[T]],Natural"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">stack</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">tensors</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">Natural</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#stack%2Cvarargs%5BTensor%5BT%5D%5D%2CNatural"><span class="Identifier">stack</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">tensors</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">Natural</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Join a sequence of tensors along a new axis into a new tensor.<dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>a tensor</li>
 <li>an axis (dimension)</li>
@@ -482,7 +498,7 @@ Join a sequence of tensors along a new axis into a new tensor.<dl class="docutil
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/shapeshifting.nim#L256"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/shapeshifting.nim#L256"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/shapeshifting.nim#L256" class="link-seesrc" target="_blank" >Edit</a>
 
@@ -493,8 +509,9 @@ class="link-seesrc" target="_blank">Source</a>
 <h1><a class="toc-backref" href="#13">Funcs</a></h1>
 <dl class="item">
 <a id="squeeze,AnyTensor"></a>
-<dt><pre><span class="Keyword">func</span> <span class="Identifier">squeeze</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#AnyTensor"><span class="Identifier">AnyTensor</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">AnyTensor</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">func</span> <a href="#squeeze%2CAnyTensor"><span class="Identifier">squeeze</span></a><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#AnyTensor"><span class="Identifier">AnyTensor</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">AnyTensor</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Squeeze tensors. For example a Tensor of shape [4,1,3] will become [4,3]<dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>a tensor</li>
 </ul>
@@ -506,14 +523,15 @@ Squeeze tensors. For example a Tensor of shape [4,1,3] will become [4,3]<dl clas
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/shapeshifting.nim#L226"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/shapeshifting.nim#L226"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/shapeshifting.nim#L226" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="squeeze,Tensor,Natural"></a>
-<dt><pre><span class="Keyword">func</span> <span class="Identifier">squeeze</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">;</span> <span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">Natural</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Tensor</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">func</span> <a href="#squeeze%2CTensor%2CNatural"><span class="Identifier">squeeze</span></a><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">;</span> <span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">Natural</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Tensor</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Collapse the given axis, if the dimension is not 1, it does nothing.<dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>a tensor</li>
 <li>an axis (dimension)</li>
@@ -526,14 +544,15 @@ Collapse the given axis, if the dimension is not 1, it does nothing.<dl class="d
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/shapeshifting.nim#L235"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/shapeshifting.nim#L235"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/shapeshifting.nim#L235" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="unsqueeze,Tensor,Natural"></a>
-<dt><pre><span class="Keyword">func</span> <span class="Identifier">unsqueeze</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">;</span> <span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">Natural</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Tensor</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">func</span> <a href="#unsqueeze%2CTensor%2CNatural"><span class="Identifier">unsqueeze</span></a><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">;</span> <span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">Natural</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Tensor</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Insert a new axis just before the given axis, increasing the tensor dimension (rank) by 1<dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>a tensor</li>
 <li>an axis (dimension)</li>
@@ -546,45 +565,48 @@ Insert a new axis just before the given axis, increasing the tensor dimension (r
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/shapeshifting.nim#L245"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/shapeshifting.nim#L245"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/shapeshifting.nim#L245" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="split,Tensor[T],Positive,Natural"></a>
-<dt><pre><span class="Keyword">func</span> <span class="Identifier">split</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">chunk_size</span><span class="Other">:</span> <span class="Identifier">Positive</span><span class="Other">;</span> <span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">Natural</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<dt><pre><span class="Keyword">func</span> <a href="#split%2CTensor%5BT%5D%2CPositive%2CNatural"><span class="Identifier">split</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">chunk_size</span><span class="Other">:</span> <span class="Identifier">Positive</span><span class="Other">;</span> <span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">Natural</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Split the tensor into chunks of size <tt class="docutils literal"><span class="pre">chunk_size</span></tt> along the specified axis. Last chunk size will equal the remainder if the specified axis length is not divisible by <tt class="docutils literal"><span class="pre">chunk_size</span></tt>
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/shapeshifting.nim#L266"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/shapeshifting.nim#L266"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/shapeshifting.nim#L266" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="chunk,Tensor[T],Positive,Natural"></a>
-<dt><pre><span class="Keyword">func</span> <span class="Identifier">chunk</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">nb_chunks</span><span class="Other">:</span> <span class="Identifier">Positive</span><span class="Other">;</span> <span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">Natural</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">func</span> <a href="#chunk%2CTensor%5BT%5D%2CPositive%2CNatural"><span class="Identifier">chunk</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">nb_chunks</span><span class="Other">:</span> <span class="Identifier">Positive</span><span class="Other">;</span> <span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">Natural</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Splits a Tensor into n chunks along the specified axis.</p>
 <p>In case a tensor cannot be split evenly, with la == length_axis, n = n_chunks</p>
-<dl class="docutils"><dt>it returns la mod n subtensors of size <cite>(la div n) + 1</cite></dt>
-<dd>the rest of size <cite>la div n</cite>.</dd>
+<dl class="docutils"><dt>it returns la mod n subtensors of size <tt class="docutils literal"><span class="pre">(la div n) + 1</span></tt></dt>
+<dd>the rest of size <tt class="docutils literal"><span class="pre">la div n</span></tt>.</dd>
 </dl>
 <p>This is consistent with numpy array_split</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/shapeshifting.nim#L282"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/shapeshifting.nim#L282"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/shapeshifting.nim#L282" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="index_select,Tensor[T],int,Tensor[Idx: byte or char or int or int8 or int16 or int32 or int64 or uint or uint8 or uint16 or uint32 or uint64 or float or float32 or float64]"></a>
-<dt><pre><span class="Keyword">func</span> <span class="Identifier">index_select</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">;</span> <span class="Identifier">Idx</span><span class="Other">:</span> <span class="Identifier">byte</span> <span class="Keyword">or</span> <span class="Identifier">char</span> <span class="Keyword">or</span> <span class="Identifier">SomeNumber</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span>
+<dt><pre><span class="Keyword">func</span> <a href="#index_select%2CTensor%5BT%5D%2Cint%2CTensor%5BIdx%3A+byte+or+char+or+int+or+int8+or+int16+or+int32+or+int64+or+uint+or+uint8+or+uint16+or+uint32+or+uint64+or+float+or+float32+or+float64%5D"><span class="Identifier">index_select</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">;</span> <span class="Identifier">Idx</span><span class="Other">:</span> <span class="Identifier">byte</span> <span class="Keyword">or</span> <span class="Identifier">char</span> <span class="Keyword">or</span> <span class="Identifier">SomeNumber</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">axis</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span>
     <span class="Identifier">indices</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">Idx</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span></pre></dt>
 <dd>
-Take elements from a tensor along an axis using the indices Tensor. This is equivalent to NumPy <cite>take</cite>. The result does not share the input storage, there are copies. The tensors containing the indices can be an integer, byte or char tensor.
+
+Take elements from a tensor along an axis using the indices Tensor. This is equivalent to NumPy <tt class="docutils literal"><span class="pre">take</span></tt>. The result does not share the input storage, there are copies. The tensors containing the indices can be an integer, byte or char tensor.
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/shapeshifting.nim#L303"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/shapeshifting.nim#L303"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/shapeshifting.nim#L303" class="link-seesrc" target="_blank" >Edit</a>
 
@@ -595,21 +617,23 @@ class="link-seesrc" target="_blank">Source</a>
 <h1><a class="toc-backref" href="#18">Templates</a></h1>
 <dl class="item">
 <a id="bc.t,,varargs[int]"></a>
-<dt><pre><span class="Keyword">template</span> <span class="Identifier">bc</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <span class="Other">(</span><a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span class="Operator">|</span> <span class="Identifier">SomeNumber</span><span class="Other">)</span><span class="Other">;</span> <span class="Identifier">shape</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<dt><pre><span class="Keyword">template</span> <a href="#bc.t%2C%2Cvarargs%5Bint%5D"><span class="Identifier">bc</span></a><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <span class="Other">(</span><a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span class="Operator">|</span> <span class="Identifier">SomeNumber</span><span class="Other">)</span><span class="Other">;</span> <span class="Identifier">shape</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
+
 Alias for <tt class="docutils literal"><span class="pre">broadcast</span></tt>
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/shapeshifting.nim#L147"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/shapeshifting.nim#L147"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/shapeshifting.nim#L147" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="bc.t,,MetadataArray"></a>
-<dt><pre><span class="Keyword">template</span> <span class="Identifier">bc</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <span class="Other">(</span><a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span class="Operator">|</span> <span class="Identifier">SomeNumber</span><span class="Other">)</span><span class="Other">;</span> <span class="Identifier">shape</span><span class="Other">:</span> <a href="metadataArray.html#MetadataArray"><span class="Identifier">MetadataArray</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<dt><pre><span class="Keyword">template</span> <a href="#bc.t%2C%2CMetadataArray"><span class="Identifier">bc</span></a><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <span class="Other">(</span><a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a> <span class="Operator">|</span> <span class="Identifier">SomeNumber</span><span class="Other">)</span><span class="Other">;</span> <span class="Identifier">shape</span><span class="Other">:</span> <a href="metadataArray.html#MetadataArray"><span class="Identifier">MetadataArray</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
+
 Alias for <tt class="docutils literal"><span class="pre">broadcast</span></tt>
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/shapeshifting.nim#L151"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/shapeshifting.nim#L151"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/shapeshifting.nim#L151" class="link-seesrc" target="_blank" >Edit</a>
 
@@ -624,7 +648,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-12-23 21:50:48 UTC</small>
+        <small>Made with Nim. Generated: 2020-01-08 23:22:09 UTC</small>
       </div>
     </div>
   </div>

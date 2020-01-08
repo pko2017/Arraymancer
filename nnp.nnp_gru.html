@@ -81,11 +81,15 @@
         <a href="#">Linear algebra, stats, ML</a>
         <ul class="monospace">
           <li><a href="la.decomposition.html">Eigenvalue decomposition</a></li>
-          <li><a href="la.least_squares.html">Least Squares solver</a></li>
+          <li><a href="la.decomposition_rand.html">Randomized Truncated SVD</a></li>
+          <li><a href="la.least_squares.html">Least squares solver</a></li>
+          <li><a href="la.linear_systems.html">Linear systems solver</a></li>
+          <li><a href="la.special_matrices.html">Special linear algebra matrices</a></li>
           <li><a href="stats.stats.html">Statistics</a></li>
           <li><a href="ml.pca.html">Principal Component Analysis (PCA)</a></li>
           <li><a href="ml.accuracy_score.html">Accuracy score</a></li>
           <li><a href="ml.common_error_functions.html">Common errors, MAE and MSE (L1, L2 loss)</a></li>
+          <li><a href="ml.kmeans.html">K-Means</a></li>
         </ul>
       </span>
       <span>
@@ -102,8 +106,7 @@
       <span>
         <a href="#">Autograd</a>
         <ul class="monospace">
-          <li><a href="ag.ag_accessors.html">Accessors</a></li>
-          <li><a href="ag.ag_data_structure.html">Data structure</a></li>
+          <li><a href="ag.autograd_common.html">Data structure</a></li>
           <li><a href="ag.gates_basic.html">Basic operations</a></li>
           <li><a href="ag.gates_blas.html">Linear algebra operations</a></li>
           <li><a href="ag.gates_hadamard.html">Hadamard product (elementwise matrix multiply)</a></li>
@@ -191,28 +194,28 @@
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#gru_cell_inference%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D"
     title="gru_cell_inference[T: SomeFloat](input: Tensor[T]; W3, U3, bW3, bU3: Tensor[T];
-                                hidden: var Tensor[T])"><wbr />gru_<wbr />cell_<wbr />inference<span class="attachedType" style="visibility:hidden"></span></a></li>
+                                hidden: var Tensor[T])"><wbr />gru_<wbr />cell_<wbr />inference<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#gru_cell_forward%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D"
     title="gru_cell_forward[T: SomeFloat](input, W3, U3, bW3, bU3: Tensor[T];
-                              r, z, n, Uh, hidden: var Tensor[T])"><wbr />gru_<wbr />cell_<wbr />forward<span class="attachedType" style="visibility:hidden"></span></a></li>
+                              r, z, n, Uh, hidden: var Tensor[T])"><wbr />gru_<wbr />cell_<wbr />forward<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#gru_cell_backward%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D"
     title="gru_cell_backward[T: SomeFloat](dx, dh, dW3, dU3, dbW3, dbU3: var Tensor[T];
                                dnext: Tensor[T]; x, h, W3, U3: Tensor[T];
-                               r, z, n, Uh: Tensor[T])"><wbr />gru_<wbr />cell_<wbr />backward<span class="attachedType" style="visibility:hidden"></span></a></li>
+                               r, z, n, Uh: Tensor[T])"><wbr />gru_<wbr />cell_<wbr />backward<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#gru_inference%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D"
     title="gru_inference[T: SomeFloat](input: Tensor[T]; W3s0, W3sN: Tensor[T];
-                           U3s, bW3s, bU3s: Tensor[T]; output, hidden: var Tensor[T])"><wbr />gru_<wbr />inference<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#gru_forward%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2Cseq%5BTensor%5BT%3A+SomeFloat%5D%5D%2Cseq%5Bseq%5BTensor%5BT%3A+SomeFloat%5D%5D%5D"
+                           U3s, bW3s, bU3s: Tensor[T]; output, hidden: var Tensor[T])"><wbr />gru_<wbr />inference<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#gru_forward%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2Cseq%5BT%5D%5BTensor%5BT%3A+SomeFloat%5D%5D%2Cseq%5BT%5D%5Bseq%5BT%5D%5BTensor%5BT%3A+SomeFloat%5D%5D%5D"
     title="gru_forward[T: SomeFloat](input: Tensor[T]; W3s0, W3sN: Tensor[T];
                          U3s, bW3s, bU3s: Tensor[T]; rs, zs, ns, Uhs: var Tensor[T];
                          output, hidden: var Tensor[T];
                          cached_inputs: var seq[Tensor[T]];
-                         cached_hiddens: var seq[seq[Tensor[T]]])"><wbr />gru_<wbr />forward<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#gru_backward%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2Cseq%5BTensor%5BT%3A+SomeFloat%5D%5D%2Cseq%5Bseq%5BTensor%5BT%3A+SomeFloat%5D%5D%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D"
+                         cached_hiddens: var seq[seq[Tensor[T]]])"><wbr />gru_<wbr />forward<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#gru_backward%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2Cseq%5BT%5D%5BTensor%5BT%3A+SomeFloat%5D%5D%2Cseq%5BT%5D%5Bseq%5BT%5D%5BTensor%5BT%3A+SomeFloat%5D%5D%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D"
     title="gru_backward[T: SomeFloat](dInput, dHidden0, dW3s0, dW3sN, dU3s, dbW3s, dbU3s: var Tensor[
     T]; dOutput, dHiddenN: Tensor[T]; cached_inputs: seq[Tensor[T]];
                           cached_hiddens: seq[seq[Tensor[T]]];
-                          W3s0, W3sN, U3s, rs, zs, ns, Uhs: Tensor[T])"><wbr />gru_<wbr />backward<span class="attachedType" style="visibility:hidden"></span></a></li>
+                          W3s0, W3sN, U3s, rs, zs, ns, Uhs: Tensor[T])"><wbr />gru_<wbr />backward<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -222,6 +225,7 @@
   </div>
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
+  
   <p class="module-desc"></p>
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
@@ -232,9 +236,10 @@
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
 <a id="gru_cell_inference,Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat]"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">gru_cell_inference</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">input</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">W3</span><span class="Other">,</span> <span class="Identifier">U3</span><span class="Other">,</span> <span class="Identifier">bW3</span><span class="Other">,</span> <span class="Identifier">bU3</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span>
+<dt><pre><span class="Keyword">proc</span> <a href="#gru_cell_inference%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D"><span class="Identifier">gru_cell_inference</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">input</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">W3</span><span class="Other">,</span> <span class="Identifier">U3</span><span class="Other">,</span> <span class="Identifier">bW3</span><span class="Other">,</span> <span class="Identifier">bU3</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span>
                                     <span class="Identifier">hidden</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
 <dd>
+
 <dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>input tensor of shape [batch_size, features]</li>
 <li>weight of input  W3 [3 * hidden_size, features]</li>
@@ -254,15 +259,16 @@
 <p>This is an optimized function when backpropagation is not needed.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/nn_primitives/nnp_gru.nim#L40"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/nn_primitives/nnp_gru.nim#L40"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_primitives/nnp_gru.nim#L40" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="gru_cell_forward,Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat]"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">gru_cell_forward</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">input</span><span class="Other">,</span> <span class="Identifier">W3</span><span class="Other">,</span> <span class="Identifier">U3</span><span class="Other">,</span> <span class="Identifier">bW3</span><span class="Other">,</span> <span class="Identifier">bU3</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span>
+<dt><pre><span class="Keyword">proc</span> <a href="#gru_cell_forward%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D"><span class="Identifier">gru_cell_forward</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">input</span><span class="Other">,</span> <span class="Identifier">W3</span><span class="Other">,</span> <span class="Identifier">U3</span><span class="Other">,</span> <span class="Identifier">bW3</span><span class="Other">,</span> <span class="Identifier">bU3</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span>
                                   <span class="Identifier">r</span><span class="Other">,</span> <span class="Identifier">z</span><span class="Other">,</span> <span class="Identifier">n</span><span class="Other">,</span> <span class="Identifier">Uh</span><span class="Other">,</span> <span class="Identifier">hidden</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
 <dd>
+
 <dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>input tensor of shape [batch_size, features]</li>
 <li>hidden state of shape [batch_size, hidden_size]</li>
@@ -283,16 +289,17 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/nn_primitives/nnp_gru.nim#L90"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/nn_primitives/nnp_gru.nim#L90"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_primitives/nnp_gru.nim#L90" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="gru_cell_backward,Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat]"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">gru_cell_backward</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">dx</span><span class="Other">,</span> <span class="Identifier">dh</span><span class="Other">,</span> <span class="Identifier">dW3</span><span class="Other">,</span> <span class="Identifier">dU3</span><span class="Other">,</span> <span class="Identifier">dbW3</span><span class="Other">,</span> <span class="Identifier">dbU3</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span>
+<dt><pre><span class="Keyword">proc</span> <a href="#gru_cell_backward%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D"><span class="Identifier">gru_cell_backward</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">dx</span><span class="Other">,</span> <span class="Identifier">dh</span><span class="Other">,</span> <span class="Identifier">dW3</span><span class="Other">,</span> <span class="Identifier">dU3</span><span class="Other">,</span> <span class="Identifier">dbW3</span><span class="Other">,</span> <span class="Identifier">dbU3</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span>
                                    <span class="Identifier">dnext</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">,</span> <span class="Identifier">W3</span><span class="Other">,</span> <span class="Identifier">U3</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span>
                                    <span class="Identifier">r</span><span class="Other">,</span> <span class="Identifier">z</span><span class="Other">,</span> <span class="Identifier">n</span><span class="Other">,</span> <span class="Identifier">Uh</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
 <dd>
+
 <dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>dx, dh, dW3, dU3: respectively gradients of<ul class="simple"><li>x, input tensor during the forward pass. Shape [batch_size, features]</li>
 <li>h, hidden state during the forward pass. Shape [batch_size, hidden_size]</li>
@@ -309,32 +316,33 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/nn_primitives/nnp_gru.nim#L148"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/nn_primitives/nnp_gru.nim#L148"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_primitives/nnp_gru.nim#L148" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="gru_inference,Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat]"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">gru_inference</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">input</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">W3s0</span><span class="Other">,</span> <span class="Identifier">W3sN</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span>
+<dt><pre><span class="Keyword">proc</span> <a href="#gru_inference%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D"><span class="Identifier">gru_inference</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">input</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">W3s0</span><span class="Other">,</span> <span class="Identifier">W3sN</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span>
                                <span class="Identifier">U3s</span><span class="Other">,</span> <span class="Identifier">bW3s</span><span class="Other">,</span> <span class="Identifier">bU3s</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span>
                                <span class="Identifier">output</span><span class="Other">,</span> <span class="Identifier">hidden</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
 <dd>
+
 Bidirectional support is not implemented<dl class="docutils"><dt>Inputs:</dt>
-<dd><ul class="simple"><li><cite>input</cite>: Input tensor of shape [sequence/timesteps, batch, features]</li>
-<li><dl class="docutils"><dt>Input weights <cite>W3s</cite> of shapes:</dt>
+<dd><ul class="simple"><li><tt class="docutils literal"><span class="pre">input</span></tt>: Input tensor of shape [sequence/timesteps, batch, features]</li>
+<li><dl class="docutils"><dt>Input weights <tt class="docutils literal"><span class="pre">W3s</span></tt> of shapes:</dt>
 <dd><ul class="simple"><li>W3s0: [3 * hidden_size, features] for the first layer</li>
 <li>W3sN: [num_stacked_layers - 1, 3 * hidden_size, num_directions * hidden_size] for the following layers</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li>A series of hidden state weights <cite>U3s</cite> of shape [num_stacked_layers, 3 * hidden_size, hidden_size]</li>
+<li>A series of hidden state weights <tt class="docutils literal"><span class="pre">U3s</span></tt> of shape [num_stacked_layers, 3 * hidden_size, hidden_size]</li>
 <li>A series of biases for input and hidden state weights of shape [num_stacked_layers, 1, 3 * hidden_size]</li>
 </ul>
 </dd>
 <dt>Outputs:</dt>
-<dd><ul class="simple"><li><cite>output</cite> of shape [sequence/timesteps, batch, num_directions * hidden_size]. <cite>output</cite> contains the output features <cite>hiddenT</cite> for each T (timesteps)</li>
-<li><cite>hidden</cite> of shape [num_stacked_layers * num_directions, batch, hidden_size]. <cite>hidden</cite> contains the hidden state for timestep T == sequence/timesteps length of <cite>input</cite></li>
+<dd><ul class="simple"><li><tt class="docutils literal"><span class="pre">output</span></tt> of shape [sequence/timesteps, batch, num_directions * hidden_size]. <tt class="docutils literal"><span class="pre">output</span></tt> contains the output features <tt class="docutils literal"><span class="pre">hiddenT</span></tt> for each T (timesteps)</li>
+<li><tt class="docutils literal"><span class="pre">hidden</span></tt> of shape [num_stacked_layers * num_directions, batch, hidden_size]. <tt class="docutils literal"><span class="pre">hidden</span></tt> contains the hidden state for timestep T == sequence/timesteps length of <tt class="docutils literal"><span class="pre">input</span></tt></li>
 </ul>
 </dd>
 <dt>⚠️ Input/Output updated in-place:</dt>
@@ -344,43 +352,44 @@ Bidirectional support is not implemented<dl class="docutils"><dt>Inputs:</dt>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/nn_primitives/nnp_gru.nim#L194"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/nn_primitives/nnp_gru.nim#L194"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_primitives/nnp_gru.nim#L194" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<a id="gru_forward,Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],seq[Tensor[T: SomeFloat]],seq[seq[Tensor[T: SomeFloat]]]"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">gru_forward</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">input</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">W3s0</span><span class="Other">,</span> <span class="Identifier">W3sN</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span>
+<a id="gru_forward,Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],seq[T][Tensor[T: SomeFloat]],seq[T][seq[T][Tensor[T: SomeFloat]]]"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gru_forward%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2Cseq%5BT%5D%5BTensor%5BT%3A+SomeFloat%5D%5D%2Cseq%5BT%5D%5Bseq%5BT%5D%5BTensor%5BT%3A+SomeFloat%5D%5D%5D"><span class="Identifier">gru_forward</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">input</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">W3s0</span><span class="Other">,</span> <span class="Identifier">W3sN</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span>
                              <span class="Identifier">U3s</span><span class="Other">,</span> <span class="Identifier">bW3s</span><span class="Other">,</span> <span class="Identifier">bU3s</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span>
                              <span class="Identifier">rs</span><span class="Other">,</span> <span class="Identifier">zs</span><span class="Other">,</span> <span class="Identifier">ns</span><span class="Other">,</span> <span class="Identifier">Uhs</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span>
                              <span class="Identifier">output</span><span class="Other">,</span> <span class="Identifier">hidden</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span>
                              <span class="Identifier">cached_inputs</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span><span class="Other">;</span>
                              <span class="Identifier">cached_hiddens</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">seq</span><span class="Other">[</span><a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
 <dd>
+
 <p>⚠️ API subject to change to match CuDNNs</p>
 <p>Bidirectional support is not implemented</p>
 <dl class="docutils"><dt>Inputs:</dt>
-<dd><ul class="simple"><li><cite>input</cite>: Input tensor of shape [sequence/timesteps, batch, features]</li>
-<li><dl class="docutils"><dt>Input weights <cite>W3s</cite> of shapes:</dt>
+<dd><ul class="simple"><li><tt class="docutils literal"><span class="pre">input</span></tt>: Input tensor of shape [sequence/timesteps, batch, features]</li>
+<li><dl class="docutils"><dt>Input weights <tt class="docutils literal"><span class="pre">W3s</span></tt> of shapes:</dt>
 <dd><ul class="simple"><li>W3s0: [3 * hidden_size, features] for the first layer</li>
 <li>W3sN: [num_stacked_layers - 1, 3 * hidden_size, num_directions * hidden_size] for the following layers</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li>A series of hidden state weights <cite>U3s</cite> of shape [num_stacked_layers, 3 * hidden_size, hidden_size]</li>
+<li>A series of hidden state weights <tt class="docutils literal"><span class="pre">U3s</span></tt> of shape [num_stacked_layers, 3 * hidden_size, hidden_size]</li>
 <li>A series of biases for input and hidden state weights of shape [num_stacked_layers, 1, 3 * hidden_size]</li>
 </ul>
 </dd>
 <dt>Outputs:</dt>
 <dd><ul class="simple"><li>rs, zs, ns, Uhs: intermediate tensors saved for backpropagation. Shape [num_stacked_layers, timesteps, batch_size, hidden_size]. They must be preallocated (but it can be with unitialized buffers).</li>
-<li><cite>output</cite> of shape [sequence/timesteps, batch, num_directions * hidden_size]. <cite>output</cite> contains the output features <cite>hiddenT</cite> for each T (timesteps)</li>
-<li><cite>hidden</cite> of shape [num_stacked_layers * num_directions, batch, hidden_size]. <cite>hidden</cite> contains the hidden state for timestep T == sequence/timesteps length of <cite>input</cite></li>
-<li><cite>cached_inputs</cite>, a sequence of length num_stacked_layers containing<ul class="simple"><li>the first layer input of shape [sequence/timesteps, batch, features]</li>
+<li><tt class="docutils literal"><span class="pre">output</span></tt> of shape [sequence/timesteps, batch, num_directions * hidden_size]. <tt class="docutils literal"><span class="pre">output</span></tt> contains the output features <tt class="docutils literal"><span class="pre">hiddenT</span></tt> for each T (timesteps)</li>
+<li><tt class="docutils literal"><span class="pre">hidden</span></tt> of shape [num_stacked_layers * num_directions, batch, hidden_size]. <tt class="docutils literal"><span class="pre">hidden</span></tt> contains the hidden state for timestep T == sequence/timesteps length of <tt class="docutils literal"><span class="pre">input</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">cached_inputs</span></tt>, a sequence of length num_stacked_layers containing<ul class="simple"><li>the first layer input of shape [sequence/timesteps, batch, features]</li>
 <li>the following layer inputs of shape [sequence/timesteps, batch, num_directions * hidden_size]</li>
 </ul>
 </li>
-<li><cite>cached_hiddens</cite>, a sequence of sequences of length [num_stacked_layers, sequence/timesteps]<ul class="simple"><li>containing all intermediate hidden states for each timesteps for each stacked layers. Hidden states are of tensors of shape [3 * hidden_size, hidden_size]</li>
+<li><tt class="docutils literal"><span class="pre">cached_hiddens</span></tt>, a sequence of sequences of length [num_stacked_layers, sequence/timesteps]<ul class="simple"><li>containing all intermediate hidden states for each timesteps for each stacked layers. Hidden states are of tensors of shape [3 * hidden_size, hidden_size]</li>
 </ul>
 </li>
 </ul>
@@ -392,20 +401,21 @@ class="link-seesrc" target="_blank">Source</a>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/nn_primitives/nnp_gru.nim#L263"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/nn_primitives/nnp_gru.nim#L263"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_primitives/nnp_gru.nim#L263" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<a id="gru_backward,Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],seq[Tensor[T: SomeFloat]],seq[seq[Tensor[T: SomeFloat]]],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat]"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">gru_backward</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">dInput</span><span class="Other">,</span> <span class="Identifier">dHidden0</span><span class="Other">,</span> <span class="Identifier">dW3s0</span><span class="Other">,</span> <span class="Identifier">dW3sN</span><span class="Other">,</span> <span class="Identifier">dU3s</span><span class="Other">,</span> <span class="Identifier">dbW3s</span><span class="Other">,</span> <span class="Identifier">dbU3s</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span>
+<a id="gru_backward,Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],seq[T][Tensor[T: SomeFloat]],seq[T][seq[T][Tensor[T: SomeFloat]]],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat],Tensor[T: SomeFloat]"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#gru_backward%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2Cseq%5BT%5D%5BTensor%5BT%3A+SomeFloat%5D%5D%2Cseq%5BT%5D%5Bseq%5BT%5D%5BTensor%5BT%3A+SomeFloat%5D%5D%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D"><span class="Identifier">gru_backward</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">dInput</span><span class="Other">,</span> <span class="Identifier">dHidden0</span><span class="Other">,</span> <span class="Identifier">dW3s0</span><span class="Other">,</span> <span class="Identifier">dW3sN</span><span class="Other">,</span> <span class="Identifier">dU3s</span><span class="Other">,</span> <span class="Identifier">dbW3s</span><span class="Other">,</span> <span class="Identifier">dbU3s</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span>
     <span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">dOutput</span><span class="Other">,</span> <span class="Identifier">dHiddenN</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">cached_inputs</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span><span class="Other">;</span>
                               <span class="Identifier">cached_hiddens</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">seq</span><span class="Other">[</span><a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span><span class="Other">]</span><span class="Other">;</span>
                               <span class="Identifier">W3s0</span><span class="Other">,</span> <span class="Identifier">W3sN</span><span class="Other">,</span> <span class="Identifier">U3s</span><span class="Other">,</span> <span class="Identifier">rs</span><span class="Other">,</span> <span class="Identifier">zs</span><span class="Other">,</span> <span class="Identifier">ns</span><span class="Other">,</span> <span class="Identifier">Uhs</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
 <dd>
+
 ⚠️ API subject to change to match CuDNNs
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/nn_primitives/nnp_gru.nim#L376"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/nn_primitives/nnp_gru.nim#L376"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/nn_primitives/nnp_gru.nim#L376" class="link-seesrc" target="_blank" >Edit</a>
 
@@ -420,7 +430,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-12-23 21:51:01 UTC</small>
+        <small>Made with Nim. Generated: 2020-01-08 23:22:25 UTC</small>
       </div>
     </div>
   </div>

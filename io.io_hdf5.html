@@ -81,11 +81,15 @@
         <a href="#">Linear algebra, stats, ML</a>
         <ul class="monospace">
           <li><a href="la.decomposition.html">Eigenvalue decomposition</a></li>
-          <li><a href="la.least_squares.html">Least Squares solver</a></li>
+          <li><a href="la.decomposition_rand.html">Randomized Truncated SVD</a></li>
+          <li><a href="la.least_squares.html">Least squares solver</a></li>
+          <li><a href="la.linear_systems.html">Linear systems solver</a></li>
+          <li><a href="la.special_matrices.html">Special linear algebra matrices</a></li>
           <li><a href="stats.stats.html">Statistics</a></li>
           <li><a href="ml.pca.html">Principal Component Analysis (PCA)</a></li>
           <li><a href="ml.accuracy_score.html">Accuracy score</a></li>
           <li><a href="ml.common_error_functions.html">Common errors, MAE and MSE (L1, L2 loss)</a></li>
+          <li><a href="ml.kmeans.html">K-Means</a></li>
         </ul>
       </span>
       <span>
@@ -102,8 +106,7 @@
       <span>
         <a href="#">Autograd</a>
         <ul class="monospace">
-          <li><a href="ag.ag_accessors.html">Accessors</a></li>
-          <li><a href="ag.ag_data_structure.html">Data structure</a></li>
+          <li><a href="ag.autograd_common.html">Data structure</a></li>
           <li><a href="ag.gates_basic.html">Basic operations</a></li>
           <li><a href="ag.gates_blas.html">Linear algebra operations</a></li>
           <li><a href="ag.gates_hadamard.html">Hadamard product (elementwise matrix multiply)</a></li>
@@ -191,18 +194,18 @@
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#read_hdf5%2CH5FileObj%2COption%5Bstring%5D%2COption%5Bstring%5D%2COption%5Bint%5D"
     title="read_hdf5[T: SomeNumber](h5f: var H5FileObj; name, group: Option[string];
-                        number: Option[int]): Tensor[T]"><wbr />read_<wbr />hdf5<span class="attachedType" style="visibility:hidden"></span></a></li>
+                        number: Option[int]): Tensor[T]"><wbr />read_<wbr />hdf5<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#read_hdf5%2CH5FileObj%2Cstring%2Cstring"
-    title="read_hdf5[T: SomeNumber](h5f: var H5FileObj; name, group = &quot;&quot;; number = -1): Tensor[T]"><wbr />read_<wbr />hdf5<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="read_hdf5[T: SomeNumber](h5f: var H5FileObj; name, group = &quot;&quot;; number = -1): Tensor[T]"><wbr />read_<wbr />hdf5<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#read_hdf5%2Cstring%2Cstring%2Cstring"
-    title="read_hdf5[T: SomeNumber](hdf5Path: string; name, group = &quot;&quot;; number = -1): Tensor[T]"><wbr />read_<wbr />hdf5<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="read_hdf5[T: SomeNumber](hdf5Path: string; name, group = &quot;&quot;; number = -1): Tensor[T]"><wbr />read_<wbr />hdf5<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#write_hdf5%2CH5FileObj%2CTensor%5BT%3A+SomeNumber%5D%2COption%5Bstring%5D%2COption%5Bstring%5D"
     title="write_hdf5[T: SomeNumber](h5f: var H5FileObj; t: Tensor[T];
-                         name, group: Option[string])"><wbr />write_<wbr />hdf5<span class="attachedType" style="visibility:hidden"></span></a></li>
+                         name, group: Option[string])"><wbr />write_<wbr />hdf5<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#write_hdf5%2CH5FileObj%2CTensor%5BT%3A+SomeNumber%5D%2Cstring%2Cstring"
-    title="write_hdf5[T: SomeNumber](h5f: var H5FileObj; t: Tensor[T]; name, group = &quot;&quot;)"><wbr />write_<wbr />hdf5<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="write_hdf5[T: SomeNumber](h5f: var H5FileObj; t: Tensor[T]; name, group = &quot;&quot;)"><wbr />write_<wbr />hdf5<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#write_hdf5%2CTensor%5BT%3A+SomeNumber%5D%2Cstring%2Cstring%2Cstring"
-    title="write_hdf5[T: SomeNumber](t: Tensor[T]; hdf5Path: string; name, group = &quot;&quot;)"><wbr />write_<wbr />hdf5<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="write_hdf5[T: SomeNumber](t: Tensor[T]; hdf5Path: string; name, group = &quot;&quot;)"><wbr />write_<wbr />hdf5<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -212,6 +215,7 @@
   </div>
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
+  
   <p class="module-desc"></p>
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
@@ -222,14 +226,15 @@
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
 <a id="read_hdf5,H5FileObj,Option[string],Option[string],Option[int]"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">read_hdf5</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeNumber</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">h5f</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">H5FileObj</span><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">,</span> <span class="Identifier">group</span><span class="Other">:</span> <span class="Identifier">Option</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">;</span>
+<dt><pre><span class="Keyword">proc</span> <a href="#read_hdf5%2CH5FileObj%2COption%5Bstring%5D%2COption%5Bstring%5D%2COption%5Bint%5D"><span class="Identifier">read_hdf5</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeNumber</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">h5f</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">H5FileObj</span><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">,</span> <span class="Identifier">group</span><span class="Other">:</span> <span class="Identifier">Option</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">;</span>
                             <span class="Identifier">number</span><span class="Other">:</span> <span class="Identifier">Option</span><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">noInit</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Reads a .h5 file (written by arraymancer) and returns a tensor of the specified type. If the tensor is stored in a different type in the file, it will be converted.<dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>The H5 file object we read from</li>
 <li>A non-generic name of the tensor to read</li>
 <li>A group different from the root group in which tensor is stored</li>
-<li>if generic names are used the <cite>number</cite>-th tensor to read</li>
+<li>if generic names are used the <tt class="docutils literal"><span class="pre">number</span></tt>-th tensor to read</li>
 </ul>
 </dd>
 <dt>Output:</dt>
@@ -239,68 +244,73 @@ Reads a .h5 file (written by arraymancer) and returns a tensor of the specified 
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/io/io_hdf5.nim#L61"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/io/io_hdf5.nim#L61"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/io/io_hdf5.nim#L61" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="read_hdf5,H5FileObj,string,string"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">read_hdf5</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeNumber</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">h5f</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">H5FileObj</span><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">,</span> <span class="Identifier">group</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">;</span> <span class="Identifier">number</span> <span class="Other">=</span> <span class="Operator">-</span><span class="DecNumber">1</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<dt><pre><span class="Keyword">proc</span> <a href="#read_hdf5%2CH5FileObj%2Cstring%2Cstring"><span class="Identifier">read_hdf5</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeNumber</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">h5f</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">H5FileObj</span><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">,</span> <span class="Identifier">group</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">;</span> <span class="Identifier">number</span> <span class="Other">=</span> <span class="Operator">-</span><span class="DecNumber">1</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">noInit</span><span class="Other">,</span> <span class="Identifier">inline</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
-wrapper around the real <cite>read_hdf5</cite> to provide a nicer interface without having to worry about <cite>some</cite> and <cite>none</cite>
+
+wrapper around the real <tt class="docutils literal"><span class="pre">read_hdf5</span></tt> to provide a nicer interface without having to worry about <tt class="docutils literal"><span class="pre">some</span></tt> and <tt class="docutils literal"><span class="pre">none</span></tt>
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/io/io_hdf5.nim#L111"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/io/io_hdf5.nim#L111"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/io/io_hdf5.nim#L111" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="read_hdf5,string,string,string"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">read_hdf5</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeNumber</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">hdf5Path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">,</span> <span class="Identifier">group</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">;</span> <span class="Identifier">number</span> <span class="Other">=</span> <span class="Operator">-</span><span class="DecNumber">1</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<dt><pre><span class="Keyword">proc</span> <a href="#read_hdf5%2Cstring%2Cstring%2Cstring"><span class="Identifier">read_hdf5</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeNumber</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">hdf5Path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">,</span> <span class="Identifier">group</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">;</span> <span class="Identifier">number</span> <span class="Other">=</span> <span class="Operator">-</span><span class="DecNumber">1</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">noInit</span><span class="Other">,</span> <span class="Identifier">inline</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
-convenience wrapper around <cite>read_hdf5</cite> with <cite>var H5DataSet</cite> argument. opens the given H5 file for reading and then calls the read proc
+
+convenience wrapper around <tt class="docutils literal"><span class="pre">read_hdf5</span></tt> with <tt class="docutils literal"><span class="pre">var H5DataSet</span></tt> argument. opens the given H5 file for reading and then calls the read proc
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/io/io_hdf5.nim#L122"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/io/io_hdf5.nim#L122"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/io/io_hdf5.nim#L122" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="write_hdf5,H5FileObj,Tensor[T: SomeNumber],Option[string],Option[string]"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">write_hdf5</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeNumber</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">h5f</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">H5FileObj</span><span class="Other">;</span> <span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span>
+<dt><pre><span class="Keyword">proc</span> <a href="#write_hdf5%2CH5FileObj%2CTensor%5BT%3A+SomeNumber%5D%2COption%5Bstring%5D%2COption%5Bstring%5D"><span class="Identifier">write_hdf5</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeNumber</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">h5f</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">H5FileObj</span><span class="Other">;</span> <span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span>
                              <span class="Identifier">name</span><span class="Other">,</span> <span class="Identifier">group</span><span class="Other">:</span> <span class="Identifier">Option</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
 <dd>
-Exports a tensor to a hdf5 file To keep this a simple convenience proc, the tensor is stored in the root group of the hdf5 file under a generic name. If the <cite>name</cite> argument is given, the tensor is stored under this name instead. If the <cite>group</cite> argument is given the tensor is stored in that group instead of the root group. Note: if no <cite>name</cite> is given, we need to visit the whole file to check for existing tensors. This will introduce a small overhead!<dl class="docutils"><dt>Input:</dt>
+
+Exports a tensor to a hdf5 file To keep this a simple convenience proc, the tensor is stored in the root group of the hdf5 file under a generic name. If the <tt class="docutils literal"><span class="pre">name</span></tt> argument is given, the tensor is stored under this name instead. If the <tt class="docutils literal"><span class="pre">group</span></tt> argument is given the tensor is stored in that group instead of the root group. Note: if no <tt class="docutils literal"><span class="pre">name</span></tt> is given, we need to visit the whole file to check for existing tensors. This will introduce a small overhead!<dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>The tensor to write</li>
 <li>The H5 file object we write to</li>
 <li>An optional name for the dataset of the tensor in the file Useful to store multiple tensors in a single HDF5 file</li>
-<li>An optional name for a <cite>group</cite> to store the tensor in</li>
+<li>An optional name for a <tt class="docutils literal"><span class="pre">group</span></tt> to store the tensor in</li>
 </ul>
 </dd>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/io/io_hdf5.nim#L132"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/io/io_hdf5.nim#L132"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/io/io_hdf5.nim#L132" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="write_hdf5,H5FileObj,Tensor[T: SomeNumber],string,string"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">write_hdf5</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeNumber</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">h5f</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">H5FileObj</span><span class="Other">;</span> <span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">,</span> <span class="Identifier">group</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#write_hdf5%2CH5FileObj%2CTensor%5BT%3A+SomeNumber%5D%2Cstring%2Cstring"><span class="Identifier">write_hdf5</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeNumber</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">h5f</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">H5FileObj</span><span class="Other">;</span> <span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">,</span> <span class="Identifier">group</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
-wrapper around the real <cite>write_hdf5</cite> to provide a nicer interface without having to worry about <cite>some</cite> and <cite>none</cite>
+
+wrapper around the real <tt class="docutils literal"><span class="pre">write_hdf5</span></tt> to provide a nicer interface without having to worry about <tt class="docutils literal"><span class="pre">some</span></tt> and <tt class="docutils literal"><span class="pre">none</span></tt>
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/io/io_hdf5.nim#L173"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/io/io_hdf5.nim#L173"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/io/io_hdf5.nim#L173" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="write_hdf5,Tensor[T: SomeNumber],string,string,string"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">write_hdf5</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeNumber</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">hdf5Path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">,</span> <span class="Identifier">group</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#write_hdf5%2CTensor%5BT%3A+SomeNumber%5D%2Cstring%2Cstring%2Cstring"><span class="Identifier">write_hdf5</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeNumber</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">hdf5Path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">,</span> <span class="Identifier">group</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
-convenience wrapper around <cite>write_hdf5</cite> with <cite>var H5DataSet</cite> argument. opens the given H5 file for writing and then calls the write proc
+
+convenience wrapper around <tt class="docutils literal"><span class="pre">write_hdf5</span></tt> with <tt class="docutils literal"><span class="pre">var H5DataSet</span></tt> argument. opens the given H5 file for writing and then calls the write proc
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/io/io_hdf5.nim#L183"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/io/io_hdf5.nim#L183"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/io/io_hdf5.nim#L183" class="link-seesrc" target="_blank" >Edit</a>
 
@@ -315,7 +325,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-12-23 21:51:49 UTC</small>
+        <small>Made with Nim. Generated: 2020-01-08 23:22:54 UTC</small>
       </div>
     </div>
   </div>

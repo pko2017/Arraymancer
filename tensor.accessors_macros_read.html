@@ -81,11 +81,15 @@
         <a href="#">Linear algebra, stats, ML</a>
         <ul class="monospace">
           <li><a href="la.decomposition.html">Eigenvalue decomposition</a></li>
-          <li><a href="la.least_squares.html">Least Squares solver</a></li>
+          <li><a href="la.decomposition_rand.html">Randomized Truncated SVD</a></li>
+          <li><a href="la.least_squares.html">Least squares solver</a></li>
+          <li><a href="la.linear_systems.html">Linear systems solver</a></li>
+          <li><a href="la.special_matrices.html">Special linear algebra matrices</a></li>
           <li><a href="stats.stats.html">Statistics</a></li>
           <li><a href="ml.pca.html">Principal Component Analysis (PCA)</a></li>
           <li><a href="ml.accuracy_score.html">Accuracy score</a></li>
           <li><a href="ml.common_error_functions.html">Common errors, MAE and MSE (L1, L2 loss)</a></li>
+          <li><a href="ml.kmeans.html">K-Means</a></li>
         </ul>
       </span>
       <span>
@@ -102,8 +106,7 @@
       <span>
         <a href="#">Autograd</a>
         <ul class="monospace">
-          <li><a href="ag.ag_accessors.html">Accessors</a></li>
-          <li><a href="ag.ag_data_structure.html">Data structure</a></li>
+          <li><a href="ag.autograd_common.html">Data structure</a></li>
           <li><a href="ag.gates_basic.html">Basic operations</a></li>
           <li><a href="ag.gates_blas.html">Linear algebra operations</a></li>
           <li><a href="ag.gates_hadamard.html">Hadamard product (elementwise matrix multiply)</a></li>
@@ -190,7 +193,7 @@
   <a class="reference reference-toplevel" href="#17" id="67">Macros</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#%5B%5D.m%2CAnyTensor%5BT%5D%2Cvarargs%5Buntyped%5D"
-    title="`[]`[T](t: AnyTensor[T]; args: varargs[untyped]): untyped"><wbr />`[]`<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="`[]`[T](t: AnyTensor[T]; args: varargs[untyped]): untyped"><wbr />`[]`<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -200,6 +203,7 @@
   </div>
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
+  
   <p class="module-desc"></p>
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
@@ -210,8 +214,9 @@
 <h1><a class="toc-backref" href="#17">Macros</a></h1>
 <dl class="item">
 <a id="[].m,AnyTensor[T],varargs[untyped]"></a>
-<dt><pre><span class="Keyword">macro</span> <span class="Identifier">`[]`</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#AnyTensor"><span class="Identifier">AnyTensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">args</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">untyped</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
+<dt><pre><span class="Keyword">macro</span> <a href="#%5B%5D.m%2CAnyTensor%5BT%5D%2Cvarargs%5Buntyped%5D"><span class="Identifier">`[]`</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">t</span><span class="Other">:</span> <a href="data_structure.html#AnyTensor"><span class="Identifier">AnyTensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">args</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">untyped</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
+
 Slice a Tensor or a CudaTensor<dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>a Tensor or a CudaTensor</li>
 <li>and:<ul class="simple"><li>specific coordinates (<tt class="docutils literal"><span class="pre">varargs[int]</span></tt>)</li>
@@ -252,7 +257,7 @@ Slice a Tensor or a CudaTensor<dl class="docutils"><dt>Input:</dt>
 </dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/accessors_macros_read.nim#L20"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/accessors_macros_read.nim#L20"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/accessors_macros_read.nim#L20" class="link-seesrc" target="_blank" >Edit</a>
 
@@ -267,7 +272,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-12-23 21:50:40 UTC</small>
+        <small>Made with Nim. Generated: 2020-01-08 23:22:11 UTC</small>
       </div>
     </div>
   </div>

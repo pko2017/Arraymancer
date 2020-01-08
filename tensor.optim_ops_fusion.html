@@ -81,11 +81,15 @@
         <a href="#">Linear algebra, stats, ML</a>
         <ul class="monospace">
           <li><a href="la.decomposition.html">Eigenvalue decomposition</a></li>
-          <li><a href="la.least_squares.html">Least Squares solver</a></li>
+          <li><a href="la.decomposition_rand.html">Randomized Truncated SVD</a></li>
+          <li><a href="la.least_squares.html">Least squares solver</a></li>
+          <li><a href="la.linear_systems.html">Linear systems solver</a></li>
+          <li><a href="la.special_matrices.html">Special linear algebra matrices</a></li>
           <li><a href="stats.stats.html">Statistics</a></li>
           <li><a href="ml.pca.html">Principal Component Analysis (PCA)</a></li>
           <li><a href="ml.accuracy_score.html">Accuracy score</a></li>
           <li><a href="ml.common_error_functions.html">Common errors, MAE and MSE (L1, L2 loss)</a></li>
+          <li><a href="ml.kmeans.html">K-Means</a></li>
         </ul>
       </span>
       <span>
@@ -102,8 +106,7 @@
       <span>
         <a href="#">Autograd</a>
         <ul class="monospace">
-          <li><a href="ag.ag_accessors.html">Accessors</a></li>
-          <li><a href="ag.ag_data_structure.html">Data structure</a></li>
+          <li><a href="ag.autograd_common.html">Data structure</a></li>
           <li><a href="ag.gates_basic.html">Basic operations</a></li>
           <li><a href="ag.gates_blas.html">Linear algebra operations</a></li>
           <li><a href="ag.gates_hadamard.html">Hadamard product (elementwise matrix multiply)</a></li>
@@ -192,19 +195,19 @@
       <li><a class="reference" href="#rewriteTensor_MultiplyAdd.t%2CTensor%5BT%5D%2CTensor%5BT%5D%2CTensor%5BT%5D"
     title="rewriteTensor_MultiplyAdd{
   `*`(A, B) + C
-}[T](A, B, C: Tensor[T]): auto"><wbr />rewrite<wbr />Tensor_<wbr />Multiply<wbr />Add<span class="attachedType" style="visibility:hidden"></span></a></li>
+}[T](A, B, C: Tensor[T]): auto"><wbr />rewrite<wbr />Tensor_<wbr />Multiply<wbr />Add<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#rewriteTensor_MultiplyAdd.t%2CTensor%5BT%5D%2CTensor%5BT%5D%2CTensor%5BT%5D_2"
     title="rewriteTensor_MultiplyAdd{
   C + `*`(A, B)
-}[T](A, B, C: Tensor[T]): auto"><wbr />rewrite<wbr />Tensor_<wbr />Multiply<wbr />Add<span class="attachedType" style="visibility:hidden"></span></a></li>
+}[T](A, B, C: Tensor[T]): auto"><wbr />rewrite<wbr />Tensor_<wbr />Multiply<wbr />Add<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#rewriteTensor_MultiplyAdd_inplace.t%2CTensor%5BT%5D%2CTensor%5BT%5D%2CTensor%5BT%5D"
     title="rewriteTensor_MultiplyAdd_inplace{
   C += `*`(A, B)
-}[T](A, B: Tensor[T]; C: var Tensor[T])"><wbr />rewrite<wbr />Tensor_<wbr />Multiply<wbr />Add_<wbr />inplace<span class="attachedType" style="visibility:hidden"></span></a></li>
+}[T](A, B: Tensor[T]; C: var Tensor[T])"><wbr />rewrite<wbr />Tensor_<wbr />Multiply<wbr />Add_<wbr />inplace<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#rewriteToTensorReshape.t%2CopenArray%2Cvarargs%5Bint%5D%2Cstatic%5Bint%5D"
     title="rewriteToTensorReshape{
   reshape(toTensor(oa, dummy_bugfix), shape)
-}(oa: openArray; shape: varargs[int]; dummy_bugfix: static[int]): auto"><wbr />rewrite<wbr />To<wbr />Tensor<wbr />Reshape<span class="attachedType" style="visibility:hidden"></span></a></li>
+}(oa: openArray; shape: varargs[int]; dummy_bugfix: static[int]): auto"><wbr />rewrite<wbr />To<wbr />Tensor<wbr />Reshape<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -214,6 +217,7 @@
   </div>
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
+  
   <p class="module-desc"></p>
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
@@ -224,59 +228,63 @@
 <h1><a class="toc-backref" href="#18">Templates</a></h1>
 <dl class="item">
 <a id="rewriteTensor_MultiplyAdd.t,Tensor[T],Tensor[T],Tensor[T]"></a>
-<dt><pre><span class="Keyword">template</span> <span class="Identifier">rewriteTensor_MultiplyAdd</span><span class="Other">{</span>
+<dt><pre><span class="Keyword">template</span> <a href="#rewriteTensor_MultiplyAdd.t%2CTensor%5BT%5D%2CTensor%5BT%5D%2CTensor%5BT%5D"><span class="Identifier">rewriteTensor_MultiplyAdd</span></a><span class="Other">{</span>
   <span class="Other">`</span><span class="Operator">*</span><span class="Other">`</span><span class="Other">(</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">)</span> <span class="Operator">+</span> <span class="Identifier">C</span>
 <span class="Other">}</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">,</span> <span class="Identifier">C</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span></pre></dt>
 <dd>
+
 <p>Fuse <tt class="docutils literal"><span class="pre">A*B + C</span></tt> into a single operation.</p>
 <p>Operation fusion leverage the Nim compiler and should not be called explicitly.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/optim_ops_fusion.nim#L54"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/optim_ops_fusion.nim#L53"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/optim_ops_fusion.nim#L54" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/optim_ops_fusion.nim#L53" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="rewriteTensor_MultiplyAdd.t,Tensor[T],Tensor[T],Tensor[T]_2"></a>
-<dt><pre><span class="Keyword">template</span> <span class="Identifier">rewriteTensor_MultiplyAdd</span><span class="Other">{</span>
+<dt><pre><span class="Keyword">template</span> <a href="#rewriteTensor_MultiplyAdd.t%2CTensor%5BT%5D%2CTensor%5BT%5D%2CTensor%5BT%5D_2"><span class="Identifier">rewriteTensor_MultiplyAdd</span></a><span class="Other">{</span>
   <span class="Identifier">C</span> <span class="Operator">+</span> <span class="Other">`</span><span class="Operator">*</span><span class="Other">`</span><span class="Other">(</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">)</span>
 <span class="Other">}</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">,</span> <span class="Identifier">C</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span></pre></dt>
 <dd>
+
 <p>Fuse <tt class="docutils literal"><span class="pre">C + A * B</span></tt> into a single operation.</p>
 <p>Operation fusion leverage the Nim compiler and should not be called explicitly.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/optim_ops_fusion.nim#L61"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/optim_ops_fusion.nim#L60"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/optim_ops_fusion.nim#L61" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/optim_ops_fusion.nim#L60" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="rewriteTensor_MultiplyAdd_inplace.t,Tensor[T],Tensor[T],Tensor[T]"></a>
-<dt><pre><span class="Keyword">template</span> <span class="Identifier">rewriteTensor_MultiplyAdd_inplace</span><span class="Other">{</span>
+<dt><pre><span class="Keyword">template</span> <a href="#rewriteTensor_MultiplyAdd_inplace.t%2CTensor%5BT%5D%2CTensor%5BT%5D%2CTensor%5BT%5D"><span class="Identifier">rewriteTensor_MultiplyAdd_inplace</span></a><span class="Other">{</span>
   <span class="Identifier">C</span> <span class="Operator">+=</span> <span class="Other">`</span><span class="Operator">*</span><span class="Other">`</span><span class="Other">(</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">)</span>
 <span class="Other">}</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">A</span><span class="Other">,</span> <span class="Identifier">B</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">C</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
 <dd>
+
 <p>Fuse <tt class="docutils literal"><span class="pre">C+=A*B</span></tt> into a single operation.</p>
 <p>Operation fusion leverage the Nim compiler and should not be called explicitly.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/optim_ops_fusion.nim#L70"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/optim_ops_fusion.nim#L69"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/optim_ops_fusion.nim#L70" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/optim_ops_fusion.nim#L69" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="rewriteToTensorReshape.t,openArray,varargs[int],static[int]"></a>
-<dt><pre><span class="Keyword">template</span> <span class="Identifier">rewriteToTensorReshape</span><span class="Other">{</span>
+<dt><pre><span class="Keyword">template</span> <a href="#rewriteToTensorReshape.t%2CopenArray%2Cvarargs%5Bint%5D%2Cstatic%5Bint%5D"><span class="Identifier">rewriteToTensorReshape</span></a><span class="Other">{</span>
   <span class="Identifier">reshape</span><span class="Other">(</span><span class="Identifier">toTensor</span><span class="Other">(</span><span class="Identifier">oa</span><span class="Other">,</span> <span class="Identifier">dummy_bugfix</span><span class="Other">)</span><span class="Other">,</span> <span class="Identifier">shape</span><span class="Other">)</span>
 <span class="Other">}</span><span class="Other">(</span><span class="Identifier">oa</span><span class="Other">:</span> <span class="Identifier">openArray</span><span class="Other">;</span> <span class="Identifier">shape</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">dummy_bugfix</span><span class="Other">:</span> <span class="Identifier">static</span><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">auto</span></pre></dt>
 <dd>
+
 <p>Fuse <tt class="docutils literal"><span class="pre">sequence.toTensor.reshape(new_shape)</span></tt> into a single operation.</p>
 <p>Operation fusion leverage the Nim compiler and should not be called explicitly.</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/tensor/optim_ops_fusion.nim#L106"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/tensor/optim_ops_fusion.nim#L105"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/optim_ops_fusion.nim#L106" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/tensor/optim_ops_fusion.nim#L105" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -289,7 +297,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-12-23 21:50:38 UTC</small>
+        <small>Made with Nim. Generated: 2020-01-08 23:22:15 UTC</small>
       </div>
     </div>
   </div>

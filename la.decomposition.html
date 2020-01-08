@@ -81,11 +81,15 @@
         <a href="#">Linear algebra, stats, ML</a>
         <ul class="monospace">
           <li><a href="la.decomposition.html">Eigenvalue decomposition</a></li>
-          <li><a href="la.least_squares.html">Least Squares solver</a></li>
+          <li><a href="la.decomposition_rand.html">Randomized Truncated SVD</a></li>
+          <li><a href="la.least_squares.html">Least squares solver</a></li>
+          <li><a href="la.linear_systems.html">Linear systems solver</a></li>
+          <li><a href="la.special_matrices.html">Special linear algebra matrices</a></li>
           <li><a href="stats.stats.html">Statistics</a></li>
           <li><a href="ml.pca.html">Principal Component Analysis (PCA)</a></li>
           <li><a href="ml.accuracy_score.html">Accuracy score</a></li>
           <li><a href="ml.common_error_functions.html">Common errors, MAE and MSE (L1, L2 loss)</a></li>
+          <li><a href="ml.kmeans.html">K-Means</a></li>
         </ul>
       </span>
       <span>
@@ -102,8 +106,7 @@
       <span>
         <a href="#">Autograd</a>
         <ul class="monospace">
-          <li><a href="ag.ag_accessors.html">Accessors</a></li>
-          <li><a href="ag.ag_data_structure.html">Data structure</a></li>
+          <li><a href="ag.autograd_common.html">Data structure</a></li>
           <li><a href="ag.gates_basic.html">Basic operations</a></li>
           <li><a href="ag.gates_blas.html">Linear algebra operations</a></li>
           <li><a href="ag.gates_hadamard.html">Hadamard product (elementwise matrix multiply)</a></li>
@@ -189,13 +192,19 @@
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#symeig%2CTensor%5BT%3A+SomeFloat%5D"
-    title="symeig[T: SomeFloat](a: Tensor[T]; eigenvectors = false): tuple[
-    eigenval, eigenvec: Tensor[T]]"><wbr />symeig<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#symeig%2CTensor%5BT%3A+SomeFloat%5D%2CHSlice%5B%2C%5D"
-    title="symeig[T: SomeFloat](a: Tensor[T]; eigenvectors = false;
-                    slice: HSlice[[type node], [type node]]): tuple[
-    eigenval, eigenvec: Tensor[T]]"><wbr />symeig<span class="attachedType" style="visibility:hidden"></span></a></li>
+      <li><a class="reference" href="#symeig%2CTensor%5BT%3A+SomeFloat%5D%2Cchar"
+    title="symeig[T: SomeFloat](a: Tensor[T]; return_eigenvectors: static bool = false;
+                    uplo: static char = &apos;U&apos;): tuple[eigenval, eigenvec: Tensor[T]]"><wbr />symeig<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#symeig%2CTensor%5BT%3A+SomeFloat%5D%2Cchar%2CHSlice%5B%2C%5D"
+    title="symeig[T: SomeFloat](a: Tensor[T]; return_eigenvectors: static bool = false;
+                    uplo: static char = &apos;U&apos;; slice: HSlice[[type node], [type node]]): tuple[
+    eigenval, eigenvec: Tensor[T]]"><wbr />symeig<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#qr%2CTensor%5BT%3A+SomeFloat%5D"
+    title="qr[T: SomeFloat](a: Tensor[T]): tuple[Q, R: Tensor[T]]"><wbr />qr<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#lu_permuted%2CTensor%5BT%3A+SomeFloat%5D"
+    title="lu_permuted[T: SomeFloat](a: Tensor[T]): tuple[PL, U: Tensor[T]]"><wbr />lu_<wbr />permuted<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#svd%2CTensor%5BT%3A+SomeFloat%5D"
+    title="svd[T: SomeFloat](A: Tensor[T]): tuple[U, S, Vh: Tensor[T]]"><wbr />svd<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -205,22 +214,26 @@
   </div>
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
+  
   <p class="module-desc"></p>
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="sequninit.html">sequninit</a>, <a class="reference external" href="tensor.html">tensor</a>, <a class="reference external" href="p_init_cpu.html">p_init_cpu</a>
+<a class="reference external" href="tensor.html">tensor</a>, <a class="reference external" href="sequninit.html">sequninit</a>, <a class="reference external" href="decomposition_lapack.html">decomposition_lapack</a>, <a class="reference external" href="triangular.html">triangular</a>, <a class="reference external" href="auxiliary_lapack.html">auxiliary_lapack</a>
 </dl></div>
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<a id="symeig,Tensor[T: SomeFloat]"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">symeig</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">eigenvectors</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span>
-    <span class="Identifier">eigenval</span><span class="Other">,</span> <span class="Identifier">eigenvec</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="symeig,Tensor[T: SomeFloat],char"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#symeig%2CTensor%5BT%3A+SomeFloat%5D%2Cchar"><span class="Identifier">symeig</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">return_eigenvectors</span><span class="Other">:</span> <span class="Identifier">static</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span>
+                        <span class="Identifier">uplo</span><span class="Other">:</span> <span class="Identifier">static</span> <span class="Identifier">char</span> <span class="Other">=</span> <span class="CharLit">'U'</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">eigenval</span><span class="Other">,</span> <span class="Identifier">eigenvec</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">inline</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Compute the eigenvalues and eigen vectors of a symmetric matrix<dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>A symmetric matrix of shape [n x n]</li>
 <li>A boolean: true if you also want the eigenvectors, false otherwise</li>
+<li>A char U for upper or L for lower This allows you to only fill half of the input symmetric matrix</li>
 </ul>
 </dd>
 <dt>Returns:</dt>
@@ -234,19 +247,22 @@ Compute the eigenvalues and eigen vectors of a symmetric matrix<dl class="docuti
 <p>Implementation is done through the Multiple Relatively Robust Representations</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/linear_algebra/decomposition.nim#L127"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/linear_algebra/decomposition.nim#L19"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/linear_algebra/decomposition.nim#L127" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/linear_algebra/decomposition.nim#L19" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<a id="symeig,Tensor[T: SomeFloat],HSlice[,]"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">symeig</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">eigenvectors</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span>
+<a id="symeig,Tensor[T: SomeFloat],char,HSlice[,]"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#symeig%2CTensor%5BT%3A+SomeFloat%5D%2Cchar%2CHSlice%5B%2C%5D"><span class="Identifier">symeig</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">return_eigenvectors</span><span class="Other">:</span> <span class="Identifier">static</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">;</span>
+                        <span class="Identifier">uplo</span><span class="Other">:</span> <span class="Identifier">static</span> <span class="Identifier">char</span> <span class="Other">=</span> <span class="CharLit">'U'</span><span class="Other">;</span>
                         <span class="Identifier">slice</span><span class="Other">:</span> <span class="Identifier">HSlice</span><span class="Other">[</span>[type node]<span class="Other">,</span> [type node]<span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span>
     <span class="Identifier">eigenval</span><span class="Other">,</span> <span class="Identifier">eigenvec</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Compute the eigenvalues and eigen vectors of a symmetric matrix<dl class="docutils"><dt>Input:</dt>
 <dd><ul class="simple"><li>A symmetric matrix of shape [n, n]</li>
 <li>A boolean: true if you also want the eigenvectors, false otherwise</li>
+<li>A char U for upper or L for lower This allows you to only fill half of the input symmetric matrix</li>
 <li>A slice of the rankings of eigenvalues you request. For example requesting eigenvalues 2 and 3 would be done with 1..2.</li>
 </ul>
 </dd>
@@ -261,9 +277,94 @@ Compute the eigenvalues and eigen vectors of a symmetric matrix<dl class="docuti
 <p>Implementation is done through the Multiple Relatively Robust Representations</p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/linear_algebra/decomposition.nim#L143"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/linear_algebra/decomposition.nim#L39"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/linear_algebra/decomposition.nim#L143" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/linear_algebra/decomposition.nim#L39" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+<a id="qr,Tensor[T: SomeFloat]"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#qr%2CTensor%5BT%3A+SomeFloat%5D"><span class="Identifier">qr</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">Q</span><span class="Other">,</span> <span class="Identifier">R</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span></pre></dt>
+<dd>
+
+Compute the QR decomposition of an input matrix <tt class="docutils literal"><span class="pre">a</span></tt> Decomposition is done through the Householder method without pivoting.<dl class="docutils"><dt>Input:</dt>
+<dd><ul class="simple"><li><tt class="docutils literal"><span class="pre">a</span></tt>, matrix of shape [M, N]</li>
+</ul>
+</dd>
+</dl>
+<p>We note K = min(M, N)</p>
+<dl class="docutils"><dt>Returns:</dt>
+<dd><ul class="simple"><li>Q orthonormal matrix of shape [M, K]</li>
+<li>R upper-triangular matrix of shape [K, N]</li>
+</ul>
+</dd>
+</dl>
+
+&nbsp;&nbsp;<a
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/linear_algebra/decomposition.nim#L63"
+class="link-seesrc" target="_blank">Source</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/linear_algebra/decomposition.nim#L63" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+<a id="lu_permuted,Tensor[T: SomeFloat]"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#lu_permuted%2CTensor%5BT%3A+SomeFloat%5D"><span class="Identifier">lu_permuted</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">PL</span><span class="Other">,</span> <span class="Identifier">U</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span></pre></dt>
+<dd>
+
+<p>Compute the pivoted LU decomposition of an input matrix <tt class="docutils literal"><span class="pre">a</span></tt>.</p>
+<p>The decomposition solves the equation: A = P L U</p>
+<dl class="docutils"><dt>where:</dt>
+<dd><ul class="simple"><li>P is a permutation matrix</li>
+<li>L is a lower-triangular matrix with unit diagonal</li>
+<li>U is an upper-triangular matrix</li>
+</ul>
+</dd>
+<dt>Input:</dt>
+<dd><ul class="simple"><li><tt class="docutils literal"><span class="pre">a</span></tt>, a MxN matrix</li>
+</ul>
+</dd>
+<dt>Output:</dt>
+<dd>with K = min(M, N)<ul class="simple"><li>PL, the product of P and L, of shape [M, K]</li>
+<li>U, upper-triangular matrix of shape [K, N]</li>
+</ul>
+</dd>
+</dl>
+
+&nbsp;&nbsp;<a
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/linear_algebra/decomposition.nim#L93"
+class="link-seesrc" target="_blank">Source</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/linear_algebra/decomposition.nim#L93" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+<a id="svd,Tensor[T: SomeFloat]"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#svd%2CTensor%5BT%3A+SomeFloat%5D"><span class="Identifier">svd</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">A</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">U</span><span class="Other">,</span> <span class="Identifier">S</span><span class="Other">,</span> <span class="Identifier">Vh</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">]</span></pre></dt>
+<dd>
+
+Compute the Singular Value Decomposition of an input matrix <tt class="docutils literal"><span class="pre">a</span></tt> Decomposition is done through recursive divide &amp; conquer.<dl class="docutils"><dt>Input:</dt>
+<dd><ul class="simple"><li><tt class="docutils literal"><span class="pre">A</span></tt>, matrix of shape [M, N]</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd>with K = min(M, N)<ul class="simple"><li><tt class="docutils literal"><span class="pre">U</span></tt>: Unitary matrix of shape [M, K] with left singular vectors as columns</li>
+<li><tt class="docutils literal"><span class="pre">S</span></tt>: Singular values diagonal of length K in decreasing order</li>
+<li><tt class="docutils literal"><span class="pre">Vh</span></tt>: Unitary matrix of shape [K, N] with right singular vectors as rows</li>
+</ul>
+</dd>
+</dl>
+<p>SVD solves the equation: A = U S V.h</p>
+<ul class="simple"><li>with S being a diagonal matrix of singular values</li>
+<li>with V being the right singular vectors and V.h being the hermitian conjugate of V for real matrices, this is equivalent to V.t (transpose)</li>
+</ul>
+<p>⚠️: Input must not contain NaN</p>
+<p>Compared to Numpy svd procedure, we default to &quot;full_matrices = false&quot;.</p>
+<dl class="docutils"><dt>Exception:</dt>
+<dd><ul class="simple"><li>This can throw if the algorithm did not converge.</li>
+</ul>
+</dd>
+</dl>
+
+&nbsp;&nbsp;<a
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/linear_algebra/decomposition.nim#L124"
+class="link-seesrc" target="_blank">Source</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/linear_algebra/decomposition.nim#L124" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -276,7 +377,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-12-23 21:51:37 UTC</small>
+        <small>Made with Nim. Generated: 2020-01-08 23:22:43 UTC</small>
       </div>
     </div>
   </div>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Arraymancer - Module loss</title>
+  <title>Arraymancer - linear_systems</title>
 
   <link href="docutils.css" rel="stylesheet" type="text/css"/>
   <link href="nav.css" rel="stylesheet" type="text/css"/>
@@ -67,6 +67,8 @@
           <li><a href="nn_activation.sigmoid.html">Activation: Sigmoid</a></li>
           <li><a href="nn_activation.tanh.html">Activation: Tanh</a></li>
           <li><a href="nn_layers.conv2D.html">Layers: Convolution 2D</a></li>
+          <li><a href="nn_layers.embedding.html">Layers: Embedding</a></li>
+          <li><a href="nn_layers.gru.html">Layers: GRU (Gated Linear Unit)</a></li>
           <li><a href="nn_layers.linear.html">Layers: Linear/Dense</a></li>
           <li><a href="nn_layers.maxpool2D.html">Layers: Maxpool 2D</a></li>
           <li><a href="nn_loss.cross_entropy_losses.html">Loss: Cross-Entropy losses</a></li>
@@ -79,28 +81,38 @@
         <a href="#">Linear algebra, stats, ML</a>
         <ul class="monospace">
           <li><a href="la.decomposition.html">Eigenvalue decomposition</a></li>
-          <li><a href="la.least_squares.html">Least Squares solver</a></li>
+          <li><a href="la.decomposition_rand.html">Randomized Truncated SVD</a></li>
+          <li><a href="la.least_squares.html">Least squares solver</a></li>
+          <li><a href="la.linear_systems.html">Linear systems solver</a></li>
+          <li><a href="la.special_matrices.html">Special linear algebra matrices</a></li>
           <li><a href="stats.stats.html">Statistics</a></li>
           <li><a href="ml.pca.html">Principal Component Analysis (PCA)</a></li>
           <li><a href="ml.accuracy_score.html">Accuracy score</a></li>
           <li><a href="ml.common_error_functions.html">Common errors, MAE and MSE (L1, L2 loss)</a></li>
+          <li><a href="ml.kmeans.html">K-Means</a></li>
         </ul>
       </span>
       <span>
         <a href="#">IO & Datasets</a>
         <ul class="monospace">
           <li><a href="datasets.mnist.html">MNIST</a></li>
+          <li><a href="datasets.imdb.html">IMDB</a></li>
           <li><a href="io.io_csv.html">CSV reading and writing</a></li>
+          <li><a href="io.io_hdf5.html">HDF5 files reading and writing</a></li>
+          <li><a href="io.io_image.html">Images reading and writing</a></li>
+          <li><a href="io.io_npy.html">Numpy files reading and writing</a></li>
         </ul>
       </span>
       <span>
         <a href="#">Autograd</a>
         <ul class="monospace">
-          <li><a href="ag.ag_accessors.html">Accessors</a></li>
-          <li><a href="ag.ag_data_structure.html">Data structure</a></li>
+          <li><a href="ag.autograd_common.html">Data structure</a></li>
           <li><a href="ag.gates_basic.html">Basic operations</a></li>
           <li><a href="ag.gates_blas.html">Linear algebra operations</a></li>
+          <li><a href="ag.gates_hadamard.html">Hadamard product (elementwise matrix multiply)</a></li>
           <li><a href="ag.gates_reduce.html">Reduction operations</a></li>
+          <li><a href="ag.gates_shapeshifting_concat_split.html">Concatenation, stacking, splitting, chunking operations</a></li>
+          <li><a href="ag.gates_shapeshifting_views.html">Linear algebra operations</a></li>
         </ul>
       </span>
       <span>
@@ -109,6 +121,8 @@
           <li><a href="nnp.nnp_activation.html">Activations</a></li>
           <li><a href="nnp.nnp_convolution.html">Convolution 2D</a></li>
           <li><a href="nnp.nnp_conv2D_cudnn.html">Convolution 2D - CuDNN</a></li>
+          <li><a href="nnp.nnp_embedding.html">Linear / Dense layer</a></li>
+          <li><a href="nnp.nnp_gru.html">Linear / Dense layer</a></li>
           <li><a href="nnp.nnp_linear.html">Linear / Dense layer</a></li>
           <li><a href="nnp.nnp_maxpooling.html">Maxpooling</a></li>
           <li><a href="nnp.nnp_numerical_gradient.html">Numerical gradient</a></li>
@@ -150,14 +164,14 @@
 </header>
 <article id="documentId">
   <div class="container">
-    <h1 class="title">Module loss</h1>
+    <h1 class="title">linear_systems</h1>
     <div class="row">
   <div class="three columns">
   <div id="global-links">
     <ul class="simple">
     </ul>
   </div>
-  <div id="searchInput">
+  <div id="searchInputDiv">
     Search: <input type="text" id="searchInput"
       onkeyup="search()" />
   </div>
@@ -178,22 +192,18 @@
 <li>
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#Loss"
-    title="Loss[TT] = ref object of Gate[TT]
-  target*: TT"><wbr />Loss<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#SparseLoss"
-    title="SparseLoss[TT] = ref object of Gate[TT]
-  target*: Tensor[int]"><wbr />Sparse<wbr />Loss<span class="attachedType" style="visibility:hidden"></span></a></li>
+      <li><a class="reference" href="#MatrixKind"
+    title="MatrixKind = enum
+  mkGeneral, mkGenBand, mkGenTriDiag, mkSymmetric, mkPosDef, mkPosDefBand,
+  mkPosDefTriDiag"><wbr />Matrix<wbr />Kind<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
 <li>
-  <a class="reference reference-toplevel" href="#14" id="64">Methods</a>
+  <a class="reference reference-toplevel" href="#13" id="63">Funcs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#forward.e,Loss[TT],Variable[TT],TT"
-    title="forward[TT](self: Loss[TT]; a: Variable[TT]; target: TT): Variable[TT]"><wbr />forward<span class="attachedType" style="visibility:hidden">Loss</span></a></li>
-  <li><a class="reference" href="#forward.e,SparseLoss[TT],Variable[TT],Tensor[int]"
-    title="forward[TT](self: SparseLoss[TT]; a: Variable[TT]; target: Tensor[int]): Variable[TT]"><wbr />forward<span class="attachedType" style="visibility:hidden">SparseLoss</span></a></li>
+      <li><a class="reference" href="#solve%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CMatrixKind"
+    title="solve[T: SomeFloat](a, b: Tensor[T]; kind: MatrixKind = mkGeneral): Tensor[T]"><wbr />solve<span class="attachedType">MatrixKind</span></a></li>
 
   </ul>
 </li>
@@ -203,60 +213,55 @@
   </div>
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
+  
   <p class="module-desc"></p>
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="../../tensor/tensor.html">../../tensor/tensor</a>, <a class="reference external" href="../../autograd/autograd.html">../../autograd/autograd</a>, <a class="reference external" href="typetraits.html">typetraits</a>
+<a class="reference external" href="tensor.html">tensor</a>, <a class="reference external" href="sequninit.html">sequninit</a>, <a class="reference external" href="solve_lapack.html">solve_lapack</a>
 </dl></div>
 <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
-<dt id="Loss"><a name="Loss"></a><pre><span class="Identifier">Loss</span><span class="Other">[</span><span class="Identifier">TT</span><span class="Other">]</span> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">Gate</span><span class="Other">[</span><span class="Identifier">TT</span><span class="Other">]</span>
-  <span class="Identifier">target</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">TT</span>
-</pre></dt>
+<a id="MatrixKind"></a>
+<dt><pre><a href="linear_systems.html#MatrixKind"><span class="Identifier">MatrixKind</span></a> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">mkGeneral</span><span class="Other">,</span> <span class="Identifier">mkGenBand</span><span class="Other">,</span> <span class="Identifier">mkGenTriDiag</span><span class="Other">,</span> <span class="Identifier">mkSymmetric</span><span class="Other">,</span> <span class="Identifier">mkPosDef</span><span class="Other">,</span> <span class="Identifier">mkPosDefBand</span><span class="Other">,</span>
+  <span class="Identifier">mkPosDefTriDiag</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/nn/loss/loss.nim#L20"
-class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/nn/loss/loss.nim#L20" class="link-seesrc" target="_blank" >Edit</a>
-
-</dd>
-<dt id="SparseLoss"><a name="SparseLoss"></a><pre><span class="Identifier">SparseLoss</span><span class="Other">[</span><span class="Identifier">TT</span><span class="Other">]</span> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">Gate</span><span class="Other">[</span><span class="Identifier">TT</span><span class="Other">]</span>
-  <span class="Identifier">target</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span>
-</pre></dt>
-<dd>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/nn/loss/loss.nim#L29"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/linear_algebra/linear_systems.nim#L11"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/nn/loss/loss.nim#L29" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/linear_algebra/linear_systems.nim#L11" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
 </dl></div>
-<div class="section" id="14">
-<h1><a class="toc-backref" href="#14">Methods</a></h1>
+<div class="section" id="13">
+<h1><a class="toc-backref" href="#13">Funcs</a></h1>
 <dl class="item">
-<dt id="forward"><a name="forward.e,Loss[TT],Variable[TT],TT"></a><pre><span class="Keyword">method</span> <span class="Identifier">forward</span><span class="Other">[</span><span class="Identifier">TT</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Identifier">Loss</span><span class="Other">[</span><span class="Identifier">TT</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">Variable</span><span class="Other">[</span><span class="Identifier">TT</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">target</span><span class="Other">:</span> <span class="Identifier">TT</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Variable</span><span class="Other">[</span><span class="Identifier">TT</span><span class="Other">]</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
-    <span class="Identifier">inline</span></div><span class="Other pragmaend">.}</span></pre></dt>
+<a id="solve,Tensor[T: SomeFloat],Tensor[T: SomeFloat],MatrixKind"></a>
+<dt><pre><span class="Keyword">func</span> <a href="#solve%2CTensor%5BT%3A+SomeFloat%5D%2CTensor%5BT%3A+SomeFloat%5D%2CMatrixKind"><span class="Identifier">solve</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">kind</span><span class="Other">:</span> <a href="linear_systems.html#MatrixKind"><span class="Identifier">MatrixKind</span></a> <span class="Other">=</span> <span class="Identifier">mkGeneral</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span></pre></dt>
 <dd>
 
-&nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/nn/loss/loss.nim#L24"
-class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/nn/loss/loss.nim#L24" class="link-seesrc" target="_blank" >Edit</a>
-
+<p>Compute the solution <tt class="docutils literal"><span class="pre">X</span></tt> to the system of linear equations <tt class="docutils literal"><span class="pre">AX = B</span></tt>.</p>
+<p>Multiple right-hand sides can be solved simultaneously.</p>
+<dl class="docutils"><dt>Input:</dt>
+<dd><ul class="simple"><li><tt class="docutils literal"><span class="pre">a</span></tt>, a MxM matrix</li>
+<li><tt class="docutils literal"><span class="pre">b</span></tt>, a vector of length M, or a MxN matrix. In the latter case, each column is interpreted as a separate RHS to solve for.</li>
+</ul>
 </dd>
-<dt id="forward"><a name="forward.e,SparseLoss[TT],Variable[TT],Tensor[int]"></a><pre><span class="Keyword">method</span> <span class="Identifier">forward</span><span class="Other">[</span><span class="Identifier">TT</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Identifier">SparseLoss</span><span class="Other">[</span><span class="Identifier">TT</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">Variable</span><span class="Other">[</span><span class="Identifier">TT</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">target</span><span class="Other">:</span> <span class="Identifier">Tensor</span><span class="Other">[</span><span class="Identifier">int</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Variable</span><span class="Other">[</span>
-    <span class="Identifier">TT</span><span class="Other">]</span> <span class="Other pragmabegin">{.</span><div class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span></div><span class="Other pragmaend">.}</span></pre></dt>
-<dd>
+<dt>Output:</dt>
+<dd><ul class="simple"><li>Tensor with same shape as <tt class="docutils literal"><span class="pre">b</span></tt></li>
+</ul>
+</dd>
+</dl>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/nn/loss/loss.nim#L33"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/linear_algebra/linear_systems.nim#L20"
 class="link-seesrc" target="_blank">Source</a>
-<a href="https://github.com/mratsim/arraymancer/edit/master/src/nn/loss/loss.nim#L33" class="link-seesrc" target="_blank" >Edit</a>
+<a href="https://github.com/mratsim/arraymancer/edit/master/src/linear_algebra/linear_systems.nim#L20" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 
@@ -269,7 +274,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-05-06 13:03:58 UTC</small>
+        <small>Made with Nim. Generated: 2020-01-08 23:22:44 UTC</small>
       </div>
     </div>
   </div>

@@ -81,11 +81,15 @@
         <a href="#">Linear algebra, stats, ML</a>
         <ul class="monospace">
           <li><a href="la.decomposition.html">Eigenvalue decomposition</a></li>
-          <li><a href="la.least_squares.html">Least Squares solver</a></li>
+          <li><a href="la.decomposition_rand.html">Randomized Truncated SVD</a></li>
+          <li><a href="la.least_squares.html">Least squares solver</a></li>
+          <li><a href="la.linear_systems.html">Linear systems solver</a></li>
+          <li><a href="la.special_matrices.html">Special linear algebra matrices</a></li>
           <li><a href="stats.stats.html">Statistics</a></li>
           <li><a href="ml.pca.html">Principal Component Analysis (PCA)</a></li>
           <li><a href="ml.accuracy_score.html">Accuracy score</a></li>
           <li><a href="ml.common_error_functions.html">Common errors, MAE and MSE (L1, L2 loss)</a></li>
+          <li><a href="ml.kmeans.html">K-Means</a></li>
         </ul>
       </span>
       <span>
@@ -102,8 +106,7 @@
       <span>
         <a href="#">Autograd</a>
         <ul class="monospace">
-          <li><a href="ag.ag_accessors.html">Accessors</a></li>
-          <li><a href="ag.ag_data_structure.html">Data structure</a></li>
+          <li><a href="ag.autograd_common.html">Data structure</a></li>
           <li><a href="ag.gates_basic.html">Basic operations</a></li>
           <li><a href="ag.gates_blas.html">Linear algebra operations</a></li>
           <li><a href="ag.gates_hadamard.html">Hadamard product (elementwise matrix multiply)</a></li>
@@ -190,17 +193,17 @@
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#read_image%2Cstring"
-    title="read_image(filepath: string): Tensor[uint8]"><wbr />read_<wbr />image<span class="attachedType" style="visibility:hidden"></span></a></li>
-  <li><a class="reference" href="#read_image%2Cseq%5Bbyte%5D"
-    title="read_image(buffer: seq[byte]): Tensor[uint8]"><wbr />read_<wbr />image<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="read_image(filepath: string): Tensor[uint8]"><wbr />read_<wbr />image<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#read_image%2Cseq%5BT%5D%5Bbyte%5D"
+    title="read_image(buffer: seq[byte]): Tensor[uint8]"><wbr />read_<wbr />image<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#write_png%2CTensor%5Buint8%5D%2Cstring"
-    title="write_png(img: Tensor[uint8]; filepath: string)"><wbr />write_<wbr />png<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="write_png(img: Tensor[uint8]; filepath: string)"><wbr />write_<wbr />png<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#write_bmp%2CTensor%5Buint8%5D%2Cstring"
-    title="write_bmp(img: Tensor[uint8]; filepath: string)"><wbr />write_<wbr />bmp<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="write_bmp(img: Tensor[uint8]; filepath: string)"><wbr />write_<wbr />bmp<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#write_tga%2CTensor%5Buint8%5D%2Cstring"
-    title="write_tga(img: Tensor[uint8]; filepath: string)"><wbr />write_<wbr />tga<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="write_tga(img: Tensor[uint8]; filepath: string)"><wbr />write_<wbr />tga<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#write_jpg%2CTensor%5Buint8%5D%2Cstring%2Cint"
-    title="write_jpg(img: Tensor[uint8]; filepath: string; quality = 100)"><wbr />write_<wbr />jpg<span class="attachedType" style="visibility:hidden"></span></a></li>
+    title="write_jpg(img: Tensor[uint8]; filepath: string; quality = 100)"><wbr />write_<wbr />jpg<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -210,6 +213,7 @@
   </div>
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
+  
   <p class="module-desc"></p>
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
@@ -220,9 +224,10 @@
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
 <a id="read_image,string"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">read_image</span><span class="Other">(</span><span class="Identifier">filepath</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<dt><pre><span class="Keyword">proc</span> <a href="#read_image%2Cstring"><span class="Identifier">read_image</span></a><span class="Other">(</span><span class="Identifier">filepath</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">STBIException</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">IndexError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Read an image file and loads it into a Tensor[uint8] of shape Channel x Height x Width. Channel is 1 for greyscale, 3 for RGB.</p>
 <p>Supports JPEG, PNG, TGA, BMP, PSD, GIF, HDR, PIC, PNM See stb_image <a class="reference external" href="https://github.com/nothings/stb/blob/master/stb_image.h">https://github.com/nothings/stb/blob/master/stb_image.h</a></p>
 <p>Usage example with conversion to [0..1] float: .. code:: nim</p>
@@ -232,64 +237,69 @@
 </p></blockquote>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/io/io_image.nim#L20"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/io/io_image.nim#L20"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/io/io_image.nim#L20" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
-<a id="read_image,seq[byte]"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">read_image</span><span class="Other">(</span><span class="Identifier">buffer</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">byte</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<a id="read_image,seq[T][byte]"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#read_image%2Cseq%5BT%5D%5Bbyte%5D"><span class="Identifier">read_image</span></a><span class="Other">(</span><span class="Identifier">buffer</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">byte</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">STBIException</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">IndexError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 <p>Read an image from a buffer and loads it into a Tensor[uint8] of shape Channel x Height x Width. Channel is 1 for greyscale, 3 for RGB.</p>
 <p>Supports JPEG, PNG, TGA, BMP, PSD, GIF, HDR, PIC, PNM See stb_image <a class="reference external" href="https://github.com/nothings/stb/blob/master/stb_image.h">https://github.com/nothings/stb/blob/master/stb_image.h</a> </p>
 
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/io/io_image.nim#L39"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/io/io_image.nim#L39"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/io/io_image.nim#L39" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="write_png,Tensor[uint8],string"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">write_png</span><span class="Other">(</span><span class="Identifier">img</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">filepath</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<dt><pre><span class="Keyword">proc</span> <a href="#write_png%2CTensor%5Buint8%5D%2Cstring"><span class="Identifier">write_png</span></a><span class="Other">(</span><span class="Identifier">img</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">filepath</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IndexError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Create an image file from a tensor
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/io/io_image.nim#L72"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/io/io_image.nim#L72"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/io/io_image.nim#L72" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="write_bmp,Tensor[uint8],string"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">write_bmp</span><span class="Other">(</span><span class="Identifier">img</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">filepath</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<dt><pre><span class="Keyword">proc</span> <a href="#write_bmp%2CTensor%5Buint8%5D%2Cstring"><span class="Identifier">write_bmp</span></a><span class="Other">(</span><span class="Identifier">img</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">filepath</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IndexError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Create an image file from a tensor
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/io/io_image.nim#L73"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/io/io_image.nim#L73"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/io/io_image.nim#L73" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="write_tga,Tensor[uint8],string"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">write_tga</span><span class="Other">(</span><span class="Identifier">img</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">filepath</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<dt><pre><span class="Keyword">proc</span> <a href="#write_tga%2CTensor%5Buint8%5D%2Cstring"><span class="Identifier">write_tga</span></a><span class="Other">(</span><span class="Identifier">img</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">filepath</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IndexError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Create an image file from a tensor
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/io/io_image.nim#L74"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/io/io_image.nim#L74"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/io/io_image.nim#L74" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 <a id="write_jpg,Tensor[uint8],string,int"></a>
-<dt><pre><span class="Keyword">proc</span> <span class="Identifier">write_jpg</span><span class="Other">(</span><span class="Identifier">img</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">filepath</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">quality</span> <span class="Other">=</span> <span class="DecNumber">100</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<dt><pre><span class="Keyword">proc</span> <a href="#write_jpg%2CTensor%5Buint8%5D%2Cstring%2Cint"><span class="Identifier">write_jpg</span></a><span class="Other">(</span><span class="Identifier">img</span><span class="Other">:</span> <a href="data_structure.html#Tensor"><span class="Identifier">Tensor</span></a><span class="Other">[</span><span class="Identifier">uint8</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">filepath</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">quality</span> <span class="Other">=</span> <span class="DecNumber">100</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">IndexError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
+
 Create a jpeg image file from a tensor
 &nbsp;&nbsp;<a
-href="https://github.com/mratsim/arraymancer/tree/master/src/io/io_image.nim#L76"
+href="https://github.com/mratsim/arraymancer/tree/version-1-0/src/io/io_image.nim#L76"
 class="link-seesrc" target="_blank">Source</a>
 <a href="https://github.com/mratsim/arraymancer/edit/master/src/io/io_image.nim#L76" class="link-seesrc" target="_blank" >Edit</a>
 
@@ -304,7 +314,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2018-12-23 21:51:47 UTC</small>
+        <small>Made with Nim. Generated: 2020-01-08 23:22:51 UTC</small>
       </div>
     </div>
   </div>
