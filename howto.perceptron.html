@@ -120,7 +120,7 @@
         <ul class="monospace">
           <li><a href="nnp.nnp_activation.html">Activations</a></li>
           <li><a href="nnp.nnp_convolution.html">Convolution 2D</a></li>
-          <li><a href="nnp.nnp_conv2D_cudnn.html">Convolution 2D - CuDNN</a></li>
+          <li><a href="nnp.nnp_conv2d_cudnn.html">Convolution 2D - CuDNN</a></li>
           <li><a href="nnp.nnp_embedding.html">Embeddings</a></li>
           <li><a href="nnp.nnp_gru.html">Gated Recurrent Unit (GRU)</a></li>
           <li><a href="nnp.nnp_linear.html">Linear / Dense layer</a></li>
@@ -208,24 +208,24 @@
 <span class="Comment"># Learning loop</span>
 <span class="Keyword">for</span> <span class="Identifier">epoch</span> <span class="Keyword">in</span> <span class="FloatNumber">0.</span><span class="Operator">.</span><span class="DecNumber">5</span><span class="Punctuation">:</span>
   <span class="Keyword">for</span> <span class="Identifier">batch_id</span> <span class="Keyword">in</span> <span class="FloatNumber">0.</span><span class="Operator">.&lt;</span><span class="DecNumber">100</span><span class="Punctuation">:</span>
-    
+
     <span class="Comment"># minibatch offset in the Tensor</span>
     <span class="Keyword">let</span> <span class="Identifier">offset</span> <span class="Operator">=</span> <span class="Identifier">batch_id</span> <span class="Operator">*</span> <span class="DecNumber">32</span>
     <span class="Keyword">let</span> <span class="Identifier">x</span> <span class="Operator">=</span> <span class="Identifier">x_train</span><span class="Punctuation">[</span><span class="Identifier">offset</span> <span class="Operator">..&lt;</span> <span class="Identifier">offset</span> <span class="Operator">+</span> <span class="DecNumber">32</span><span class="Punctuation">,</span> <span class="Identifier">_</span><span class="Punctuation">]</span>
     <span class="Keyword">let</span> <span class="Identifier">target</span> <span class="Operator">=</span> <span class="Identifier">y</span><span class="Punctuation">[</span><span class="Identifier">offset</span> <span class="Operator">..&lt;</span> <span class="Identifier">offset</span> <span class="Operator">+</span> <span class="DecNumber">32</span><span class="Punctuation">,</span> <span class="Identifier">_</span><span class="Punctuation">]</span>
-    
+
     <span class="Comment"># Building the network</span>
     <span class="Keyword">let</span> <span class="Identifier">n1</span> <span class="Operator">=</span> <span class="Identifier">relu</span> <span class="Identifier">linear</span><span class="Punctuation">(</span><span class="Identifier">x</span><span class="Punctuation">,</span> <span class="Identifier">layer_3neurons</span><span class="Punctuation">)</span>
     <span class="Keyword">let</span> <span class="Identifier">n2</span> <span class="Operator">=</span> <span class="Identifier">linear</span><span class="Punctuation">(</span><span class="Identifier">n1</span><span class="Punctuation">,</span> <span class="Identifier">classifier_layer</span><span class="Punctuation">)</span>
     <span class="Keyword">let</span> <span class="Identifier">loss</span> <span class="Operator">=</span> <span class="Identifier">n2</span><span class="Operator">.</span><span class="Identifier">sigmoid_cross_entropy</span><span class="Punctuation">(</span><span class="Identifier">target</span><span class="Punctuation">)</span>
-    
+
     <span class="Identifier">echo</span> <span class="StringLit">&quot;Epoch is:&quot;</span> <span class="Operator">&amp;</span> <span class="Operator">$</span><span class="Identifier">epoch</span>
     <span class="Identifier">echo</span> <span class="StringLit">&quot;Batch id:&quot;</span> <span class="Operator">&amp;</span> <span class="Operator">$</span><span class="Identifier">batch_id</span>
     <span class="Identifier">echo</span> <span class="StringLit">&quot;Loss is:&quot;</span> <span class="Operator">&amp;</span> <span class="Operator">$</span><span class="Identifier">loss</span><span class="Operator">.</span><span class="Identifier">value</span><span class="Operator">.</span><span class="Identifier">data</span><span class="Punctuation">[</span><span class="DecNumber">0</span><span class="Punctuation">]</span>
-    
+
     <span class="Comment"># Compute the gradient (i.e. contribution of each parameter to the loss)</span>
     <span class="Identifier">loss</span><span class="Operator">.</span><span class="Identifier">backprop</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
-    
+
     <span class="Comment"># Correct the weights now that we have the gradient information</span>
     <span class="Identifier">optim</span><span class="Operator">.</span><span class="Identifier">update</span><span class="Punctuation">(</span><span class="Punctuation">)</span></pre>
 

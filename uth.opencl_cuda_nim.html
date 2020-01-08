@@ -120,7 +120,7 @@
         <ul class="monospace">
           <li><a href="nnp.nnp_activation.html">Activations</a></li>
           <li><a href="nnp.nnp_convolution.html">Convolution 2D</a></li>
-          <li><a href="nnp.nnp_conv2D_cudnn.html">Convolution 2D - CuDNN</a></li>
+          <li><a href="nnp.nnp_conv2d_cudnn.html">Convolution 2D - CuDNN</a></li>
           <li><a href="nnp.nnp_embedding.html">Embeddings</a></li>
           <li><a href="nnp.nnp_gru.html">Gated Recurrent Unit (GRU)</a></li>
           <li><a href="nnp.nnp_linear.html">Linear / Dense layer</a></li>
@@ -192,8 +192,8 @@
   <span class="Comment">##   - The C type</span>
   <span class="Comment">##   - The C kernel name (this only helps debugging the C code)</span>
   <span class="Comment">##   - The C operation (+, -, ...)</span>
-  
-  
+
+
   <span class="Identifier">opencl_getIndexOfElementID</span><span class="Punctuation">(</span><span class="Punctuation">)</span> <span class="Operator">&amp;</span> <span class="LongStringLit">&quot;&quot;&quot;
   __kernel
   void &quot;&quot;&quot;</span> <span class="Operator">&amp;</span> <span class="Identifier">kern_name</span> <span class="Operator">&amp;</span>
@@ -219,7 +219,7 @@
       const int dst_real_idx = opencl_getIndexOfElementID(rank, dst_shape, dst_strides, dst_offset, elemID);
       const int A_real_idx = opencl_getIndexOfElementID(rank, A_shape, A_strides, A_offset, elemID);
       const int B_real_idx = opencl_getIndexOfElementID(rank, B_shape, B_strides, B_offset, elemID);
-      
+
       dst_data[dst_real_idx] = A_data[A_real_idx] &quot;&quot;&quot;</span> <span class="Operator">&amp;</span> <span class="Identifier">op</span> <span class="Operator">&amp;</span> <span class="LongStringLit">&quot;&quot;&quot; B_data[B_real_idx];
     }
   }
@@ -312,33 +312,33 @@
 <span class="Keyword">for</span> <span class="Identifier">epoch</span> <span class="Keyword">in</span> <span class="DecNumber">0</span> <span class="Operator">..&lt;</span> <span class="Identifier">Epochs</span><span class="Punctuation">:</span>
   <span class="Comment"># Here I should probably shuffle the input data.</span>
   <span class="Keyword">for</span> <span class="Identifier">start_batch</span> <span class="Keyword">in</span> <span class="Identifier">countup</span><span class="Punctuation">(</span><span class="DecNumber">0</span><span class="Punctuation">,</span> <span class="Identifier">x_train</span><span class="Operator">.</span><span class="Identifier">shape</span><span class="Punctuation">[</span><span class="DecNumber">0</span><span class="Punctuation">]</span><span class="Operator">-</span><span class="DecNumber">1</span><span class="Punctuation">,</span> <span class="Identifier">BatchSize</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
-    
+
     <span class="Comment"># Pick the minibatch</span>
     <span class="Keyword">let</span> <span class="Identifier">end_batch</span> <span class="Operator">=</span> <span class="Identifier">min</span><span class="Punctuation">(</span><span class="Identifier">x_train</span><span class="Operator">.</span><span class="Identifier">shape</span><span class="Punctuation">[</span><span class="DecNumber">0</span><span class="Punctuation">]</span><span class="Operator">-</span><span class="DecNumber">1</span><span class="Punctuation">,</span> <span class="Identifier">start_batch</span> <span class="Operator">+</span> <span class="Identifier">BatchSize</span><span class="Punctuation">)</span>
     <span class="Keyword">let</span> <span class="Identifier">X_batch</span> <span class="Operator">=</span> <span class="Identifier">X</span><span class="Punctuation">[</span><span class="Identifier">start_batch</span> <span class="Operator">..&lt;</span> <span class="Identifier">end_batch</span><span class="Punctuation">,</span> <span class="Identifier">_</span><span class="Punctuation">]</span>
     <span class="Keyword">let</span> <span class="Identifier">target</span> <span class="Operator">=</span> <span class="Identifier">y_train</span><span class="Punctuation">[</span><span class="Identifier">start_batch</span> <span class="Operator">..&lt;</span> <span class="Identifier">end_batch</span><span class="Punctuation">]</span>
-    
+
     <span class="Comment"># Go through the model</span>
     <span class="Keyword">let</span> <span class="Identifier">clf</span> <span class="Operator">=</span> <span class="Identifier">model</span><span class="Operator">.</span><span class="Identifier">forward</span><span class="Punctuation">(</span><span class="Identifier">X_batch</span><span class="Punctuation">)</span>
-    
+
     <span class="Comment"># Go through our cost function</span>
     <span class="Keyword">let</span> <span class="Identifier">loss</span> <span class="Operator">=</span> <span class="Identifier">clf</span><span class="Operator">.</span><span class="Identifier">sparse_softmax_cross_entropy</span><span class="Punctuation">(</span><span class="Identifier">target</span><span class="Punctuation">)</span>
-    
+
     <span class="Comment"># Backpropagate the errors and let the optimizer fix them.</span>
     <span class="Identifier">loss</span><span class="Operator">.</span><span class="Identifier">backprop</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
     <span class="Identifier">optim</span><span class="Operator">.</span><span class="Identifier">update</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
-  
+
   <span class="Comment"># Let's see how we fare:</span>
   <span class="Identifier">ctx</span><span class="Operator">.</span><span class="Identifier">no_grad_mode</span><span class="Punctuation">:</span>
     <span class="Identifier">echo</span> <span class="Operator">&amp;</span><span class="StringLit">&quot;</span><span class="EscapeSequence">\n</span><span class="StringLit">Epoch #{epoch} done. Testing accuracy&quot;</span>
-    
+
     <span class="Keyword">let</span> <span class="Identifier">y_pred</span> <span class="Operator">=</span> <span class="Identifier">model</span>
                   <span class="Operator">.</span><span class="Identifier">forward</span><span class="Punctuation">(</span><span class="Identifier">X</span><span class="Punctuation">)</span>
                   <span class="Operator">.</span><span class="Identifier">value</span>
                   <span class="Operator">.</span><span class="Identifier">softmax</span>
                   <span class="Operator">.</span><span class="Identifier">argmax</span><span class="Punctuation">(</span><span class="Identifier">axis</span> <span class="Operator">=</span> <span class="DecNumber">1</span><span class="Punctuation">)</span>
                   <span class="Operator">.</span><span class="Identifier">squeeze</span>
-    
+
     <span class="Keyword">let</span> <span class="Identifier">score</span> <span class="Operator">=</span> <span class="Identifier">y_pred</span><span class="Operator">.</span><span class="Identifier">accuracy_score</span><span class="Punctuation">(</span><span class="Identifier">y_train</span><span class="Punctuation">)</span>
     <span class="Identifier">echo</span> <span class="Operator">&amp;</span><span class="StringLit">&quot;Accuracy: {score:.3f}%&quot;</span>
     <span class="Identifier">echo</span> <span class="StringLit">&quot;</span><span class="EscapeSequence">\n</span><span class="StringLit">&quot;</span>

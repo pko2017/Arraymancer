@@ -120,7 +120,7 @@
         <ul class="monospace">
           <li><a href="nnp.nnp_activation.html">Activations</a></li>
           <li><a href="nnp.nnp_convolution.html">Convolution 2D</a></li>
-          <li><a href="nnp.nnp_conv2D_cudnn.html">Convolution 2D - CuDNN</a></li>
+          <li><a href="nnp.nnp_conv2d_cudnn.html">Convolution 2D - CuDNN</a></li>
           <li><a href="nnp.nnp_embedding.html">Embeddings</a></li>
           <li><a href="nnp.nnp_gru.html">Gated Recurrent Unit (GRU)</a></li>
           <li><a href="nnp.nnp_linear.html">Linear / Dense layer</a></li>
@@ -165,7 +165,7 @@
 <article id="documentId">
   <div class="container">
     <h1 class="title">Tutorial: First steps</h1>
-    
+
 <h1 id="tensor-properties">Tensor properties</h1><p>Tensors have the following properties: - <tt class="docutils literal"><span class="pre">rank</span></tt>: - 0 for scalar (unfortunately cannot be stored) - 1 for vector - 2 for matrices - N for N-dimension array - <tt class="docutils literal"><span class="pre">shape</span></tt>: a sequence of the tensor dimensions along each axis.</p>
 <p>Next properties are technical and there for completeness - <tt class="docutils literal"><span class="pre">strides</span></tt>: a sequence of numbers of steps to get the next item along a dimension. - <tt class="docutils literal"><span class="pre">offset</span></tt>: the first element of the tensor</p>
 <pre class="listing"><span class="Keyword">import</span> <span class="Identifier">arraymancer</span>
