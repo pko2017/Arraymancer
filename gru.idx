@@ -1,0 +1,2 @@
+GRUGate	gru.html#GRUGate	gru: GRUGate	
+gru	gru.html#gru,Variable[TT],Variable[TT],Variable[TT],Variable[TT],Variable[TT],Variable[TT],Variable[TT]	gru: gru[TT](input, hidden0: Variable[TT]; W3s0, W3sN, U3s: Variable[TT];\n        bW3s, bU3s: Variable[TT]): tuple[output, hiddenN: Variable[TT]]	

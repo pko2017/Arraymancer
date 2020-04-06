@@ -1,0 +1,7 @@
+slicerImpl	p_accessors_macros_read.html#slicerImpl.t,,ArrayOfSlices	p_accessors_macros_read: slicerImpl[T; ](result: AnyTensor[T] | var AnyTensor[T]; slices: ArrayOfSlices): untyped	
+slicer	p_accessors_macros_read.html#slicer,AnyTensor[T],varargs[SteppedSlice]	p_accessors_macros_read: slicer[T](t: AnyTensor[T]; slices: varargs[SteppedSlice]): AnyTensor[T]	
+slicer	p_accessors_macros_read.html#slicer,AnyTensor[T],varargs[SteppedSlice],Ellipsis	p_accessors_macros_read: slicer[T](t: AnyTensor[T]; slices: varargs[SteppedSlice]; ellipsis: Ellipsis): AnyTensor[\n    T]	
+slicer	p_accessors_macros_read.html#slicer,AnyTensor[T],Ellipsis,varargs[SteppedSlice]	p_accessors_macros_read: slicer[T](t: AnyTensor[T]; ellipsis: Ellipsis; slices: varargs[SteppedSlice]): AnyTensor[\n    T]	
+slicer	p_accessors_macros_read.html#slicer,AnyTensor[T],varargs[SteppedSlice],Ellipsis,varargs[SteppedSlice]	p_accessors_macros_read: slicer[T](t: AnyTensor[T]; slices1: varargs[SteppedSlice]; ellipsis: Ellipsis;\n          slices2: varargs[SteppedSlice]): AnyTensor[T]	
+slicer	p_accessors_macros_read.html#slicer,Tensor[T],ArrayOfSlices	p_accessors_macros_read: slicer[T](t: Tensor[T]; slices: ArrayOfSlices): Tensor[T]	
+slice_typed_dispatch	p_accessors_macros_read.html#slice_typed_dispatch.m,typed,varargs[typed]	p_accessors_macros_read: slice_typed_dispatch(t: typed; args: varargs[typed]): untyped	

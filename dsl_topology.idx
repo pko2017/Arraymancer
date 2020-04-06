@@ -1,0 +1,2 @@
+out_shape_flatten	dsl_topology.html#out_shape_flatten,openArray[int]	dsl_topology: out_shape_flatten(in_shape: openArray[int]): int	
+topoFromLayers	dsl_topology.html#topoFromLayers,TopoTable,NimNode	dsl_topology: topoFromLayers(self: var TopoTable; layers: NimNode)	

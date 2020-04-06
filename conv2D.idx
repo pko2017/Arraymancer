@@ -1,0 +1,2 @@
+Conv2DGate	conv2D.html#Conv2DGate	conv2D: Conv2DGate	
+conv2d	conv2D.html#conv2d,Variable[TT],Variable[TT],Variable[TT],Size2D,Size2D	conv2D: conv2d[TT](input, weight: Variable[TT]; bias: Variable[TT] = nil;\n           padding: Size2D = (0, 0); stride: Size2D = (1, 1)): Variable[TT]	

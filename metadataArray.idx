@@ -1,0 +1,31 @@
+DynamicStackArray	metadataArray.html#DynamicStackArray	metadataArray: DynamicStackArray	
+MetadataArray	metadataArray.html#MetadataArray	metadataArray: MetadataArray	
+initMetadataArray	metadataArray.html#initMetadataArray,int	metadataArray: initMetadataArray(len: int): MetadataArray	
+toMetadataArray	metadataArray.html#toMetadataArray,varargs[int]	metadataArray: toMetadataArray(s: varargs[int]): MetadataArray	
+copyFrom	metadataArray.html#copyFrom,DynamicStackArray,varargs[int]	metadataArray: copyFrom(a: var DynamicStackArray; s: varargs[int])	
+copyFrom	metadataArray.html#copyFrom,DynamicStackArray,DynamicStackArray	metadataArray: copyFrom(a: var DynamicStackArray; s: DynamicStackArray)	
+setLen	metadataArray.html#setLen,DynamicStackArray,int	metadataArray: setLen(a: var DynamicStackArray; len: int)	
+low	metadataArray.html#low,DynamicStackArray	metadataArray: low(a: DynamicStackArray): int	
+high	metadataArray.html#high,DynamicStackArray	metadataArray: high(a: DynamicStackArray): int	
+`[]`	metadataArray.html#[],DynamicStackArray[T],Index	metadataArray: `[]`[T](a: DynamicStackArray[T]; idx: Index): T	
+`[]`	metadataArray.html#[],DynamicStackArray[T],Index_2	metadataArray: `[]`[T](a: var DynamicStackArray[T]; idx: Index): var T	
+`[]=`	metadataArray.html#[]=,DynamicStackArray[T],Index,T	metadataArray: `[]=`[T](a: var DynamicStackArray[T]; idx: Index; v: T)	
+`[]`	metadataArray.html#[],DynamicStackArray[T],HSlice[U,V]	metadataArray: `[]`[T, U, V](a: DynamicStackArray[T]; slice: HSlice[U, V]): DynamicStackArray[T]	
+items	metadataArray.html#items.i,DynamicStackArray[T]	metadataArray: items[T](a: DynamicStackArray[T]): T	
+mitems	metadataArray.html#mitems.i,DynamicStackArray[T]	metadataArray: mitems[T](a: var DynamicStackArray[T]): var T	
+pairs	metadataArray.html#pairs.i,DynamicStackArray[T]	metadataArray: pairs[T](a: DynamicStackArray[T]): (int, T)	
+`@`	metadataArray.html#@,DynamicStackArray[T]	metadataArray: `@`[T](a: DynamicStackArray[T]): seq[T]	
+`$`	metadataArray.html#$,DynamicStackArray	metadataArray: `$`(a: DynamicStackArray): string	
+product	metadataArray.html#product,DynamicStackArray[T: SomeNumber]	metadataArray: product[T: SomeNumber](a: DynamicStackArray[T]): T	
+insert	metadataArray.html#insert,DynamicStackArray[T],T,int	metadataArray: insert[T](a: var DynamicStackArray[T]; value: T; index: int = 0)	
+delete	metadataArray.html#delete,DynamicStackArray,int	metadataArray: delete(a: var DynamicStackArray; index: int)	
+add	metadataArray.html#add,DynamicStackArray[T],T	metadataArray: add[T](a: var DynamicStackArray[T]; value: T)	
+`&amp;`	metadataArray.html#&,DynamicStackArray[T],T	metadataArray: `&amp;`[T](a: DynamicStackArray[T]; value: T): DynamicStackArray[T]	
+`&amp;`	metadataArray.html#&,DynamicStackArray,DynamicStackArray	metadataArray: `&amp;`(a, b: DynamicStackArray): DynamicStackArray	
+reversed	metadataArray.html#reversed,DynamicStackArray	metadataArray: reversed(a: DynamicStackArray): DynamicStackArray	
+reversed	metadataArray.html#reversed,DynamicStackArray,DynamicStackArray	metadataArray: reversed(a: DynamicStackArray; result: var DynamicStackArray)	
+`==`	metadataArray.html#==,DynamicStackArray[T],openArray[T]	metadataArray: `==`[T](a: DynamicStackArray[T]; s: openArray[T]): bool	
+`==`	metadataArray.html#==,DynamicStackArray,DynamicStackArray	metadataArray: `==`(a, s: DynamicStackArray): bool	
+zip	metadataArray.html#zip.i,DynamicStackArray[T],DynamicStackArray[U]	metadataArray: zip[T, U](a: DynamicStackArray[T]; b: DynamicStackArray[U]): (T, T)	
+concat	metadataArray.html#concat,varargs[DynamicStackArray[T]]	metadataArray: concat[T](dsas: varargs[DynamicStackArray[T]]): DynamicStackArray[T]	
+max	metadataArray.html#max,DynamicStackArray[T]	metadataArray: max[T](a: DynamicStackArray[T]): T	

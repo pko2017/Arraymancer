@@ -1,0 +1,2 @@
+EmbeddingGate	embedding.html#EmbeddingGate	embedding: EmbeddingGate	
+embedding	embedding.html#embedding,Tensor[Idx: byte or char or int or int8 or int16 or int32 or int64 or uint or uint8 or uint16 or uint32 or uint64 or float or float32 or float64],Variable[TT],Idx,static[bool]	embedding: embedding[TT; Idx: byte or char or SomeNumber](input_vocab_id: Tensor[Idx];\n    weight: Variable[TT]; padding_idx: Idx = -1;\n    scale_grad_by_freq: static[bool] = false): Variable[TT]	

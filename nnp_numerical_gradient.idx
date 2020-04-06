@@ -1,0 +1,2 @@
+numerical_gradient	nnp_numerical_gradient.html#numerical_gradient,T,,type(T(1e-05))	nnp_numerical_gradient: numerical_gradient[T](input: T; f: (proc (x: T): T); h = T(1e-05)): T	
+numerical_gradient	nnp_numerical_gradient.html#numerical_gradient,Tensor[T],,type(T(1e-05))	nnp_numerical_gradient: numerical_gradient[T](input: Tensor[T]; f: (proc (x: Tensor[T]): T); h = T(1e-05)): Tensor[\n    T]	

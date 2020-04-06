@@ -1,0 +1,1 @@
+least_squares_solver	least_squares.html#least_squares_solver,Tensor[T: SomeFloat],Tensor[T: SomeFloat]	least_squares: least_squares_solver[T: SomeFloat](a, b: Tensor[T]): tuple[solution: Tensor[T],\n    residuals: Tensor[T], matrix_rank: int, singular_values: Tensor[T]]	

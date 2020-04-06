@@ -1,0 +1,19 @@
+CpuStorage	data_structure.html#CpuStorage	data_structure: CpuStorage	
+Tensor	data_structure.html#Tensor	data_structure: Tensor	
+CudaStorage	data_structure.html#CudaStorage	data_structure: CudaStorage	
+CudaTensor	data_structure.html#CudaTensor	data_structure: CudaTensor	
+ClStorage	data_structure.html#ClStorage	data_structure: ClStorage	
+ClTensor	data_structure.html#ClTensor	data_structure: ClTensor	
+AnyTensor	data_structure.html#AnyTensor	data_structure: AnyTensor	
+data	data_structure.html#data,Tensor[T]	data_structure: data[T](t: Tensor[T]): seq[T]	
+data	data_structure.html#data,Tensor[T]_2	data_structure: data[T](t: var Tensor[T]): var seq[T]	
+data=	data_structure.html#data=,Tensor[T],seq[T]	data_structure: data=[T](t: var Tensor[T]; s: seq[T])	
+rank	data_structure.html#rank,AnyTensor	data_structure: rank(t: AnyTensor): int	
+size	data_structure.html#size,AnyTensor	data_structure: size(t: AnyTensor): int	
+shape_to_strides	data_structure.html#shape_to_strides,MetadataArray,OrderType,MetadataArray	data_structure: shape_to_strides(shape: MetadataArray; layout: OrderType = rowMajor;\n                 result: var MetadataArray)	
+is_C_contiguous	data_structure.html#is_C_contiguous,AnyTensor	data_structure: is_C_contiguous(t: AnyTensor): bool	
+is_F_contiguous	data_structure.html#is_F_contiguous,AnyTensor	data_structure: is_F_contiguous(t: AnyTensor): bool	
+isContiguous	data_structure.html#isContiguous,AnyTensor	data_structure: isContiguous(t: AnyTensor): bool	
+get_data_ptr	data_structure.html#get_data_ptr,AnyTensor[T]	data_structure: get_data_ptr[T](t: AnyTensor[T]): ptr T	
+get_offset_ptr	data_structure.html#get_offset_ptr,AnyTensor[T]	data_structure: get_offset_ptr[T](t: AnyTensor[T]): ptr T	
+dataArray	data_structure.html#dataArray,Tensor[T]	data_structure: dataArray[T](t: Tensor[T]): ptr UncheckedArray[T]	

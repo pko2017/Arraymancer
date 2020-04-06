@@ -1,0 +1,3 @@
+tensorCpu	p_init_cpu.html#tensorCpu,varargs[int],Tensor[T],OrderType	p_init_cpu: tensorCpu[T](out_shape: varargs[int]; result: var Tensor[T];\n             layout: OrderType = rowMajor)	
+tensorCpu	p_init_cpu.html#tensorCpu,MetadataArray,Tensor[T],OrderType	p_init_cpu: tensorCpu[T](out_shape: MetadataArray; result: var Tensor[T];\n             layout: OrderType = rowMajor)	
+toTensorCpu	p_init_cpu.html#toTensorCpu.t,typed	p_init_cpu: toTensorCpu(s: typed): untyped	

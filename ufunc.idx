@@ -1,0 +1,56 @@
+astype	ufunc.html#astype,Tensor[T],typedesc[U]	ufunc: astype[T; U: not Complex](t: Tensor[T]; typ: typedesc[U]): Tensor[U]	
+astype	ufunc.html#astype,Tensor[T: SomeNumber],typedesc[U]	ufunc: astype[T: SomeNumber; U: Complex](t: Tensor[T]; typ: typedesc[U]): Tensor[U]	
+makeUniversal	ufunc.html#makeUniversal.t,untyped	ufunc: makeUniversal(func_name: untyped)	
+makeUniversalLocal	ufunc.html#makeUniversalLocal.t,untyped	ufunc: makeUniversalLocal(func_name: untyped)	
+fac	ufunc.html#fac,Tensor	ufunc: fac(t`gensym14746104: Tensor): Tensor	
+fac	ufunc.html#fac,Tensor_2	ufunc: fac(t`gensym14746104: Tensor): Tensor	
+sqrt	ufunc.html#sqrt,Tensor	ufunc: sqrt(t`gensym14750054: Tensor): Tensor	
+sqrt	ufunc.html#sqrt,Tensor_2	ufunc: sqrt(t`gensym14750054: Tensor): Tensor	
+cbrt	ufunc.html#cbrt,Tensor	ufunc: cbrt(t`gensym14755054: Tensor): Tensor	
+cbrt	ufunc.html#cbrt,Tensor_2	ufunc: cbrt(t`gensym14755054: Tensor): Tensor	
+ln	ufunc.html#ln,Tensor	ufunc: ln(t`gensym14760054: Tensor): Tensor	
+ln	ufunc.html#ln,Tensor_2	ufunc: ln(t`gensym14760054: Tensor): Tensor	
+log10	ufunc.html#log10,Tensor	ufunc: log10(t`gensym14765054: Tensor): Tensor	
+log10	ufunc.html#log10,Tensor_2	ufunc: log10(t`gensym14765054: Tensor): Tensor	
+log2	ufunc.html#log2,Tensor	ufunc: log2(t`gensym14770054: Tensor): Tensor	
+log2	ufunc.html#log2,Tensor_2	ufunc: log2(t`gensym14770054: Tensor): Tensor	
+exp	ufunc.html#exp,Tensor	ufunc: exp(t`gensym14775054: Tensor): Tensor	
+exp	ufunc.html#exp,Tensor_2	ufunc: exp(t`gensym14775054: Tensor): Tensor	
+arccos	ufunc.html#arccos,Tensor	ufunc: arccos(t`gensym14780054: Tensor): Tensor	
+arccos	ufunc.html#arccos,Tensor_2	ufunc: arccos(t`gensym14780054: Tensor): Tensor	
+arcsin	ufunc.html#arcsin,Tensor	ufunc: arcsin(t`gensym14785054: Tensor): Tensor	
+arcsin	ufunc.html#arcsin,Tensor_2	ufunc: arcsin(t`gensym14785054: Tensor): Tensor	
+arctan	ufunc.html#arctan,Tensor	ufunc: arctan(t`gensym14790054: Tensor): Tensor	
+arctan	ufunc.html#arctan,Tensor_2	ufunc: arctan(t`gensym14790054: Tensor): Tensor	
+cos	ufunc.html#cos,Tensor	ufunc: cos(t`gensym14795054: Tensor): Tensor	
+cos	ufunc.html#cos,Tensor_2	ufunc: cos(t`gensym14795054: Tensor): Tensor	
+cosh	ufunc.html#cosh,Tensor	ufunc: cosh(t`gensym14800054: Tensor): Tensor	
+cosh	ufunc.html#cosh,Tensor_2	ufunc: cosh(t`gensym14800054: Tensor): Tensor	
+sinh	ufunc.html#sinh,Tensor	ufunc: sinh(t`gensym14805054: Tensor): Tensor	
+sinh	ufunc.html#sinh,Tensor_2	ufunc: sinh(t`gensym14805054: Tensor): Tensor	
+sin	ufunc.html#sin,Tensor	ufunc: sin(t`gensym14810054: Tensor): Tensor	
+sin	ufunc.html#sin,Tensor_2	ufunc: sin(t`gensym14810054: Tensor): Tensor	
+tan	ufunc.html#tan,Tensor	ufunc: tan(t`gensym14815054: Tensor): Tensor	
+tan	ufunc.html#tan,Tensor_2	ufunc: tan(t`gensym14815054: Tensor): Tensor	
+tanh	ufunc.html#tanh,Tensor	ufunc: tanh(t`gensym14820054: Tensor): Tensor	
+tanh	ufunc.html#tanh,Tensor_2	ufunc: tanh(t`gensym14820054: Tensor): Tensor	
+erf	ufunc.html#erf,Tensor	ufunc: erf(t`gensym14825054: Tensor): Tensor	
+erf	ufunc.html#erf,Tensor_2	ufunc: erf(t`gensym14825054: Tensor): Tensor	
+erfc	ufunc.html#erfc,Tensor	ufunc: erfc(t`gensym14830054: Tensor): Tensor	
+erfc	ufunc.html#erfc,Tensor_2	ufunc: erfc(t`gensym14830054: Tensor): Tensor	
+lgamma	ufunc.html#lgamma,Tensor	ufunc: lgamma(t`gensym14835054: Tensor): Tensor	
+lgamma	ufunc.html#lgamma,Tensor_2	ufunc: lgamma(t`gensym14835054: Tensor): Tensor	
+gamma	ufunc.html#gamma,Tensor	ufunc: gamma(t`gensym14840054: Tensor): Tensor	
+gamma	ufunc.html#gamma,Tensor_2	ufunc: gamma(t`gensym14840054: Tensor): Tensor	
+floor	ufunc.html#floor,Tensor	ufunc: floor(t`gensym14845054: Tensor): Tensor	
+floor	ufunc.html#floor,Tensor_2	ufunc: floor(t`gensym14845054: Tensor): Tensor	
+ceil	ufunc.html#ceil,Tensor	ufunc: ceil(t`gensym14850054: Tensor): Tensor	
+ceil	ufunc.html#ceil,Tensor_2	ufunc: ceil(t`gensym14850054: Tensor): Tensor	
+trunc	ufunc.html#trunc,Tensor	ufunc: trunc(t`gensym14855054: Tensor): Tensor	
+trunc	ufunc.html#trunc,Tensor_2	ufunc: trunc(t`gensym14855054: Tensor): Tensor	
+round	ufunc.html#round,Tensor	ufunc: round(t`gensym14860054: Tensor): Tensor	
+round	ufunc.html#round,Tensor_2	ufunc: round(t`gensym14860054: Tensor): Tensor	
+degToRad	ufunc.html#degToRad,Tensor	ufunc: degToRad(t`gensym14865054: Tensor): Tensor	
+degToRad	ufunc.html#degToRad,Tensor_2	ufunc: degToRad(t`gensym14865054: Tensor): Tensor	
+radToDeg	ufunc.html#radToDeg,Tensor	ufunc: radToDeg(t`gensym14870054: Tensor): Tensor	
+radToDeg	ufunc.html#radToDeg,Tensor_2	ufunc: radToDeg(t`gensym14870054: Tensor): Tensor	

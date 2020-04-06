@@ -1,0 +1,2 @@
+LinearGate	linear.html#LinearGate	linear: LinearGate	
+linear	linear.html#linear,Variable[TT],Variable[TT],Variable[TT]	linear: linear[TT](input, weight: Variable[TT]; bias: Variable[TT] = nil): Variable[TT]	

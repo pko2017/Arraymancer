@@ -1,0 +1,1 @@
+network	dsl_core.html#network.m,Context,untyped,untyped	dsl_core: network(ctx: Context; model_name: untyped; config: untyped): untyped	
