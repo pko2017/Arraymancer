@@ -96,11 +96,11 @@ proc sigmoid(x):
   return 1 / (1 + math.exp(-x))</pre><p>With Numpy broadcasting, all those operations would be done on whole tensors using Numpy C implementation, pretty efficient?</p>
 <p>Actually no, this would create lots of temporary and loops across the data: - <tt class="docutils literal"><span class="pre">temp1 = -x</span></tt> - <tt class="docutils literal"><span class="pre">temp2 = math.exp(temp1)</span></tt> - <tt class="docutils literal"><span class="pre">temp3 = 1 + temp2</span></tt> - <tt class="docutils literal"><span class="pre">temp4 = 1 / temp3</span></tt></p>
 <p>So you suddenly get a o(4*n) algorithm.</p>
-<p>Arraymancer can do the same using the explicit broadcast operator <tt class="docutils literal"><span class="pre">./</span></tt> and <tt class="docutils literal"><span class="pre">+.</span></tt>. (To avoid name conflict we change the logistic sigmoid name)</p>
+<p>Arraymancer can do the same using the explicit broadcast operator <tt class="docutils literal"><span class="pre">/.</span></tt> and <tt class="docutils literal"><span class="pre">+.</span></tt>. (To avoid name conflict we change the logistic sigmoid name)</p>
 <pre class="listing"><span class="Keyword">import</span> <span class="Identifier">arraymancer</span>
 
 <span class="Keyword">proc</span> <span class="Identifier">customSigmoid</span><span class="Punctuation">[</span><span class="Identifier">T</span><span class="Punctuation">:</span> <span class="Identifier">SomeFloat</span><span class="Punctuation">]</span><span class="Punctuation">(</span><span class="Identifier">t</span><span class="Punctuation">:</span> <span class="Identifier">Tensor</span><span class="Punctuation">[</span><span class="Identifier">T</span><span class="Punctuation">]</span><span class="Punctuation">)</span><span class="Punctuation">:</span> <span class="Identifier">Tensor</span><span class="Punctuation">[</span><span class="Identifier">T</span><span class="Punctuation">]</span> <span class="Operator">=</span>
-  <span class="Identifier">result</span> <span class="Operator">=</span> <span class="DecNumber">1</span> <span class="Operator">./</span> <span class="Punctuation">(</span><span class="DecNumber">1</span> <span class="Operator">+.</span> <span class="Identifier">exp</span><span class="Punctuation">(</span><span class="Operator">-</span><span class="Identifier">t</span><span class="Punctuation">)</span><span class="Punctuation">)</span></pre><p>Well, unfortunately, the only thing we gain here is parallelism but we still have 4 loops over the data implicitly. Another way would be to use the loop fusion template <tt class="docutils literal"><span class="pre">map_inline</span></tt>:</p>
+  <span class="Identifier">result</span> <span class="Operator">=</span> <span class="DecNumber">1</span> <span class="Operator">/.</span> <span class="Punctuation">(</span><span class="DecNumber">1</span> <span class="Operator">+.</span> <span class="Identifier">exp</span><span class="Punctuation">(</span><span class="Operator">-</span><span class="Identifier">t</span><span class="Punctuation">)</span><span class="Punctuation">)</span></pre><p>Well, unfortunately, the only thing we gain here is parallelism but we still have 4 loops over the data implicitly. Another way would be to use the loop fusion template <tt class="docutils literal"><span class="pre">map_inline</span></tt>:</p>
 <pre class="listing"><span class="Keyword">import</span> <span class="Identifier">arraymancer</span>
 
 <span class="Keyword">proc</span> <span class="Identifier">customSigmoid2</span><span class="Punctuation">[</span><span class="Identifier">T</span><span class="Punctuation">:</span> <span class="Identifier">SomeFloat</span><span class="Punctuation">]</span><span class="Punctuation">(</span><span class="Identifier">t</span><span class="Punctuation">:</span> <span class="Identifier">Tensor</span><span class="Punctuation">[</span><span class="Identifier">T</span><span class="Punctuation">]</span><span class="Punctuation">)</span><span class="Punctuation">:</span> <span class="Identifier">Tensor</span><span class="Punctuation">[</span><span class="Identifier">T</span><span class="Punctuation">]</span> <span class="Operator">=</span>
@@ -123,49 +123,16 @@ proc sigmoid(x):
 
 <h1 id="micro-benchmarkcolon-int64-matrix-multiplication">Micro benchmark: Int64 matrix multiplication</h1><p>Integers seem to be the abandoned children of ndarrays and tensors libraries. Everyone is optimising the hell of floating points. Not so with Arraymancer:</p>
 <pre>
-Archlinux, E3-1230v5 (Skylake quad-core 3.4 GHz, turbo 3.8)
+Archlinux, i9-9980XE
+(Skylake-X 18 cores, overclocked 4.1GHz all-core turbo, 4.0GHz all-AVX-turbo, 3.5 GHz all-AVX512 turbo)
 Input 1500x1500 random large int64 matrix
-Arraymancer 0.2.90 (master branch 2017-10-10)</pre>
+Arraymancer 81777f0 (~v0.6.0, master branch 2020-01-09)</pre>
 <table border="1" class="docutils"><tr><th>Language</th><th>Speed</th><th>Memory</th></tr>
-<tr><td>Nim 0.17.3 (devel) + OpenMP</td><td><strong>0.36s</strong></td><td>55.5 MB</td></tr>
-<tr><td>Julia v0.6.0</td><td>3.11s</td><td>207.6 MB</td></tr>
-<tr><td>Python 3.6.2 + Numpy 1.12 compiled from source</td><td>8.03s</td><td>58.9 MB</td></tr>
-</table><pre>
-MacOS + i5-5257U (Broadwell dual-core mobile 2.7GHz, turbo 3.1)
-Input 1500x1500 random large int64 matrix
-Arraymancer 0.2.90 (master branch 2017-10-31)
-
-no OpenMP compilation: nim c -d:native -d:release --out:build/integer_matmul --nimcache:./nimcache benchmarks/integer_matmul.nim
-with OpenMP: nim c -d:openmp --cc:gcc --gcc.exe:&quot;/usr/local/bin/gcc-6&quot; --gcc.linkerexe:&quot;/usr/local/bin/gcc-6&quot;  -d:native -d:release --out:build/integer_matmul --nimcache:./nimcache benchmarks/integer_matmul.nim</pre>
-<table border="1" class="docutils"><tr><th>Language</th><th>Speed</th><th>Memory</th></tr>
-<tr><td>Nim 0.18.0 (devel) - GCC 6 + OpenMP</td><td><strong>0.95s</strong></td><td>71.9 MB</td></tr>
-<tr><td>Nim 0.18.0 (devel) - Apple Clang 9 - no OpenMP</td><td>1.73s</td><td>71.7 MB</td></tr>
-<tr><td>Julia v0.6.0</td><td>4.49s</td><td>185.2 MB</td></tr>
-<tr><td>Python 3.5.2 + Numpy 1.12</td><td>9.49s</td><td>55.8 MB</td></tr>
-</table><p>Benchmark setup is in the <tt class="docutils literal"><span class="pre">./benchmarks</span></tt> folder and similar to (stolen from) <a class="reference external" href="https://github.com/kostya/benchmarks#matmul">Kostya’s</a>. Note: Arraymancer float matmul is as fast as <tt class="docutils literal"><span class="pre">Julia Native Thread</span></tt>.</p>
-
-<h1 id="logistic-regression">Logistic regression</h1><p>On the <a class="reference external" href="https://github.com/edubart/arraymancer-demos">demo benchmark</a>, Arraymancer is faster than Torch in v0.2.90.</p>
-<p>CPU</p>
-<table border="1" class="docutils"><tr><th>Framework</th><th>Backend</th><th>Forward+Backward Pass Time</th></tr>
-<tr><td>Arraymancer v0.3.0</td><td>OpenMP + MKL</td><td><strong>0.458ms</strong></td></tr>
-<tr><td>Torch7</td><td>MKL</td><td>0.686ms</td></tr>
-<tr><td>Numpy</td><td>MKL</td><td>0.723ms</td></tr>
-</table><p>GPU</p>
-<table border="1" class="docutils"><tr><th>Framework</th><th>Backend</th><th>Forward+Backward Pass Time</th></tr>
-<tr><td>Arraymancer v0.3.0</td><td>Cuda</td><td>WIP</td></tr>
-<tr><td>Torch7</td><td>Cuda</td><td>0.286ms</td></tr>
-</table>
-<h1 id="dnn-minus-3-hidden-layers">DNN - 3 hidden layers</h1><p>CPU</p>
-<table border="1" class="docutils"><tr><th>Framework</th><th>Backend</th><th>Forward+Backward Pass Time</th></tr>
-<tr><td>Arraymancer v0.3.0</td><td>OpenMP + MKL</td><td><strong>2.907ms</strong></td></tr>
-<tr><td>PyTorch</td><td>MKL</td><td>6.797ms</td></tr>
-</table><p>GPU</p>
-<table border="1" class="docutils"><tr><th>Framework</th><th>Backend</th><th>Forward+Backward Pass Time</th></tr>
-<tr><td>Arraymancer v0.3.0</td><td>Cuda</td><td>WIP</td></tr>
-<tr><td>PyTorch</td><td>Cuda</td><td>4.765ms</td></tr>
-</table><pre>
-Intel(R) Core(TM) i7-3770K CPU @ 3.50GHz, gcc 7.2.0, MKL 2017.17.0.4.4, OpenBLAS 0.2.20, Cuda 8.0.61, Geforce GTX 1080 Ti, Nim 0.18.0</pre>
-<p>In the future, Arraymancer will leverage Nim compiler to automatically fuse operations like <tt class="docutils literal"><span class="pre">alpha A*B + beta C</span></tt> or a combination of element-wise operations. This is already done to fuse <tt class="docutils literal"><span class="pre">toTensor</span></tt> and <tt class="docutils literal"><span class="pre">reshape</span></tt>. </p>
+<tr><td>Nim 1.0.4 (-d:danger) + OpenMP</td><td><strong>0.14s</strong></td><td>22.7 MB</td></tr>
+<tr><td>Julia v1.3.1</td><td>1.67s</td><td>246.5 MB</td></tr>
+<tr><td>Python 3.8.1 + Numpy-MKL 1.18 compiled from source</td><td>5.69s</td><td>75.9 MB</td></tr>
+</table><p>Benchmark setup is in the <tt class="docutils literal"><span class="pre">./benchmarks</span></tt> folder and similar to (stolen from) <a class="reference external" href="https://github.com/kostya/benchmarks#matmul">Kostya’s</a>.</p>
+<p>Note: Arraymancer, Julia and Numpy have the same speed as each other on <strong>float</strong> matrix multiplication as they all use Assembly-based BLAS + OpenMP underneath. In the future, pure-Nim backends without Assembly and/or OpenMP may be used to ease deployment, especially on Windows and be free of OpenMP limitations with regards to nested parallelism and <a class="reference external" href="https://github.com/zy97140/omp-benchmark-for-pytorch">load-balancing of generic algorithms</a>. Speed will be competitive at least with OpenBLAS, see the <a class="reference external" href="https://github.com/mratsim/weave/tree/v0.4.0/benchmarks/matmul_gemm_blas">Weave multithreading runtime benchmarks</a>. </p>
 
 
 
@@ -173,7 +140,7 @@ Intel(R) Core(TM) i7-3770K CPU @ 3.50GHz, gcc 7.2.0, MKL 2017.17.0.4.4, OpenBLAS
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-04-19 13:42:51 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-04-19 14:11:50 UTC</small>
       </div>
     </div>
   </div>
