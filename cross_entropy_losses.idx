@@ -1,6 +1,6 @@
 SigmoidCrossEntropyLoss	cross_entropy_losses.html#SigmoidCrossEntropyLoss	cross_entropy_losses: SigmoidCrossEntropyLoss	
-sigmoid_cross_entropy	cross_entropy_losses.html#sigmoid_cross_entropy,,TT	cross_entropy_losses: sigmoid_cross_entropy[TT](a`gensym20169068: Variable[TT];\n                          target`gensym20169069: TT): Variable[TT]	
+sigmoid_cross_entropy	cross_entropy_losses.html#sigmoid_cross_entropy,,TT	cross_entropy_losses: sigmoid_cross_entropy[TT](a`gensym20174068: Variable[TT];\n                          target`gensym20174069: TT): Variable[TT]	
 SoftmaxCrossEntropyLoss	cross_entropy_losses.html#SoftmaxCrossEntropyLoss	cross_entropy_losses: SoftmaxCrossEntropyLoss	
-softmax_cross_entropy	cross_entropy_losses.html#softmax_cross_entropy,,TT	cross_entropy_losses: softmax_cross_entropy[TT](a`gensym20170064: Variable[TT];\n                          target`gensym20170065: TT): Variable[TT]	
+softmax_cross_entropy	cross_entropy_losses.html#softmax_cross_entropy,,TT	cross_entropy_losses: softmax_cross_entropy[TT](a`gensym20175064: Variable[TT];\n                          target`gensym20175065: TT): Variable[TT]	
 SparseSoftmaxCrossEntropyLoss	cross_entropy_losses.html#SparseSoftmaxCrossEntropyLoss	cross_entropy_losses: SparseSoftmaxCrossEntropyLoss	
 sparse_softmax_crossentropy	cross_entropy_losses.html#sparse_softmax_crossentropy,Variable[TT],Tensor[Idx: int or int8 or int16 or int32 or int64 or uint or uint8 or uint16 or uint32 or uint64 or float or float32 or float64 or byte or char or enum]	cross_entropy_losses: sparse_softmax_crossentropy[TT; Idx: SomeNumber or byte or char or enum](\n    a: Variable[TT]; target: Tensor[Idx]): Variable[TT]	

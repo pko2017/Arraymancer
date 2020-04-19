@@ -17,4 +17,3 @@ unsqueeze	shapeshifting.html#unsqueeze,Tensor,Natural	shapeshifting: unsqueeze(t
 stack	shapeshifting.html#stack,varargs[Tensor[T]],Natural	shapeshifting: stack[T](tensors: varargs[Tensor[T]]; axis: Natural = 0): Tensor[T]	
 split	shapeshifting.html#split,Tensor[T],Positive,Natural	shapeshifting: split[T](t: Tensor[T]; chunk_size: Positive; axis: Natural): seq[Tensor[T]]	
 chunk	shapeshifting.html#chunk,Tensor[T],Positive,Natural	shapeshifting: chunk[T](t: Tensor[T]; nb_chunks: Positive; axis: Natural): seq[Tensor[T]]	
-index_select	shapeshifting.html#index_select,Tensor[T],int,Tensor[Idx: byte or char or int or int8 or int16 or int32 or int64 or uint or uint8 or uint16 or uint32 or uint64 or float or float32 or float64]	shapeshifting: index_select[T; Idx: byte or char or SomeNumber](t: Tensor[T]; axis: int;\n    indices: Tensor[Idx]): Tensor[T]	
