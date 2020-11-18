@@ -104,9 +104,8 @@ proc batch_norm_backward_ag[TT](self: BatchNormGate[TT], payload: Payload[TT]) :
   # echo("step 3 : dxmu2: " & $dxmu2)
   # echo("step 2 : dx1: " & $dx1)
   # echo("step 1 : dx2: " & $dx2)
-
-  echo("result: " & $result)
-  echo("-----------batch_norm_backward_ag[TT]--------------")
+  # echo("result: " & $result)
+  # echo("-----------batch_norm_backward_ag[TT]--------------")
 
 
 proc batch_norm_cache[TT](result: Variable[TT], input, gamma, beta: Variable[TT]) =
