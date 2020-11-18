@@ -53,6 +53,13 @@ proc shortcutGRU(self: Neuromancer, field_name: NimNode, topo: LayerTopology) =
 
   self.forward_templates.add shortcut
 
+proc shortcutBatchNorm(self: Neuromancer, field_name: NimNode, topo: LayerTopology) =
+  let shortcut = quote do:
+    template `field_name`(x: Variable): Variable =
+      x.batch_norm(self.`field_name`.gamma, self.`field_name`.beta)
+  self.forward_templates.add shortcut
+
+
 proc genTemplateShortcuts*(self: Neuromancer) =
   self.forward_templates = @[]
   for k, v in pairs(self.topoTable):
@@ -62,5 +69,6 @@ proc genTemplateShortcuts*(self: Neuromancer) =
     of lkMaxPool2D: self.shortcutMaxPool2D(k, v)
     of lkFlatten: self.shortcutFlatten(k, v)
     of lkGRU: self.shortcutGRU(k, v)
+    of lkBatchNorm: self.shortcutBatchNorm(k, v)
     else:
       discard

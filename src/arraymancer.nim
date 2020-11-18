@@ -1,3 +1,5 @@
+# (renamed this file to not interfere with arraymancer installed via nimble) 
+# 
 # Copyright 2017-Present Mamy André-Ratsimbazafy & the Arraymancer contributors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");

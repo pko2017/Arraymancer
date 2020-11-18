@@ -32,10 +32,14 @@ proc linear_backward_ag[TT](self: LinearGate[TT], payload: Payload[TT]): SmallDi
     result = newDiffs[TT](3)
 
   if self.input.requires_grad:
-    result[0] = gradOutput * self.weight.value
+    echo("linear_backward_ag : self.input.requires_grad")
+    result[0] = gradOutput * self.weight.value          # dL/dX = dL/dY * W     --> s.b. = dL/dX * W^T ? 
+                                                        # http://cs231n.stanford.edu/handouts/linear-backprop.pdf
+    echo(result[0])    
 
-  if self.weight.requires_grad:
-    result[1] = gradOutput.transpose * self.input.value
+
+  if self.weight.requires_grad: 
+    result[1] = gradOutput.transpose * self.input.value # dL/dW = X^T * (dL/dY) --> OK
 
   if not self.bias.isNil and self.bias.requires_grad:
     result[2] = sum(gradOutput, axis = 0)

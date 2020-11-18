@@ -38,7 +38,7 @@ type
 
   LayerKind* = enum
     lkInput, lkConv2D, lkLinear, lkMaxPool2D, lkFlatten,
-    lkGRU
+    lkGRU, lkBatchNorm
 
   LayerTopology* = object
     ## Describe a layer topology
@@ -79,6 +79,9 @@ type
     bW3s*, bU3s*: Variable[TT]
   EmbeddingLayer*[TT] = object
     weight*: Variable[TT]
+  BatchNormLayer*[TT] = object
+    gamma*: Variable[TT]
+    beta*: Variable[TT]
 
 proc hash*(x: NimNode): Hash =
   assert x.kind == nnkIdent

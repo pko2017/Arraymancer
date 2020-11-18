@@ -9,4 +9,5 @@ export
   TrainableLayer,
   Conv2DLayer,
   LinearLayer,
-  GRULayer
+  GRULayer,
+  BatchNormLayer

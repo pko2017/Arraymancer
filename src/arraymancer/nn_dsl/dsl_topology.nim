@@ -260,6 +260,26 @@ proc topoFromGRU(self: var TopoTable, ident: NimNode, desc: NimNode) =
                                 gru_nb_layers: desc[3]
                                 )
 
+
+proc topoFromBatchNorm(self: var TopoTable, ident: NimNode, desc: NimNode) =
+  # FIXME normally (in_shape == out_shape) and only one parameter
+  # Call
+  #   Ident "BatchNorm"
+  #   DotExpr 
+  #     Ident "mp2.out_shape"
+  #     Ident "out_shape"
+
+  var in_shape = self.replaceInputNodes(desc[1])
+  in_shape = quote do: `in_shape`
+
+  let out_shape = quote do:
+    out_shape_flatten(`in_shape`)
+
+  self.add ident, LayerTopology(kind: lkBatchNorm,
+                                in_shape: in_shape,
+                                out_shape: out_shape)
+
+
 proc topoFromLayer(self: var TopoTable, ident: NimNode, desc: NimNode) =
 
   if eqIdent(desc[0], "Conv2D"):
@@ -274,6 +294,8 @@ proc topoFromLayer(self: var TopoTable, ident: NimNode, desc: NimNode) =
     self.topoFromFlatten(ident, desc)
   elif eqIdent(desc[0], "GRU"):
     self.topoFromGRU(ident, desc)
+  elif eqIdent(desc[0], "BatchNorm"):
+    self.topoFromBatchNorm(ident, desc)
   else:
     unknown(desc)
 

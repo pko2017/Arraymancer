@@ -147,6 +147,48 @@ proc trainParamsGRU(self: Neuromancer, field_name: NimNode, topo: LayerTopology)
 
   self.trainparams.add GRUConfig
 
+proc trainParamsBatchNorm(self: Neuromancer, field_name: NimNode, topo: LayerTopology) =
+
+  # 1. Create the object field
+  var bnConfig: ModelField
+
+  bnConfig.field_name = field_name
+  bnConfig.field_type = nnkBracketExpr.newTree(
+      ident("BatchNormLayer"), self.subtype
+    )
+
+  # 2. Configure weight and bias
+  let
+    topo = self.topoTable.getOrDefault(field_name)
+    sst = self.subtype[1] # we need to get the subsubtype float32/float64
+
+    # actuallly we dont' need theese and they s.b. equal
+    in_shape = topo.in_shape 
+    #out_shape = topo.out_shape
+
+    beta_shape = quote do: [`in_shape`, 1] # (D,1)  D - number of dimensions
+    gamma_shape = quote do: [`in_shape`, 1]# (D,1)
+
+    beta = quote do: zeros[`sst`](`beta_shape`)
+    gamma = quote do: ones[`sst`](`gamma_shape`)
+
+  bnConfig.init_call = newStmtList()
+
+  let ctx = self.context
+
+  bnConfig.init_call.add quote do:
+    result.`field_name`.gamma = `ctx`.variable(
+      `gamma`,
+      requires_grad = true # TODO allow freezing
+    )
+
+    result.`field_name`.beta = `ctx`.variable(
+      `beta`,
+      requires_grad = true # TODO allow freezing
+    )
+
+  self.trainparams.add bnConfig
+
 proc genModelFieldInit*(self: Neuromancer) =
 
   self.trainparams = @[]
@@ -156,6 +198,7 @@ proc genModelFieldInit*(self: Neuromancer) =
     of lkConv2D: self.trainParamsConv2D(k, v)
     of lkLinear: self.trainParamsLinear(k, v)
     of lkGRU: self.trainParamsGRU(k, v)
+    of lkBatchNorm: self.trainParamsBatchNorm(k, v)
     else:
       discard
 
