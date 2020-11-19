@@ -74,7 +74,12 @@ proc batch_norm*[TT](input, gamma, beta: Variable[TT]): Variable[TT] =
 
   new result
   result.context = input.context
-  batch_norm(input.value, gamma.value, beta.value, result.value)
 
-  # Caching for backprop
-  result.batch_norm_cache(input, gamma, beta)
+  if input.is_grad_needed or gamma.is_grad_needed or beta.is_grad_needed:
+    batch_norm_forward(input.value, gamma.value, beta.value, result.value)
+    # Caching for backprop
+    result.batch_norm_cache(input, gamma, beta)
+  # else:
+  #   batch_norm_inference(input.value, gamma.value, beta.value, result.value)
+
+  
