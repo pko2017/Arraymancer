@@ -5,7 +5,6 @@ import ../tensor,
 proc batch_norm_backward*[T](input, gamma, beta, gradOutput: Tensor[T],
                              gradInput, gradGamma, gradBeta: var Tensor[T]) {.inline.} =
   # TODO : docs
-
   let
     batchSize = input.shape[0]
     eps = T(1e-8)
@@ -28,11 +27,6 @@ proc batch_norm_backward*[T](input, gamma, beta, gradOutput: Tensor[T],
   gradInput = dx1 + dx2
   gradGamma = (gradOutput .* xhat).sum(axis=0)
   gradBeta = gradOutput.sum(axis=0)
-
-  echo gradInput
-  echo gradGamma
-  echo gradBeta
-
   
 
 proc batch_norm_forward*[T](input, gamma, beta: Tensor[T], 
